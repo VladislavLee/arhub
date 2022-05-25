@@ -1,0 +1,43 @@
+<swiper
+  [slidesPerView]="2"
+  [spaceBetween]="10"
+  [pagination]="{
+      clickable: true
+    }"
+  [breakpoints]="{
+      '@0.00': {
+        slidesPerView: 1,
+        spaceBetween: 10
+      },
+      '@0.75': {
+        slidesPerView: 2,
+        spaceBetween: 20
+      },
+      '@1.00': {
+        slidesPerView: 3,
+        spaceBetween: 0
+      },
+      '@1.50': {
+        slidesPerView: 4,
+        spaceBetween: 0
+      }
+    }"
+
+>
+  <ng-template swiperSlide>
+    <div class="swiper-wrapper">
+      <div class="slide">
+        <app-post-mini></app-post-mini>
+      </div>
+      <div class="slide">
+        <app-post-mini></app-post-mini>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template swiperSlide>
+    <div class="swiper-wrapper">
+      <app-post-mini class="slide"></app-post-mini>
+      <app-post-mini class="slide"></app-post-mini>
+    </div>
+  </ng-template>
+</swiper>

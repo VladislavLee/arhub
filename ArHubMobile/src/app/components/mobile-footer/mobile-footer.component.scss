@@ -1,0 +1,32 @@
+.footer {
+  position: fixed;
+  min-height: 88px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  background-color: #1C1C24;
+
+  .button-with-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    .action {
+      background-color: #1c1c24;
+      color: #5F5F6E;
+      box-shadow: none;
+    }
+
+    label {
+      line-height: 20px;
+      font-size: 10px;
+      color: #5F5F6E;
+    }
+  }
+}

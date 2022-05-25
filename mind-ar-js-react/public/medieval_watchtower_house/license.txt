@@ -1,0 +1,11 @@
+Model Information:
+* title:	Medieval Watchtower House
+* source:	https://sketchfab.com/3d-models/medieval-watchtower-house-4099fd90094c400e987deb240078c38e
+* author:	Krystian Zem (https://sketchfab.com/Banketo)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Medieval Watchtower House" (https://sketchfab.com/3d-models/medieval-watchtower-house-4099fd90094c400e987deb240078c38e) by Krystian Zem (https://sketchfab.com/Banketo) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

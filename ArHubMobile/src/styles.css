@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+body,
+html {
+  /*margin: 0 auto;*/
+  /*padding: 0;*/
+  /*height: 100%;*/
+  /*width: 100%;*/
+  /*position: fixed;*/
+  /*overflow: hidden;*/
+  background-color: #131419;
+  /*overflow-y: auto;*/
+}
+
+
+/*body::-webkit-scrollbar {*/
+/*  width: 12px;               !* width of the entire scrollbar *!*/
+/*}*/
+
+/*body::-webkit-scrollbar-track {*/
+/*  background: #131419;        !* color of the tracking area *!*/
+/*}*/
+
+/*body::-webkit-scrollbar-thumb {*/
+/*  background-color: #262631;    !* color of the scroll thumb *!*/
+/*  border-radius: 15px; !* roundness of the scroll thumb *!*/
+/*  border: 3px solid #5e5e5e;  !* creates padding around scroll thumb *!*/
+/*}*/
+
+@font-face {
+  font-family: "Aleo Regular";
+  src: url("assets/fonts/Aleo/Aleo-Regular.ttf");
+}
+
+
+body { margin: 0; font-family: "Aleo Regular", "Helvetica Neue", sans-serif; }
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+/*::-webkit-scrollbar-thumb {*/
+/*  background: #FF0000;*/
+/*}*/

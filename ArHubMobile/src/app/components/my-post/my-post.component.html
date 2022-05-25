@@ -1,0 +1,38 @@
+<mat-card class="post">
+  <div class="wrapper">
+    <mat-card-header >
+      <div class="header">
+        <div class="left">
+          <mat-card-title class="title">Shiba Inu</mat-card-title>
+          <mat-card-subtitle class="subtitle">Dog Breed</mat-card-subtitle>
+        </div>
+
+        <div class="right">
+          <button mat-icon-button style="color: white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button style="color: white" mat-menu-item>
+              <mat-icon>delete</mat-icon>
+              <span>Удалить</span>
+            </button>
+            <button style="color: white" mat-menu-item>
+              <mat-icon>mode_edit</mat-icon>
+              <span>Редактировать</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="image-container">
+        <img mat-card-image class="image" src="assets/image/fon1.png" alt="">
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button class="button" (click)="openViewerModal()">3D/AR</button>
+    </mat-card-actions>
+  </div>
+</mat-card>

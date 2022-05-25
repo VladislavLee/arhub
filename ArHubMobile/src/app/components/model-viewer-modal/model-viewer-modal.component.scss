@@ -1,0 +1,27 @@
+model-viewer {
+  position: relative;
+  float: left;
+  height: 30vw;
+  --poster-color: #1c1c24;
+  background-color: #1C1C24;
+}
+
+.actions {
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+
+  .button {
+    color: #4447E2;
+  }
+}
+
+.container {
+  background-color: #1C1C24;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 0;
+  border-radius: 4px;
+  background-color: #1C1C24;
+}

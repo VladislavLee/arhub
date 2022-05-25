@@ -1,0 +1,94 @@
+.post {
+  color: #FFFFFF;
+  max-width: 348px;
+  background: #1c1c24;
+  border-radius: 20px;
+  font-family: "Aleo Regular", serif;
+  margin-bottom: 16px;
+
+  &-img {
+    min-height: 144px;
+    max-height: 144px;
+    margin-bottom: 24px;
+  }
+
+  &-header {
+    .avatar {
+      width: 40px;
+      height: 40px;
+    }
+
+    .title {
+      font-family: "Aleo Regular", serif;
+    }
+
+    .date {
+      font-size: 12px;
+      opacity: 0.6;
+      font-family: "Aleo Regular", serif;
+    }
+  }
+
+  &-actions {
+    .action {
+      background: #5458f7;
+    }
+
+    .label {
+      font-size: 12px;
+    }
+  }
+}
+
+.post-content {
+  margin-bottom: 18px;
+
+  .description {
+    font-size: 16px;
+  }
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+
+  &__left {
+    display: flex;
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  .button-with-label {
+    .action {
+      margin-right: 8px;
+    }
+
+    margin-right: 24px;
+  }
+
+  .action {
+    background-color: #333339;
+    //background-color: #5458F7;
+  }
+
+
+  .icon {
+    color: #FFFFFF;
+  }
+}
+
+.mat-card .mat-divider-horizontal {
+  position: relative;
+}
+
+.mat-card>.mat-card-actions:last-child {
+  margin: 16px 0 0 0;
+}
+
+mat-divider {
+  color: #FFFFFF;
+  opacity: 20%;
+}

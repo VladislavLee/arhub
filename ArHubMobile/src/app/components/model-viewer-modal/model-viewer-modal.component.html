@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="actions">
+    <button mat-icon-button disabled class="button">
+      <mat-icon>3d_rotation</mat-icon>
+    </button>
+    <button mat-icon-button class="button" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <model-viewer
+    camera-controls
+    [attr.camera-orbit]="camera_orbit"
+    [attr.src]="src"
+    alt="3D model"
+    data-js-focus-visible=""
+    ar
+  >
+  </model-viewer>
+</div>
+

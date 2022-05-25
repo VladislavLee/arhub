@@ -1,0 +1,46 @@
+<mat-card class="post">
+  <mat-card-header class="post-header">
+<!--    <img *ngIf="post.author.avatarImageId"  mat-card-avatar class="avatar" src="{{apiUrlDatastore}}/content/{{post.author.avatarImageId}}" alt="">-->
+    <img *ngIf="post.author.avatarImageId" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?name={{post.author.username}}&background=random" alt="">
+
+    <mat-card-title class="title">{{post.title}}</mat-card-title>
+    <mat-card-subtitle class="date">{{ post.cratedTime | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <img class="post-img"
+       mat-card-image
+       src="{{apiUrlDatastore}}/content/{{post.previewImageId}}"
+       alt=""
+       (click)="openCamera(post)"
+  >
+<!--  <mat-card-content class="post-content">-->
+<!--    <div class="description">-->
+<!--      The Shiba Inu.-->
+<!--    </div>-->
+<!--  </mat-card-content>-->
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions class="post-actions">
+    <div class="post-actions__left">
+      <div class="button-with-label">
+        <button mat-mini-fab class="action">
+          <mat-icon class="icon">thumb_up_off_alt</mat-icon>
+        </button>
+        <label class="label">{{post.likeCount}}</label>
+      </div>
+      <div class="button-with-label">
+        <button mat-mini-fab class="action">
+          <mat-icon class="icon">chat_bubble_outline</mat-icon>
+        </button>
+        <label class="label">{{post.commentCount}}</label>
+      </div>
+    </div>
+
+    <div class="post-actions__right">
+      <button mat-mini-fab class="action">
+        <mat-icon class="icon">ios_share</mat-icon>
+      </button>
+    </div>
+
+  </mat-card-actions>
+</mat-card>

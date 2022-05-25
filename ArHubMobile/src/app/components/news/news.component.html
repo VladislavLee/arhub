@@ -1,0 +1,25 @@
+<app-mobile-header></app-mobile-header>
+
+
+<div class="wrapper main-panel">
+  <div style="height: 100vh; overflow: scroll;"
+       infiniteScroll
+       [infiniteScrollDistance]="0"
+       [infiniteScrollThrottle]="10"
+       [scrollWindow]="false"
+       (scrolled)="onScrollDown()">
+    <app-page-title [title]="'Популярное'"></app-page-title>
+
+    <app-slider-stories></app-slider-stories>
+
+    <app-page-title [title]="'Новые'"></app-page-title>
+    <app-post
+      *ngFor="let post of posts | async"
+      [post]="post"
+    ></app-post>
+  </div>
+
+
+</div>
+
+<app-mobile-footer></app-mobile-footer>

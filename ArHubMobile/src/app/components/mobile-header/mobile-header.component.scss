@@ -1,0 +1,52 @@
+.header {
+  min-height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #262631;
+  background-color: #1c1c24;
+
+  &-left {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+
+    .button-with-label {
+      display: flex;
+      align-items: center;
+
+      .button {
+        background-color: #4447E2;
+        margin-right: 10px;
+        color: #FFFFFF;
+      }
+
+      .label {
+        font-size: 18px;
+        color: #FFFFFF;
+        line-height: 20px;
+      }
+    }
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+
+    .icon {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .label {
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+  }
+}
+
+.span {
+  padding: 0;
+}
+

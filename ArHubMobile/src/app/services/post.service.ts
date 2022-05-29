@@ -12,6 +12,7 @@ export class PostService {
   readonly apiUrlDatastore =  environment.API_URL_DATASTORE;
   readonly apiUrlContentManager = environment.API_URL_CONTENT_MANAGER;
   post$ = new BehaviorSubject<any>([]);
+  postId$ = new BehaviorSubject<any>([]);
 
   constructor(private httpClient: HttpClient) { }
 
@@ -84,6 +85,6 @@ export class PostService {
   }
 
   getFullPost(id: string) {
-    return this.httpClient.get(`${this.apiUrlContentManager}/posts/full/${id}`);
+    return this.httpClient.get(`${this.apiUrlContentManager}/posts/${id}`);
   }
 }

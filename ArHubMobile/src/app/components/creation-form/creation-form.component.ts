@@ -6,6 +6,8 @@ import {environment} from "../../../environments/environment";
 import {BehaviorSubject, combineLatest, merge, mergeMap, of} from "rxjs";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {Router} from "@angular/router";
+import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
+import {MapModalComponent} from "../map-modal/map-modal.component";
 
 @Component({
   selector: 'app-creation-form',
@@ -18,6 +20,9 @@ export class CreationFormComponent implements OnInit {
   safeSrc: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject<SafeResourceUrl>('');
   apiUrlReactViewer = environment.API_URL_REACT_VIEWER;
   apiUrlModelEditor = environment.API_URL_MODEL_EDITOR;
+  dialogConfig = new MatDialogConfig();
+  modalDialog: MatDialogRef<MapModalComponent, any> | undefined;
+  saved = false;
 
   form = new FormGroup({
     title: new FormControl(null, Validators.required),
@@ -55,10 +60,18 @@ export class CreationFormComponent implements OnInit {
     private postService: PostService,
     private http: HttpClient,
     protected _sanitizer: DomSanitizer,
-    private _router: Router
-  ) {}
+    private _router: Router,
+    public matDialog: MatDialog
+  ) {
+  }
 
   ngOnInit(): void {
+    document.onclick = (args: any): void => {
+      if (args.target.tagName === 'BODY') {
+        this.modalDialog?.close()
+      }
+    }
+
     window.addEventListener("message", (event) => {
       if (event.data.action == 'returnData') {
         this.form.get('marker')?.setValue(new Blob([event.data.item]))
@@ -83,20 +96,51 @@ export class CreationFormComponent implements OnInit {
   }
 
   uploadPreview(event: any) {
-      this.form.get('preview')?.setValue(event.target.files[0]);
+    this.form.get('preview')?.setValue(event.target.files[0]);
   }
 
   uploadModel(event: any) {
     this.form.get('model')?.setValue(event.target.files[0]);
   }
 
+  openMapModal() {
+    this.dialogConfig.id = "projects-modal-component";
+    this.dialogConfig.height = "80%";
+    this.dialogConfig.width = "80%";
+
+    if (!this.saved) {
+      this.save().subscribe(value => {
+        this.saved = !this.saved
+        this.postService.postId$.next(value)
+        this.modalDialog = this.matDialog.open(MapModalComponent, this.dialogConfig);
+      })
+    } else {
+      this.modalDialog = this.matDialog.open(MapModalComponent, this.dialogConfig);
+    }
+
+  }
+
+
   onSubmit() {
+    if (!this.saved) {
+      this.save().subscribe(value => {
+        this._router.navigate([`${this.apiUrlModelEditor}/${value}`])
+      })
+    } else {
+      this.postService.postId$.subscribe(value => {
+        this._router.navigate([`${this.apiUrlModelEditor}/${value}`])
+      })
+
+    }
+  }
+
+  save() {
     console.log(this.form.value)
-    combineLatest(
+    return combineLatest(
       this.postService.uploadFile(this.form.get('preview')?.value, 'preview'),
       this.postService.uploadFile(this.form.get('marker')?.value, 'marker'),
       this.postService.uploadImage(this.form.get('markerVanilla')?.value, 'markerVanilla'),
-      this.postService.uploadModel(this.form.get('model')?.value,  'model'),
+      this.postService.uploadModel(this.form.get('model')?.value, 'model'),
     ).pipe(
       mergeMap((value: any) => {
         let request = {
@@ -118,8 +162,6 @@ export class CreationFormComponent implements OnInit {
         // request.previewImageId
         // this.postService.createPost()
       })
-    ).subscribe(value => {
-      this._router.navigate([`${this.apiUrlModelEditor}/${value}`])
-    })
+    )
   }
 }

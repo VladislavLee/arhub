@@ -2,6 +2,7 @@ package com.myar.content.manager.controllers;
 
 import com.myar.content.manager.entities.mapper.PostMapper;
 import com.myar.content.manager.entities.model.Post;
+import com.myar.content.manager.entities.request.post.CoordinatesPostRequest;
 import com.myar.content.manager.entities.request.post.CreatePostRequest;
 import com.myar.content.manager.entities.response.post.FullPostResponse;
 import com.myar.content.manager.entities.response.post.ShortPostResponse;
@@ -22,7 +23,13 @@ public class PostController {
     private final PostService postService;
     private final PostMapper postMapper;
 
-    @GetMapping("/full/{id}")
+    @PostMapping
+    public UUID createPost(@RequestBody CreatePostRequest createPostRequest) {
+        final Post post = postMapper.convertCreatePostRequestToPost(createPostRequest);
+        return postService.createPost(post, createPostRequest.getCityId()).getId();
+    }
+
+    @GetMapping("/{id}")
     public FullPostResponse getFullPost(@PathVariable("id") UUID postID) {
         return postMapper.convertPostToFullPostResponse(postService.getById(postID));
     }
@@ -41,17 +48,12 @@ public class PostController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping
-    public UUID createPost(@RequestBody CreatePostRequest createPostRequest) {
-        final Post post = postMapper.convertCreatePostRequestToPost(createPostRequest);
-        return postService.createPost(post, createPostRequest.getCityId()).getId();
-    }
-
     @PatchMapping("/{id}")
     public void updatePost(@RequestBody CreatePostRequest createPostRequest, @PathVariable("id") UUID postID) {
         final Post post = postMapper.convertCreatePostRequestToPost(createPostRequest);
         postService.updatePost(post, postID);
     }
+
 
     @DeleteMapping("/{id}")
     public void deletePost(@PathVariable("id") UUID postID) {

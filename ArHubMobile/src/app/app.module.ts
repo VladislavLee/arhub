@@ -38,7 +38,6 @@ import {HttpClientModule} from "@angular/common/http";
 import { ArViewerComponent } from './components/ar-viewer/ar-viewer.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
-import {DeviceDetectorGuard} from "./guards/device-detector.guard";
 import { ModelViewerModalComponent } from './components/model-viewer-modal/model-viewer-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { ModelEditorComponent } from './components/model-editor/model-editor.component';
@@ -162,6 +161,6 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     PostService,
   ],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

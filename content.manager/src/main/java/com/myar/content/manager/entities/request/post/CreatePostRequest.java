@@ -16,6 +16,8 @@ public class CreatePostRequest {
     private String markerVanillaMarkerId;
     private String modelId;
     private UUID cityId;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private List<BigDecimal> rotation;
     private List<BigDecimal> translation;
     private List<BigDecimal> scale;

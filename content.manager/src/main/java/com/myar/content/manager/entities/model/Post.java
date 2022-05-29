@@ -48,6 +48,9 @@ public class Post {
     @ElementCollection
     private List<BigDecimal> scale;
 
+    private BigDecimal latitude;
+    private BigDecimal longitude;
+
     @ManyToOne
     @JoinColumn(name="city_id", nullable=false)
     private City city;

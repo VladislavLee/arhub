@@ -12,7 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -45,13 +47,17 @@ public class PostService {
 
     public Post updatePost(Post post, UUID postId) {
         final Post originalPost = postRepository.findById(postId).orElseThrow(EntityNotFoundException::new);
-        originalPost.setTitle(post.getTitle());
-        originalPost.setPreviewImageId(post.getPreviewImageId());
-        originalPost.setMarkerImageId(post.getMarkerImageId());
-        originalPost.setModelId(post.getModelId());
-        originalPost.setRotation(post.getRotation());
-        originalPost.setScale(post.getScale());
-        originalPost.setTranslation(post.getTranslation());
+        Optional.ofNullable(post.getTitle()).ifPresent(originalPost::setTitle);
+        Optional.ofNullable(post.getPreviewImageId()).ifPresent(originalPost::setPreviewImageId);
+        Optional.ofNullable(post.getPreviewImageId()).ifPresent(originalPost::setPreviewImageId);
+        Optional.ofNullable(post.getMarkerImageId()).ifPresent(originalPost::setMarkerImageId);
+        Optional.ofNullable(post.getModelId()).ifPresent(originalPost::setModelId);
+        Optional.ofNullable(post.getRotation()).ifPresent(originalPost::setRotation);
+        Optional.ofNullable(post.getScale()).ifPresent(originalPost::setScale);
+        Optional.ofNullable(post.getTranslation()).ifPresent(originalPost::setTranslation);
+        Optional.ofNullable(post.getLatitude()).ifPresent(originalPost::setLatitude);
+        Optional.ofNullable(post.getLongitude()).ifPresent(originalPost::setLongitude);
+
         return postRepository.save(originalPost);
     }
 
@@ -64,7 +70,7 @@ public class PostService {
                 .findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
 
         return postRepository
-                .findAllByCity(author.getCity(), PageRequest.of(pageNumber, count, Sort.by(Sort.Direction.DESC,"created")));
+                .findAllByCity(author.getCity(), PageRequest.of(pageNumber, count, Sort.by(Sort.Direction.DESC, "created")));
     }
 
     public List<Post> getPopular() {

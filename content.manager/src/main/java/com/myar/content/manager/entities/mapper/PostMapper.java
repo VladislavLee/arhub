@@ -38,6 +38,8 @@ public class PostMapper {
                 .rotation(createPostRequest.getRotation())
                 .translation(createPostRequest.getTranslation())
                 .scale(createPostRequest.getScale())
+                .latitude(createPostRequest.getLatitude())
+                .longitude(createPostRequest.getLongitude())
                 .build();
     }
 

@@ -50,6 +50,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { ImageViewerModalComponent } from './components/image-viewer-modal/image-viewer-modal.component';
+import {MapModalComponent} from "./components/map-modal/map-modal.component";
 import { CommentsModalComponent } from './components/comments-modal/comments-modal.component';
 import {MatListModule} from "@angular/material/list";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
@@ -83,6 +84,7 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     ValidationImageComponent,
     PostValidationComponent,
     ImageViewerModalComponent,
+    MapModalComponent
     CommentsModalComponent,
   ],
   imports: [

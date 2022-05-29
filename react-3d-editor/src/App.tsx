@@ -11,6 +11,7 @@ class App extends Component {
 
     handleClick(e) {
         const contentUrl="https://dry-queens-wash-5-3-247-25.loca.lt";
+        const arHubUrl = "http://localhost:8080/my-post";
         const currentPost: any = JSON.parse(window.localStorage.getItem('post'));
         const matrix: any = JSON.parse(window.localStorage.getItem('matrix'));
 
@@ -40,6 +41,7 @@ class App extends Component {
             })
             .then(response => {
                 console.log(response);
+                window.location = arHubUrl;
             });
     }
 

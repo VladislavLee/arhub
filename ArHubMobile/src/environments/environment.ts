@@ -4,8 +4,8 @@
 
 export const environment = {
   API_URL_DATASTORE: 'http://localhost:8080',
-  API_URL_CONTENT_MANAGER: 'https://dry-queens-wash-5-3-247-25.loca.lt',
-  API_URL_REACT_VIEWER: 'https://social-mangos-peel-5-3-247-25.loca.lt',
+  API_URL_CONTENT_MANAGER: 'https://itchy-actors-prove-5-165-196-209.loca.lt',
+  API_URL_REACT_VIEWER: 'https://vast-planets-look-5-165-196-209.loca.lt',
   API_URL_MODEL_EDITOR: 'https://poor-wings-drum-5-3-247-25.loca.lt',
   production: false
 };

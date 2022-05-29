@@ -2,6 +2,8 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject, Observable, Subscription} from "rxjs";
 import {PostService} from "../../services/post.service";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {CommentsModalComponent} from "../comments-modal/comments-modal.component";
 
 @Component({
   selector: 'app-news',

@@ -90,3 +90,24 @@
     }
   }
 }
+
+.social {
+  width: 206px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  border-radius: 3px;
+  background-color: #4169e1;
+  font-weight: 500;
+  line-height: 34px;
+  margin-bottom: 8px;
+
+  .icon {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}

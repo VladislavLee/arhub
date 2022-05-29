@@ -51,6 +51,9 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { ImageViewerModalComponent } from './components/image-viewer-modal/image-viewer-modal.component';
+import { CommentsModalComponent } from './components/comments-modal/comments-modal.component';
+import {MatListModule} from "@angular/material/list";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 
 @NgModule({
   declarations: [
@@ -81,6 +84,7 @@ import { ImageViewerModalComponent } from './components/image-viewer-modal/image
     ValidationImageComponent,
     PostValidationComponent,
     ImageViewerModalComponent,
+    CommentsModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,6 +133,7 @@ import { ImageViewerModalComponent } from './components/image-viewer-modal/image
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    MatBottomSheetModule,
     MatDividerModule,
     MatIconModule,
     MatToolbarModule,
@@ -146,10 +151,12 @@ import { ImageViewerModalComponent } from './components/image-viewer-modal/image
     MatSortModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatListModule,
   ],
   entryComponents: [
     ModelViewerModalComponent,
     ImageViewerModalComponent,
+    CommentsModalComponent
   ],
   providers: [
     PostService,

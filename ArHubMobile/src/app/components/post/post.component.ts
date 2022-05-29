@@ -3,6 +3,8 @@ import {PostResponse} from "../../interfaces/post-response";
 import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
 import {PostService} from "../../services/post.service";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {CommentsModalComponent} from "../comments-modal/comments-modal.component";
 
 @Component({
   selector: 'app-post',
@@ -15,7 +17,7 @@ export class PostComponent implements OnInit {
 
   date = new Date();
 
-  constructor(private _router: Router, private postService: PostService) { }
+  constructor(private _router: Router, private postService: PostService, private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
   }
@@ -26,5 +28,9 @@ export class PostComponent implements OnInit {
       console.log(value)
       this._router.navigate([`/ar-viewer`]);
     })
+  }
+
+  openComments() {
+    this._bottomSheet.open(CommentsModalComponent);
   }
 }

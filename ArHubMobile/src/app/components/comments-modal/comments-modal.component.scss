@@ -1,0 +1,84 @@
+.container {
+  background-color: #1c1c24;
+  padding: 0;
+  margin: 0;
+
+  .comment {
+    display: flex;
+    background-color: #1c1c24;
+    color: #FFFFFF;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 14px;
+
+    .section {
+      margin-right: 6px;
+      display: flex;
+      flex-direction: column;
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+          margin-bottom: 12px;
+        }
+
+        .date {
+          display: flex;
+          align-items: center;
+          color: #5F5F6E;
+          font-size: 10px;
+          line-height: 10px;
+          margin-bottom: 8px;
+        }
+      }
+
+      .comment-description {
+        word-break: break-all;
+        line-height: 18px;
+      }
+
+      .form-field-with-label {
+        display: flex;
+        width: 300px;
+        background-color: white;
+        border-radius: 15px;
+        padding: 10px 5px;
+        justify-content: space-between;
+
+        .input-field {
+          display: flex;
+          align-items: center;
+          border:none;
+          overflow: hidden;
+          background-image:none;
+          background-color:transparent;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+          outline: none; /* Убираем свечение в Chrome и Safari */
+          -webkit-appearance: none; /* Убираем рамку в Chrome и Safari */
+        }
+
+        .button {
+          display: flex;
+          align-items: center;
+          color: #4447E2;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .mat-bottom-sheet-container {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  padding: 0;
+  margin: 0;
+  background-color: #1c1c24;
+}
+
+::ng-deep .mat-divider {
+  border-top-color: #5F5F6E;
+}

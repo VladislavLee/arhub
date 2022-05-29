@@ -41,7 +41,24 @@
 
     <div class="header-right">
       <img class="icon" mat-card-avatar src="assets/image/Img.png" alt="">
-      <mat-icon class="label">expand_less</mat-icon>
+<!--      <mat-icon class="label">expand_less</mat-icon>-->
+
+      <mat-icon  [matMenuTriggerFor]="menu" class="label">expand_less</mat-icon>
+
+      <mat-menu #menu="matMenu">
+        <button style="color: white" mat-menu-item>
+          <div class="social">
+            <img class="icon" src="assets/image/vk.png" alt="">
+            <span>ВКонтакте</span>
+          </div>
+        </button>
+        <button style="color: white" mat-menu-item>
+          <div class="social" style="background: #f2253c">
+            <img class="icon" src="assets/image/instagram.png" alt="">
+            <span>Instagram</span>
+          </div>
+        </button>
+      </mat-menu>
     </div>
 
   </mat-toolbar>

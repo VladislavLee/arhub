@@ -23,6 +23,13 @@
     color: #FFFFFF;
   }
 
+  .button:hover {
+    width: 250px;
+    border: 1.5px solid #4447E2;
+    background-color: #4447E2;
+  }
+
+
   ::ng-deep .mat-card-header-text {
     margin: 0;
   }

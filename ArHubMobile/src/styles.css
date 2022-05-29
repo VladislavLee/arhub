@@ -4,14 +4,20 @@ body,
 html {
   /*margin: 0 auto;*/
   /*padding: 0;*/
-  /*height: 100%;*/
-  /*width: 100%;*/
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
   /*position: fixed;*/
   /*overflow: hidden;*/
   background-color: #131419;
   /*overflow-y: auto;*/
 }
 
+body {
+  display: flex;
+  min-height:100vh;
+  flex-direction: column;
+}
 
 /*body::-webkit-scrollbar {*/
 /*  width: 12px;               !* width of the entire scrollbar *!*/

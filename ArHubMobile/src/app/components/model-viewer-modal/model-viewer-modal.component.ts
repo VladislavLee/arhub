@@ -1,9 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
-class DialogData {
-}
-
 @Component({
   selector: 'app-model-viewer-modal',
   templateUrl: './model-viewer-modal.component.html',
@@ -15,7 +12,7 @@ export class ModelViewerModalComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModelViewerModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {

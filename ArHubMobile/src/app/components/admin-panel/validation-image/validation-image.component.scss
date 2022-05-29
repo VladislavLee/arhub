@@ -1,0 +1,100 @@
+.wrapper {
+  max-width: 1220px;
+  padding: 0 20px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.container {
+  position: relative;
+  width: 1220px;
+}
+
+.table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 800px;
+}
+
+.table {
+  background-color: #131419;
+}
+
+.paginator {
+  background-color: #131419;
+  color: #5F5F6E;
+}
+
+.cell {
+  background-color: #1C1C24;
+}
+
+table {
+  border-spacing: 0 8px !important;
+  width: 100%;
+  color: white;
+}
+
+td.mat-cell:first-child {
+  /* row border */
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+td.mat-cell:last-child {
+  /* row border */
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Column Widths */
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}
+
+
+.mat-header-cell {
+  color: #5F5F6E;
+}
+
+.mat-cell {
+  color: white;
+  border: none;
+}
+
+.menu {
+  background-color: #131419;
+  border: none;
+  color: #5F5F6E;
+
+  th.mat-header-cell {
+      border: none;
+  }
+}
+
+tr.mat-row, tr.mat-footer-row {
+  height: 60px;
+}
+
+::ng-deep .mat-icon-button {
+  color: #5F5F6E !important;
+}

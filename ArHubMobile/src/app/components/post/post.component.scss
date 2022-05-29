@@ -92,3 +92,11 @@ mat-divider {
   color: #FFFFFF;
   opacity: 20%;
 }
+
+::ng-deep .mat-menu-panel  {
+  border:1px solid #2D2D3A;
+  background: #1C1C24;
+}
+
+::ng-deep .mat-menu-item {color: #FFFFFF;}
+::ng-deep .mat-menu-item .mat-icon-no-color {color: #FFFFFF;}

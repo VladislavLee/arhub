@@ -42,6 +42,15 @@ import {DeviceDetectorGuard} from "./guards/device-detector.guard";
 import { ModelViewerModalComponent } from './components/model-viewer-modal/model-viewer-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { ModelEditorComponent } from './components/model-editor/model-editor.component';
+import { SliderPostFullComponent } from './components/slider-post-full/slider-post-full.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import { ValidationImageComponent } from './components/admin-panel/validation-image/validation-image.component';
+import { PostValidationComponent } from './components/admin-panel/post-validation/post-validation.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { ImageViewerModalComponent } from './components/image-viewer-modal/image-viewer-modal.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +77,10 @@ import { ModelEditorComponent } from './components/model-editor/model-editor.com
     ArViewerComponent,
     ModelViewerModalComponent,
     ModelEditorComponent,
+    SliderPostFullComponent,
+    ValidationImageComponent,
+    PostValidationComponent,
+    ImageViewerModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +116,14 @@ import { ModelEditorComponent } from './components/model-editor/model-editor.com
         path: 'model/:id',
         component: ModelEditorComponent
       },
+      {
+        path: 'account',
+        component: AccountDesktopComponent
+      },
+      {
+        path: 'admin/validation',
+        component: ValidationImageComponent
+      }
     ]),
 
     BrowserAnimationsModule,
@@ -120,9 +141,15 @@ import { ModelEditorComponent } from './components/model-editor/model-editor.com
     ScrollingModule,
     InfiniteScrollModule,
     MatDialogModule,
+    MatGridListModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
   ],
   entryComponents: [
-    ModelViewerModalComponent
+    ModelViewerModalComponent,
+    ImageViewerModalComponent,
   ],
   providers: [
     PostService,

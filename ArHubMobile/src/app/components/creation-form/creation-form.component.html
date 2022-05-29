@@ -13,23 +13,41 @@
 
       <div class="form-field-with-label">
         <label class="label"></label>
-        <div (click)="uploadPreviewFile.click()">
+        <div class="file-downloader" (click)="uploadPreviewFile.click()">
           <button mat-stroked-button class="upload-button"><mat-icon class="icon">preview</mat-icon>Загрузить preview</button>
           <input #uploadPreviewFile type='file' (change)="uploadPreview($event)" style="display:none"/>
+
+          <span class="done" *ngIf="getPreview()">
+            <button mat-mini-fab class="complete">
+              <mat-icon>done</mat-icon>
+            </button>
+          </span>
         </div>
       </div>
       <div class="form-field-with-label">
         <label class="label"></label>
-        <div (click)="uploadMarkerFile.click()">
+        <div class="file-downloader" (click)="uploadMarkerFile.click()">
           <button mat-stroked-button class="upload-button"><mat-icon class="icon">push_pin</mat-icon>Загрузить marker</button>
           <input #uploadMarkerFile (change)="uploadMarker($event)" type='file' style="display:none"/>
+
+          <span *ngIf="getMarker()" class="done">
+            <button mat-mini-fab class="complete">
+              <mat-icon>done</mat-icon>
+            </button>
+          </span>
         </div>
       </div>
       <div class="form-field-with-label">
         <label class="label"></label>
-        <div (click)="uploadModelFile.click()">
+        <div class="file-downloader" (click)="uploadModelFile.click()">
           <button mat-stroked-button class="upload-button"><mat-icon class="icon">view_in_ar</mat-icon>Загрузить 3D model</button>
           <input #uploadModelFile type='file' (change)="uploadModel($event)" style="display:none"/>
+
+          <span class="done" *ngIf="getModel()">
+            <button mat-mini-fab class="complete">
+              <mat-icon>done</mat-icon>
+            </button>
+          </span>
         </div>
       </div>
     </form>

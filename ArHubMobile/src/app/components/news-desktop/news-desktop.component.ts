@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-news-desktop',
   templateUrl: './news-desktop.component.html',
-  styleUrls: ['./news-desktop.component.css']
+  styleUrls: ['./news-desktop.component.scss'],
 })
 export class NewsDesktopComponent implements OnInit {
 

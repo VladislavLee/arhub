@@ -1,1 +1,102 @@
-<p>account-desktop works!</p>
+<app-header></app-header>
+<div class="wrapper">
+  <app-page-title class="title" title="Профиль"></app-page-title>
+
+
+  <div class="container">
+    <div class="section">
+      <mat-card class="photo">
+        <img class="image" src="assets/image/photo.png" alt="">
+        <button mat-stroked-button class="button">+ Change photo</button>
+      </mat-card>
+    </div>
+
+    <div class="section">
+      <form class="form">
+        <div class="form-field-with-label">
+          <label class="label-field">Имя</label>
+          <input class="input-field" placeholder="Введите имя" type="text">
+        </div>
+        <!--        <div class="form-field-with-label">-->
+        <!--          <label class="label-field">фамилия</label>-->
+        <!--          <input class="input-field" placeholder="Введите фамилию" type="text">-->
+        <!--        </div>-->
+        <!--        <div class="form-field-with-label">-->
+        <!--          <label class="label-field">отчество</label>-->
+        <!--          <input class="input-field" placeholder="Введите отчество" type="text">-->
+        <!--        </div>-->
+        <div class="form-field-with-label">
+          <label class="label-field">E-Mail</label>
+          <input class="input-field" placeholder="Введите e-mail" type="text">
+        </div>
+        <div class="form-field-with-label">
+          <label class="label-field">Логин</label>
+          <input class="input-field" placeholder="Введите логин" type="text">
+        </div>
+        <div class="form-field-with-label">
+          <label class="label-field">Пароль</label>
+          <input class="input-field" placeholder="Введите пароль" type="password">
+        </div>
+
+        <button mat-stroked-button class="button">Сохранить</button>
+      </form>
+    </div>
+
+    <div class="section" style="width: 300px">
+
+      <form class="form">
+        <div class="form-field-with-label">
+          <label class="label-field">Статистика</label>
+          <div class="statistic-block">
+            <button mat-fab class="statistic-button">
+              <mat-icon>favorite</mat-icon>
+            </button>
+
+            <div class="statistic-description">
+              <label class="count">{{560}}</label>
+              <label class="description">Лайки</label>
+            </div>
+          </div>
+
+          <div class="statistic-block">
+            <button style="background: #defee5; color: #50d96b" mat-fab class="statistic-button">
+              <mat-icon>subscriptions</mat-icon>
+            </button>
+
+            <div class="statistic-description">
+              <label class="count">{{42}}</label>
+              <label class="description">Подписчики</label>
+            </div>
+          </div>
+
+          <div class="statistic-block">
+            <button style="background: #f1dfff; color: #a86ce4" mat-fab class="statistic-button">
+              <mat-icon>note</mat-icon>
+            </button>
+
+            <div class="statistic-description">
+              <label class="count">{{832}}</label>
+              <label class="description">Публикации</label>
+            </div>
+          </div>
+
+          <div class="statistic-block">
+            <button style="background: #fff6de; color: #ffa10b" mat-fab class="statistic-button">
+              <mat-icon>comment</mat-icon>
+            </button>
+
+            <div class="statistic-description">
+              <label class="count">{{342}}</label>
+              <label class="description">Комментарии</label>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+
+</div>
+<app-footer style=" margin-top: auto;"></app-footer>

@@ -37,9 +37,19 @@
     </div>
 
     <div class="post-actions__right">
-      <button mat-mini-fab class="action">
+      <button mat-mini-fab class="action" [matMenuTriggerFor]="menu">
         <mat-icon class="icon">ios_share</mat-icon>
       </button>
+      <mat-menu #menu="matMenu">
+        <button style="color: white" mat-menu-item>
+          <span class="iconify" data-icon="mdi:instagram"></span>
+          <span>Удалить</span>
+        </button>
+        <button style="color: white" mat-menu-item>
+          <span class="iconify" data-icon="mdi:instagram"></span>
+          <span>Редактировать</span>
+        </button>
+      </mat-menu>
     </div>
 
   </mat-card-actions>

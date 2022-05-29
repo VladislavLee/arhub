@@ -1,0 +1,43 @@
+
+.card {
+  max-width: 1220px;
+  height: 438px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+  background-color: #1C1C24;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  line-height: 40px;
+  margin-left: 8.3px;
+  margin-right: 8.3px;
+
+  .group {
+    max-width: 1220px;
+    height: 340px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    .text-block {
+      height: 240px;
+      width: 420px;
+
+      .subtitle {
+        margin-top: 40px;
+        color: #A6ADB1;
+      }
+    }
+
+    img {
+      display: flex;
+      width: 700px;
+      height: 320px;
+      margin-right: 40px;
+      border-radius: 15px;
+      box-shadow: rgba(0, 0, 0, 0.20) 0px -50px 36px -28px inset;
+    }
+  }
+}
+

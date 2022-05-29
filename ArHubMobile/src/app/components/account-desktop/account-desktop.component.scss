@@ -1,0 +1,137 @@
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100%;
+  flex: 1 0 auto;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+
+  .title {
+    margin-left: 8px;
+  }
+
+  .container {
+    display: flex;
+
+    .section {
+      margin-right: 80px;
+
+      .photo {
+        max-width: 250px;
+        background-color: #1c1c24;
+        border-radius: 15px;
+
+        .image {
+          border-radius: 15px;
+          width: 250px;
+          height: 250px;
+          margin-bottom: 20px;
+        }
+
+        .button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 250px;
+          height: 50px;
+          color: #FFFFFF;
+          border: 2px solid #2d2d3a;
+          border-radius: 15px;
+        }
+      }
+    }
+
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      max-width: 610px;
+      padding-bottom: 42px;
+
+      .form-field-with-label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+
+        .label-field {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          color: #5F5F6E;
+        }
+
+        .input-field {
+          display: flex;
+          align-items: center;
+          width: 380px;
+          margin-top: 10px;
+          background-color: #2d2d3a;
+          border-radius: 15px;
+          border: 0;
+          padding: 20px 15px;
+          color: #FFFFFF;
+        }
+      }
+
+      .button {
+        width: 150px;
+        border: 1.5px solid #4447E2;
+        border-radius: 15px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        font-size: 16px;
+        line-height: 20px;
+        color: #FFFFFF;
+      }
+    }
+
+
+    .statistic-block {
+      width: 320px;
+      height: 90px;
+      padding: 0 20px;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      background-color: #1C1C24;
+      border-radius: 15px;
+
+      .statistic-button {
+        color: #e24444;
+        background-color: #ffcece;
+        border-radius: 15px;
+        margin-right: 20px;
+      }
+
+      .statistic-description {
+        display: flex;
+        flex-direction: column;
+
+        .count {
+          display: flex;
+          font-size: 24px;
+          line-height: 20px;
+          color: #FFFFFF;
+          margin-bottom: 6px;
+        }
+
+        .description {
+          display: flex;
+          color: #5F5F6E;
+          font-size: 16px;
+        }
+      }
+
+    }
+  }
+}
+
+input:focus {
+  outline: #4447E2 !important;
+  border-color: #4447E2;
+  box-shadow: 0 0 3px #4447E2;
+}
+

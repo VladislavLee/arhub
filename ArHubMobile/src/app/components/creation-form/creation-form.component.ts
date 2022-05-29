@@ -39,6 +39,18 @@ export class CreationFormComponent implements OnInit {
     translation: [0, 0, 0.1],
   };
 
+  getPreview():boolean {
+    return !!this.form.get('preview')?.value;
+  }
+
+  getMarker():boolean {
+    return !!this.form.get('marker')?.value;
+  }
+
+  getModel():boolean {
+    return !!this.form.get('model')?.value;
+  }
+
   constructor(
     private postService: PostService,
     private http: HttpClient,

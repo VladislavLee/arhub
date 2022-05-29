@@ -14,7 +14,10 @@ export class MyPostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openViewerModal() {
-    this.dialog.open(ModelViewerModalComponent);
+  openViewerModal(src?: any) {
+    this.dialog.open(ModelViewerModalComponent, {
+      width: '250px',
+      data: {src: src},
+    });
   }
 }

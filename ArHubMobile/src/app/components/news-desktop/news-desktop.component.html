@@ -1,13 +1,19 @@
 <app-header></app-header>
 
-
-
 <div class="wrapper">
-  <!--  <app-page-title [title]="'Новый пост'"></app-page-title>-->
-<!--  <app-slider-desktop></app-slider-desktop>-->
-  <app-popular-post></app-popular-post>
-  <app-post-ar></app-post-ar>
+  <app-page-title class="title" [title]="'Популярное'"></app-page-title>
+
+  <app-slider-post-full></app-slider-post-full>
+
+  <app-page-title class="title" [title]="'Истории'"></app-page-title>
+
+  <div class="container-post">
+    <app-post-ar class="post"></app-post-ar>
+    <app-post-ar class="post"></app-post-ar>
+    <app-post-ar class="post"></app-post-ar>
+    <app-post-ar class="post"></app-post-ar>
+    <app-post-ar class="post"></app-post-ar>
+  </div>
 </div>
 
-
-<app-footer></app-footer>
+<app-footer style="position: relative"></app-footer>

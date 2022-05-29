@@ -6,8 +6,42 @@
       </div>
     </mat-card-content>
     <mat-card-actions class="description">
-      <p class="title">title</p>
-      <p class="subtitle">date</p>
+      <div class="text">
+        <p class="title">title</p>
+        <p class="subtitle">date</p>
+      </div>
+
+      <div class="actions">
+          <div class="button-with-label">
+            <button mat-mini-fab class="action">
+              <mat-icon class="icon">thumb_up_off_alt</mat-icon>
+            </button>
+            <label class="label">{{0}}</label>
+          </div>
+          <div class="button-with-label">
+            <button mat-mini-fab class="action">
+              <mat-icon class="icon">chat_bubble_outline</mat-icon>
+            </button>
+            <label class="label">{{7}}</label>
+          </div>
+        <button mat-mini-fab class="action" [matMenuTriggerFor]="menu">
+          <mat-icon class="icon">share</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button style="color: white" mat-menu-item>
+            <div class="social">
+              <img class="icon" src="assets/image/vk.png" alt="">
+              <span>ВКонтакте</span>
+            </div>
+          </button>
+          <button style="color: white" mat-menu-item>
+            <div class="social" style="background: #f2253c">
+              <img class="icon" src="assets/image/instagram.png" alt="">
+              <span>Instagram</span>
+            </div>
+          </button>
+        </mat-menu>
+      </div>
     </mat-card-actions>
   </div>
 </mat-card>

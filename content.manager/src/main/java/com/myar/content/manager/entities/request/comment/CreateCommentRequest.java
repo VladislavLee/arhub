@@ -11,6 +11,5 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CreateCommentRequest {
 
-    private UUID postId;
     private String text;
 }

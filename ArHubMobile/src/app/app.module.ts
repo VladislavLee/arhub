@@ -84,7 +84,7 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     ValidationImageComponent,
     PostValidationComponent,
     ImageViewerModalComponent,
-    MapModalComponent
+    MapModalComponent,
     CommentsModalComponent,
   ],
   imports: [

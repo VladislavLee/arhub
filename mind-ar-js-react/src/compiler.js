@@ -32,7 +32,7 @@ function Compiler() {
         function messageHandler(event) {
             const { action, key, value } = event.data;
             console.log(action, value);
-            if (action == 'save'){
+            if (action === 'save'){
                 (async () => {
                     compile(await loadImage(value[0])).then((item) => {
                         console.log(item)

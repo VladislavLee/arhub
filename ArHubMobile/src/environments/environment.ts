@@ -3,10 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  API_URL_DATASTORE: 'http://localhost:8080',
-  API_URL_CONTENT_MANAGER: 'https://itchy-actors-prove-5-165-196-209.loca.lt',
-  API_URL_REACT_VIEWER: 'https://vast-planets-look-5-165-196-209.loca.lt',
-  API_URL_MODEL_EDITOR: 'https://poor-wings-drum-5-3-247-25.loca.lt',
+  API_URL_DATASTORE: 'https://stale-boxes-invent-5-165-196-209.loca.lt',
+  API_URL_CONTENT_MANAGER: 'http://localhost:8081',
+  // compiler
+  API_URL_REACT_VIEWER: 'https://c3e8-5-165-196-209.eu.ngrok.io',
+  // 3d editor
+  API_URL_MODEL_EDITOR: 'http://localhost:8082',
   production: false
 };
 

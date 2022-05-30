@@ -18,7 +18,7 @@
             </button>
             <label class="label">{{0}}</label>
           </div>
-          <div class="button-with-label">
+          <div (click)="openComments()" class="button-with-label">
             <button mat-mini-fab class="action">
               <mat-icon class="icon">chat_bubble_outline</mat-icon>
             </button>
@@ -29,9 +29,17 @@
         </button>
         <mat-menu #menu="matMenu">
           <button style="color: white" mat-menu-item>
-            <div class="social">
-              <img class="icon" src="assets/image/vk.png" alt="">
-              <span>ВКонтакте</span>
+            <div class="social" style="background: none">
+              <a
+                 class="btn btn-default"
+                 target="_blank"
+                 title="On VK.com"
+                 href="http://vk.com/share.php?url=_URL_&title=_TITLE_&description=_DESCTEXT_&image=_URL_TO_MEDIA"
+              >
+                <img class="icon" src="assets/image/vk.png" alt="">
+                <span>ВКонтакте</span>
+              </a>
+
             </div>
           </button>
           <button style="color: white" mat-menu-item>

@@ -10,18 +10,11 @@
     </div>
 
     <div class="header-middle">
-      <div class="button-with-label">
-        <button routerLink="/news" mat-mini-fab class="action">
+      <div routerLink="/news" class="button-with-label">
+        <button mat-mini-fab class="action">
           <mat-icon class="icon">collections</mat-icon>
         </button>
-        <label>Галерея</label>
-      </div>
-
-      <div class="button-with-label">
-        <button routerLink="/news" mat-mini-fab class="action">
-          <mat-icon class="icon">public</mat-icon>
-        </button>
-        <label>Новости</label>
+        <label>Лента</label>
       </div>
 
       <div class="button-with-label">
@@ -31,19 +24,34 @@
         <label>Камера</label>
       </div>
 
-      <div class="button-with-label">
+      <div *ngIf="isMapVisible" routerLink="/map" class="button-with-label">
         <button mat-mini-fab class="action">
-          <mat-icon class="icon">menu</mat-icon>
+          <mat-icon class="icon">pin_drop</mat-icon>
         </button>
-        <label>Меню</label>
+        <label>Рядом</label>
+      </div>
+
+      <div routerLink="/my-posts" class="button-with-label">
+        <button mat-mini-fab class="action">
+          <mat-icon class="icon">folder_open</mat-icon>
+        </button>
+        <label>Мои проекты</label>
       </div>
     </div>
 
     <div class="header-right">
+      <div class="add-post" (click)="createPost()">
+        <button class="button" mat-icon-button>
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <label class="label">Опубликовать</label>
+      </div>
+
       <img class="icon" mat-card-avatar src="assets/image/Img.png" alt="">
 <!--      <mat-icon class="label">expand_less</mat-icon>-->
 
-      <mat-icon  [matMenuTriggerFor]="menu" class="label">expand_less</mat-icon>
+      <mat-icon  [matMenuTriggerFor]="menu" class="label">expand_more</mat-icon>
 
       <mat-menu #menu="matMenu">
         <button style="color: white" mat-menu-item>

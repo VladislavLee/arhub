@@ -1,17 +1,10 @@
 <footer>
   <mat-toolbar class="footer">
-    <div class="button-with-label">
+    <div routerLink="/news" class="button-with-label">
       <button mat-mini-fab class="action">
         <mat-icon class="icon">collections</mat-icon>
       </button>
-      <label>Галерея</label>
-    </div>
-
-    <div class="button-with-label">
-      <button mat-mini-fab class="action">
-        <mat-icon class="icon">public</mat-icon>
-      </button>
-      <label>Новости</label>
+      <label>Лента</label>
     </div>
 
     <div class="button-with-label">
@@ -21,11 +14,18 @@
       <label>Камера</label>
     </div>
 
-    <div class="button-with-label">
+    <div  routerLink="/map" class="button-with-label">
       <button mat-mini-fab class="action">
-        <mat-icon class="icon">menu</mat-icon>
+        <mat-icon class="icon">pin_drop</mat-icon>
       </button>
-      <label>Меню</label>
+      <label>Рядом</label>
+    </div>
+
+    <div routerLink="/my-posts" class="button-with-label">
+      <button mat-mini-fab class="action">
+        <mat-icon class="icon">folder_open</mat-icon>
+      </button>
+      <label>Мои проекты</label>
     </div>
   </mat-toolbar>
 </footer>

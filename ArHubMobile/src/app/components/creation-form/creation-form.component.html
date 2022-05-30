@@ -50,15 +50,16 @@
           </span>
         </div>
       </div>
+
+      <div class="form-field-with-label" >
+        <label class="label"></label>
+        <div class="file-downloader" (click)="openMapModal()">
+          <button mat-stroked-button class="upload-button"><mat-icon class="icon">add_location_alt</mat-icon>Геопозиция</button>
+        </div>
+      </div>
     </form>
 
-    <div>
-      <button mat-stroked-button class="button" (click)="openMapModal()">Карта</button>
-    </div>
-
     <button mat-stroked-button class="button" (click)="onSubmit()">Далее</button>
-
-
   </div>
 
 

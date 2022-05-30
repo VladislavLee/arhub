@@ -37,6 +37,10 @@
     width: 280px;
 
 
+    .upload-button:hover {
+      background-color: #4447E2;
+    }
+
     .label {
       color: #5F5F6E;
       padding: 10px 0;
@@ -82,7 +86,7 @@ button[mat-mini-fab] {
 }
 
 ::ng-deep .mat-form-field .mat-input-element {
-  color: #2D2D3A;
+  color: white;
 }
 
 ::ng-deep .mat-form-field .mat-form-field-label {

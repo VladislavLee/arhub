@@ -53,6 +53,10 @@ import { ImageViewerModalComponent } from './components/image-viewer-modal/image
 import { CommentsModalComponent } from './components/comments-modal/comments-modal.component';
 import {MatListModule} from "@angular/material/list";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MapModalComponent} from "./components/map-modal/map-modal.component";
+import { AccountMobileComponent } from './components/account-mobile/account-mobile.component';
+import { MapMobileComponent } from './components/map-mobile/map-mobile.component';
+import {DeviceDetectorGuard} from "./guards/device-detector.guard";
 
 @NgModule({
   declarations: [
@@ -84,6 +88,9 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     PostValidationComponent,
     ImageViewerModalComponent,
     CommentsModalComponent,
+    MapModalComponent,
+    AccountMobileComponent,
+    MapMobileComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +107,7 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
         // canActivate: [DeviceDetectorGuard]
       },
       {
-        path: 'my-post',
+        path: 'my-posts',
         component: MyPostDesktopComponent
       },
       {
@@ -122,6 +129,10 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
       {
         path: 'account',
         component: AccountDesktopComponent
+      },
+      {
+        path: 'account-mobile',
+        component: AccountMobileComponent
       },
       {
         path: 'admin/validation',
@@ -155,7 +166,8 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
   entryComponents: [
     ModelViewerModalComponent,
     ImageViewerModalComponent,
-    CommentsModalComponent
+    CommentsModalComponent,
+    MapModalComponent
   ],
   providers: [
     PostService,

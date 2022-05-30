@@ -39,18 +39,41 @@
   &-right {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 15px 0;
+
+    .add-post {
+      cursor: pointer;
+      width: 180px;
+      height: 40px;
+      background-color: #2D2D3A;
+      border-radius: 15px;
+      margin-right: 16px;
+
+      .button {
+        margin-left: 5px;
+        background-color: #4447E2;
+        border-radius: 10px;
+        transform: scale(0.7) !important;
+        color: white;
+      }
+
+      .label {
+        margin-left: 10px;
+        color: #FFFFFF;
+        font-size: 14px;
+      }
+    }
 
     .icon {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      margin-right: 10px;
+      margin-right: 2px;
       cursor: pointer;
     }
 
     .label {
-      color: #FFFFFF;
+      color: #5F5F6E;
       cursor: pointer;
     }
   }

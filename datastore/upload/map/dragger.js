@@ -6,7 +6,9 @@ function init () {
     const url = 'http://localhost:8081/posts';
     const urlParams = new URLSearchParams(window.location.search);
     let id = urlParams.get('id')
-    var map = new ymaps.Map('map', {
+
+    var geolocation = ymaps.geolocation,
+        myMap = new ymaps.Map('map', {
             center: [55.819543, 37.611619],
             zoom: 10
         }, {
@@ -20,6 +22,28 @@ function init () {
         // Смещение маркера относительно курсора.
         markerOffset,
         markerPosition;
+
+    geolocation.get({
+        provider: 'yandex',
+        mapStateAutoApply: true
+    }).then(function (result) {
+        // Красным цветом пометим положение, вычисленное через ip.
+        result.geoObjects.options.set('preset', 'islands#redCircleIcon');
+        result.geoObjects.get(0).properties.set({
+            balloonContentBody: 'Мое местоположение'
+        });
+        myMap.geoObjects.add(result.geoObjects);
+    });
+
+    geolocation.get({
+        provider: 'browser',
+        mapStateAutoApply: true
+    }).then(function (result) {
+        // Синим цветом пометим положение, полученное через браузер.
+        // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
+        result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
+        myMap.geoObjects.add(result.geoObjects);
+    });
 
     dragger.events
         .add('start', onDraggerStart)
@@ -51,11 +75,11 @@ function init () {
         markerPosition[0] += markerOffset[0];
         markerPosition[1] += markerOffset[1];
         // Переводим координаты страницы в глобальные пиксельные координаты.
-        var markerGlobalPosition = map.converter.pageToGlobal(markerPosition),
+        var markerGlobalPosition = myMap.converter.pageToGlobal(markerPosition),
             // Получаем центр карты в глобальных пиксельных координатах.
-            mapGlobalPixelCenter = map.getGlobalPixelCenter(),
+            mapGlobalPixelCenter = myMap.getGlobalPixelCenter(),
             // Получением размер контейнера карты на странице.
-            mapContainerSize = map.container.getSize(),
+            mapContainerSize = myMap.container.getSize(),
             mapContainerHalfSize = [mapContainerSize[0] / 2, mapContainerSize[1] / 2],
             // Вычисляем границы карты в глобальных пиксельных координатах.
             mapGlobalPixelBounds = [
@@ -65,9 +89,9 @@ function init () {
         // Проверяем, что завершение работы драггера произошло в видимой области карты.
         if (containsPoint(mapGlobalPixelBounds, markerGlobalPosition)) {
             // Теперь переводим глобальные пиксельные координаты в геокоординаты с учетом текущего уровня масштабирования карты.
-            var geoPosition = map.options.get('projection').fromGlobalPixels(markerGlobalPosition, map.getZoom()),
+            var geoPosition = myMap.options.get('projection').fromGlobalPixels(markerGlobalPosition, myMap.getZoom()),
             // Получаем уровень зума карты.
-                zoom = map.getZoom(),
+                zoom = myMap.getZoom(),
             // Получаем координаты тайла.
                 tileCoordinates = getTileCoordinate(markerGlobalPosition, zoom, 256);
 

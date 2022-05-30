@@ -38,13 +38,7 @@ public class Application {
 
     @EventListener(classes = ContextRefreshedEvent.class)
     public void handleMultipleEvents() {
-//        postRepository.findAll().forEach(x->{
-//            x.setScale(Arrays.asList(new BigDecimal("0.005"), new BigDecimal("0.005"), new BigDecimal("0.005")));
-//            x.setRotation(Arrays.asList(new BigDecimal("0"), new BigDecimal("0"), new BigDecimal("0")));
-//            x.setTranslation(Arrays.asList(new BigDecimal("0"), new BigDecimal("0"), new BigDecimal("0.1")));
-//            postRepository.save(x);
-//        });
-//
+
 //        City city = cityRepository.save(City.builder()
 //                .title("Moscow")
 //                .build());

@@ -33,7 +33,7 @@ export class CreationFormComponent implements OnInit {
   })
 
   requestForm = {
-    cityId: 'e7a4af38-3636-4a3b-8e76-a8f89a49b3d5',
+    cityId: '8c69ab77-08ae-4fd9-8fe1-a17c1b01f11c',
     title: '',
     previewImageId: '',
     markerImageId: '',

@@ -13,7 +13,6 @@ class ViewportTools {
 	controls?: THREE.EditorControls;
 	grid?: THREE.GridHelper;
 	mouseCursor?: IRaycaster;
-
 	/**
 	 * Creates an instance of ViewportTools.
 	 * @param {InspectorTools} inspector

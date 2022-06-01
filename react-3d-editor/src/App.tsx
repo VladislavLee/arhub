@@ -20,7 +20,7 @@ class App extends Component {
             'markerImageId': currentPost.markerImageId,
             'markerVanillaMarkerId': currentPost.markerVanillaMarkerId,
             'modelId': currentPost.modelId,
-            'previewImageId': currentPost.modelId,
+            'previewImageId': currentPost.previewImageId,
             'rotation': [
                 matrix.rotation.x, matrix.rotation.y, matrix.rotation.z
             ],
@@ -42,7 +42,7 @@ class App extends Component {
             })
             .then(response => {
                 console.log(response);
-                window.location = arHubUrl;
+                window.parent.location = arHubUrl + '/news';
             });
     }
 

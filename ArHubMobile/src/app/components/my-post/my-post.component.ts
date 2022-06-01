@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ModelViewerModalComponent} from "../model-viewer-modal/model-viewer-modal.component";
 import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
+import {API_URL_DATASTORE} from "../../../URL_LIST";
 
 @Component({
   selector: 'app-my-post',
@@ -11,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class MyPostComponent implements OnInit {
   @Input() post: any;
-  apiUrlDatastore = environment.API_URL_DATASTORE;
+  apiUrlDatastore = API_URL_DATASTORE;
 
   constructor(private dialog: MatDialog, private _router: Router) { }
 
@@ -22,7 +23,7 @@ export class MyPostComponent implements OnInit {
   openViewerModal() {
     this.dialog.open(ModelViewerModalComponent, {
       width: '250px',
-      data: {src: `${environment.API_URL_DATASTORE}/content/${this.post.modelId}`, id: this.post.id},
+      data: {src: `${API_URL_DATASTORE}/content/${this.post.modelId}`, id: this.post.id},
     });
   }
 

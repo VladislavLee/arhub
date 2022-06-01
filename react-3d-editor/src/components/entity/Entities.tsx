@@ -103,7 +103,7 @@ class Entities extends Component<{}, IState> {
         setTimeout(() => {
             const uri = window.location.href.split("/")
             const id = uri[uri.length-1]
-            fetch(this.contentUrl+`/posts/full/${id}`)
+            fetch(this.contentUrl+`/posts/${id}`)
                 .then(res => res.json())
                 .then((result) => {
                     console.log(result)

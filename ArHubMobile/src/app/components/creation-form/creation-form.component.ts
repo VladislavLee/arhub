@@ -8,7 +8,7 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {MapModalComponent} from "../map-modal/map-modal.component";
-import {API_URL_MODEL_EDITOR, API_URL_REACT_VIEWER} from "../../../URL_LIST";
+import {API_URL_DATASTORE, API_URL_MODEL_EDITOR, API_URL_REACT_VIEWER} from "../../../URL_LIST";
 
 @Component({
   selector: 'app-creation-form',
@@ -36,7 +36,7 @@ export class CreationFormComponent implements OnInit {
   })
 
   requestForm = {
-    cityId: 'f33b7246-9ebf-4706-85d7-23c256cffa33',
+    cityId: 'a3059502-9ab4-49e0-a986-ecb00f3d9b69',
     title: '',
     previewImageId: '',
     markerImageId: '',
@@ -76,10 +76,10 @@ export class CreationFormComponent implements OnInit {
         // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'marker'),
         // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'markerVanilla'),
         // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'model'),
-        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview'),
-        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker'),
-        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla'),
-        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.modelId}`, 'model'),
+        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview'),
+        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker'),
+        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla'),
+        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.modelId}`, 'model'),
       ).pipe(
         tap(value => console.log(value))
       ).subscribe(value => {
@@ -100,10 +100,10 @@ export class CreationFormComponent implements OnInit {
 
         this.form.patchValue(formValue);
       })
-      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview');
-      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker');
-      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla');
-      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.modelId}`, 'model');
+      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview');
+      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker');
+      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla');
+      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.modelId}`, 'model');
     }
 
 
@@ -124,8 +124,8 @@ export class CreationFormComponent implements OnInit {
         this.loaded = false;
       }
     }, false);
-
-    this.safeSrc.next(this._sanitizer.bypassSecurityTrustResourceUrl(`${this.apiUrlReactViewer}/compiler`))
+    console.log(API_URL_REACT_VIEWER);
+    this.safeSrc.next(this._sanitizer.bypassSecurityTrustResourceUrl(`${API_URL_REACT_VIEWER}/compiler`))
   }
 
   uploadMarker(event: any) {
@@ -172,11 +172,11 @@ export class CreationFormComponent implements OnInit {
   onSubmit() {
     if (!this.saved) {
       this.save().subscribe(value => {
-        this._router.navigate([`${this.apiUrlModelEditor}/${value}`])
+        this._router.navigate([`/model/${value}`])
       })
     } else {
       this.postService.postId$.subscribe(value => {
-        this._router.navigate([`${this.apiUrlModelEditor}/${value}`])
+        this._router.navigate([`/model/${value}`])
       })
     }
   }

@@ -24,11 +24,13 @@
           </span>
         </div>
       </div>
-      <div class="form-field-with-label">
+      <div class="form-field-with-label" style="width: 310px">
         <label class="label"></label>
         <div class="file-downloader" (click)="uploadMarkerFile.click()">
           <button mat-stroked-button class="upload-button"><mat-icon class="icon">push_pin</mat-icon>Загрузить маркер</button>
           <input #uploadMarkerFile (change)="uploadMarker($event)" type='file' style="display:none"/>
+
+          <mat-spinner style="transform: scale(0.3) !important;" *ngIf="loaded"></mat-spinner>
 
           <span *ngIf="getMarker()" class="done">
             <button mat-mini-fab class="complete">
@@ -37,7 +39,7 @@
           </span>
         </div>
       </div>
-      <div class="form-field-with-label" style="width: 310px">
+      <div class="form-field-with-label">
         <label class="label"></label>
         <div class="file-downloader" style="height: 46px !important;" (click)="uploadModelFile.click()">
           <button mat-stroked-button class="upload-button">
@@ -45,8 +47,6 @@
             Загрузить модель
           </button>
           <input #uploadModelFile type='file' (change)="uploadModel($event)" style="display:none"/>
-
-          <mat-spinner style="transform: scale(0.3) !important;" *ngIf="loaded"></mat-spinner>
 
           <span class="done" *ngIf="getModel()">
             <button mat-mini-fab class="complete">

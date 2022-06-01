@@ -21,6 +21,7 @@ export class PostComponent implements OnInit {
   constructor(private _router: Router, private postService: PostService, private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
+    console.log(this.post)
   }
 
   openCamera(post: PostResponse) {

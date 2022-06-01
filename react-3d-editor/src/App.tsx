@@ -6,12 +6,13 @@ import Editor from './containers/Editor';
 import { Button } from 'antd';
 import Icon from 'polestar-icons';
 import Title from 'antd/es/skeleton/Title';
+import { CONTENT, ARHUB } from './ENVIRONMENT';
 
 class App extends Component {
 
     handleClick(e) {
-        const contentUrl="http://localhost:8081";
-        const arHubUrl = "http://localhost:4200/my-post";
+        const contentUrl= CONTENT;
+        const arHubUrl = ARHUB;
         const currentPost: any = JSON.parse(window.localStorage.getItem('post'));
         const matrix: any = JSON.parse(window.localStorage.getItem('matrix'));
 

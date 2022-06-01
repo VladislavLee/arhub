@@ -1,11 +1,7 @@
 <swiper
   [pagination]="true"
-
 >
-  <ng-template swiperSlide> <app-popular-post></app-popular-post></ng-template>
-  <ng-template swiperSlide> <app-popular-post></app-popular-post></ng-template>
-  <ng-template swiperSlide> <app-popular-post></app-popular-post></ng-template>
-  <ng-template swiperSlide> <app-popular-post></app-popular-post></ng-template>
-  <ng-template swiperSlide> <app-popular-post></app-popular-post></ng-template>
-  <ng-template swiperSlide> <app-popular-post></app-popular-post></ng-template>
+  <ng-container *ngFor="let post of popularPostList">
+    <ng-template swiperSlide> <app-popular-post [post]="post"></app-popular-post></ng-template>
+  </ng-container>
 </swiper>

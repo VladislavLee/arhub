@@ -1,11 +1,11 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PostService} from "../../services/post.service";
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {environment} from "../../../environments/environment";
-import {BehaviorSubject, combineLatest, merge, mergeMap, of} from "rxjs";
+import {BehaviorSubject, combineLatest, mergeMap, tap} from "rxjs";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {MapModalComponent} from "../map-modal/map-modal.component";
 
@@ -16,6 +16,8 @@ import {MapModalComponent} from "../map-modal/map-modal.component";
 
 })
 export class CreationFormComponent implements OnInit {
+  @Input() post: any;
+
   loaded = false;
   safeSrc: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject<SafeResourceUrl>('');
   apiUrlReactViewer = environment.API_URL_REACT_VIEWER;
@@ -33,7 +35,7 @@ export class CreationFormComponent implements OnInit {
   })
 
   requestForm = {
-    cityId: '8c69ab77-08ae-4fd9-8fe1-a17c1b01f11c',
+    cityId: 'f33b7246-9ebf-4706-85d7-23c256cffa33',
     title: '',
     previewImageId: '',
     markerImageId: '',
@@ -44,15 +46,15 @@ export class CreationFormComponent implements OnInit {
     translation: [0, 0, 0.1],
   };
 
-  getPreview():boolean {
+  getPreview(): boolean {
     return !!this.form.get('preview')?.value;
   }
 
-  getMarker():boolean {
+  getMarker(): boolean {
     return !!this.form.get('marker')?.value;
   }
 
-  getModel():boolean {
+  getModel(): boolean {
     return !!this.form.get('model')?.value;
   }
 
@@ -61,11 +63,54 @@ export class CreationFormComponent implements OnInit {
     private http: HttpClient,
     protected _sanitizer: DomSanitizer,
     private _router: Router,
-    public matDialog: MatDialog
+    public matDialog: MatDialog,
+    private route: ActivatedRoute,
   ) {
   }
 
   ngOnInit(): void {
+    if (this.post) {
+      combineLatest(
+        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'preview'),
+        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'marker'),
+        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'markerVanilla'),
+        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'model'),
+        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview'),
+        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker'),
+        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla'),
+        this.postService.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.modelId}`, 'model'),
+      ).pipe(
+        tap(value => console.log(value))
+      ).subscribe(value => {
+        let arr = value.reduce((map: any, obj: any) => {
+          map[obj.name] = obj.file;
+          return map;
+        }, {});
+
+        const {preview, marker, markerVanilla, model} = arr;
+
+        const formValue = {
+          title: this.post.title,
+          preview: new File([preview], 'file'),
+          marker: new File([marker], 'file'),
+          markerVanilla: new File([markerVanilla], 'file'),
+          model: new File([model], 'file'),
+        }
+
+        this.form.patchValue(formValue);
+      })
+      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview');
+      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker');
+      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla');
+      // this.downloadImage(`${environment.API_URL_DATASTORE}/content/${this.post.modelId}`, 'model');
+    }
+
+
+    this.route.paramMap.subscribe((params: any) => {
+      console.log(params.params.id);
+      this.safeSrc.next(this._sanitizer.bypassSecurityTrustResourceUrl(`${this.apiUrlModelEditor}/${params.params.id}`));
+    });
+
     document.onclick = (args: any): void => {
       if (args.target.tagName === 'BODY') {
         this.modalDialog?.close()
@@ -75,6 +120,7 @@ export class CreationFormComponent implements OnInit {
     window.addEventListener("message", (event) => {
       if (event.data.action == 'returnData') {
         this.form.get('marker')?.setValue(new Blob([event.data.item]))
+        this.loaded = false;
       }
     }, false);
 
@@ -82,6 +128,7 @@ export class CreationFormComponent implements OnInit {
   }
 
   uploadMarker(event: any) {
+    this.loaded = true;
     this.form.get('markerVanilla')?.setValue(event.target.files[0])
     var iframe = document.getElementById('frame');
     var iWindow = (<HTMLIFrameElement>iframe).contentWindow;
@@ -96,6 +143,7 @@ export class CreationFormComponent implements OnInit {
   }
 
   uploadPreview(event: any) {
+    console.log(event.target.files[0])
     this.form.get('preview')?.setValue(event.target.files[0]);
   }
 
@@ -117,7 +165,6 @@ export class CreationFormComponent implements OnInit {
     } else {
       this.modalDialog = this.matDialog.open(MapModalComponent, this.dialogConfig);
     }
-
   }
 
 
@@ -130,7 +177,6 @@ export class CreationFormComponent implements OnInit {
       this.postService.postId$.subscribe(value => {
         this._router.navigate([`${this.apiUrlModelEditor}/${value}`])
       })
-
     }
   }
 
@@ -157,10 +203,12 @@ export class CreationFormComponent implements OnInit {
 
         console.log(request);
 
-        return this.postService.createPost(request);
-        //
-        // request.previewImageId
-        // this.postService.createPost()
+        if (this.post) {
+          return this.postService.updatePost(request)
+        } else {
+          return this.postService.createPost(request);
+        }
+
       })
     )
   }

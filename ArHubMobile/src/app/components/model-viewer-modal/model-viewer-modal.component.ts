@@ -16,9 +16,15 @@ export class ModelViewerModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.data)
+    this.src = this.data.src;
   }
 
   close() {
     this.dialogRef.close();
+  }
+
+  openModelRedactor() {
+
   }
 }

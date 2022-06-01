@@ -14,7 +14,7 @@
       <div class="form-field-with-label">
         <label class="label"></label>
         <div class="file-downloader" (click)="uploadPreviewFile.click()">
-          <button mat-stroked-button class="upload-button"><mat-icon class="icon">preview</mat-icon>Загрузить preview</button>
+          <button mat-stroked-button class="upload-button"><mat-icon class="icon">preview</mat-icon>Загрузить превью</button>
           <input #uploadPreviewFile type='file' (change)="uploadPreview($event)" style="display:none"/>
 
           <span class="done" *ngIf="getPreview()">
@@ -27,7 +27,7 @@
       <div class="form-field-with-label">
         <label class="label"></label>
         <div class="file-downloader" (click)="uploadMarkerFile.click()">
-          <button mat-stroked-button class="upload-button"><mat-icon class="icon">push_pin</mat-icon>Загрузить marker</button>
+          <button mat-stroked-button class="upload-button"><mat-icon class="icon">push_pin</mat-icon>Загрузить маркер</button>
           <input #uploadMarkerFile (change)="uploadMarker($event)" type='file' style="display:none"/>
 
           <span *ngIf="getMarker()" class="done">
@@ -37,29 +37,43 @@
           </span>
         </div>
       </div>
-      <div class="form-field-with-label">
+      <div class="form-field-with-label" style="width: 310px">
         <label class="label"></label>
-        <div class="file-downloader" (click)="uploadModelFile.click()">
-          <button mat-stroked-button class="upload-button"><mat-icon class="icon">view_in_ar</mat-icon>Загрузить 3D model</button>
+        <div class="file-downloader" style="height: 46px !important;" (click)="uploadModelFile.click()">
+          <button mat-stroked-button class="upload-button">
+            <mat-icon class="icon">view_in_ar</mat-icon>
+            Загрузить модель
+          </button>
           <input #uploadModelFile type='file' (change)="uploadModel($event)" style="display:none"/>
+
+          <mat-spinner style="transform: scale(0.3) !important;" *ngIf="loaded"></mat-spinner>
 
           <span class="done" *ngIf="getModel()">
             <button mat-mini-fab class="complete">
               <mat-icon>done</mat-icon>
             </button>
           </span>
+
+
         </div>
       </div>
 
       <div class="form-field-with-label" >
         <label class="label"></label>
-        <div class="file-downloader" (click)="openMapModal()">
-          <button mat-stroked-button class="upload-button"><mat-icon class="icon">add_location_alt</mat-icon>Геопозиция</button>
+        <div class="file-downloader">
+          <button mat-stroked-button
+                  [ngStyle]="{ 'opacity': form.valid ? '1' : '0.3' }"
+                  [disabled]="!form.valid"
+                  (click)="openMapModal()"
+                  class="upload-button">
+            <mat-icon class="icon">add_location_alt</mat-icon>
+            Геопозиция
+          </button>
         </div>
       </div>
     </form>
 
-    <button mat-stroked-button class="button" (click)="onSubmit()">Далее</button>
+    <button mat-stroked-button class="button" [disabled]="!form.valid" (click)="onSubmit()">Далее</button>
   </div>
 
 

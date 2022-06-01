@@ -1,19 +1,20 @@
 <app-header></app-header>
 
 <div class="wrapper">
-  <app-page-title [title]="'Мои посты'"></app-page-title>
+  <div class="loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
 
-  <div class="post-container">
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
-    <app-my-post class="post"></app-my-post>
+  <app-page-title *ngIf="!isLoadingResults" [title]="'Мои посты'"></app-page-title>
+
+
+  <div *ngIf="!isLoadingResults" class="post-container">
+    <ng-container *ngFor="let post of postList">
+      <app-my-post class="post"
+                   [post]="post"
+      ></app-my-post>
+    </ng-container>
   </div>
 </div>
 

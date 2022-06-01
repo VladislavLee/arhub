@@ -10,7 +10,7 @@
     </div>
 
     <div class="table-container">
-
+<!--    <ng-container *ngFor="let item of data">-->
       <table mat-table [dataSource]="data" class="table"
              matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
         <!-- Number Column -->
@@ -68,6 +68,7 @@
         <tr class="menu" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr class="cell" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+<!--    </ng-container>-->
     </div>
 
     <mat-paginator class="paginator" [length]="resultsLength" [pageSize]="30"></mat-paginator>

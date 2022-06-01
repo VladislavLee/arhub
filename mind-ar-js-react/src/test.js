@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import {useParams} from "react-router-dom";
+import {DATASTORE} from "./DATASTORE";
 
 export default () => {
     const sceneRef = useRef(null);
     const {markerImageId, modelId, rotation0, rotation1, rotation2, translation0, translation1, translation2, scale0, scale1, scale2} = useParams()
 
-    const contentUrl = 'https://pretty-turtles-kiss-5-3-247-25.loca.lt/content';
+    const datastore = DATASTORE;
+    const contentUrl = `${datastore}/content`;
 
     useEffect(() => {
         const sceneEl = sceneRef.current;

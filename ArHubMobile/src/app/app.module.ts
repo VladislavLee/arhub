@@ -54,7 +54,6 @@ import {MapModalComponent} from "./components/map-modal/map-modal.component";
 import { CommentsModalComponent } from './components/comments-modal/comments-modal.component';
 import {MatListModule} from "@angular/material/list";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
-import {MapModalComponent} from "./components/map-modal/map-modal.component";
 import { AccountMobileComponent } from './components/account-mobile/account-mobile.component';
 import { MapMobileComponent } from './components/map-mobile/map-mobile.component';
 import {DeviceDetectorGuard} from "./guards/device-detector.guard";
@@ -109,7 +108,7 @@ import {DeviceDetectorGuard} from "./guards/device-detector.guard";
         // canActivate: [DeviceDetectorGuard]
       },
       {
-        path: 'my-posts',
+        path: 'my-post',
         component: MyPostDesktopComponent
       },
       {
@@ -139,7 +138,11 @@ import {DeviceDetectorGuard} from "./guards/device-detector.guard";
       {
         path: 'admin/validation',
         component: ValidationImageComponent
-      }
+      },
+      {
+        path: 'new-post/:id',
+        component: CreatePostComponent
+      },
     ]),
 
     BrowserAnimationsModule,

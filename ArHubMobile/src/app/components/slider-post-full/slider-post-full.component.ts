@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import SwiperCore, { Pagination } from "swiper";
+import {PostResponse} from "../../interfaces/post-response";
+import {PostService} from "../../services/post.service";
 
 SwiperCore.use([Pagination]);
 
@@ -10,10 +12,15 @@ SwiperCore.use([Pagination]);
   encapsulation: ViewEncapsulation.None,
 })
 export class SliderPostFullComponent implements OnInit {
+  popularPostList: any;
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
+    this.postService.getPopularPost().subscribe(value => {
+      this.popularPostList = value.slice(-5);
+      console.log(this.popularPostList.length)
+    })
   }
 
 }

@@ -3,12 +3,12 @@
     <mat-card-header >
       <div class="header">
         <div class="left">
-          <mat-card-title class="title">Shiba Inu</mat-card-title>
-          <mat-card-subtitle class="subtitle">Dog Breed</mat-card-subtitle>
+          <mat-card-title class="title">{{post.title}}</mat-card-title>
+          <mat-card-subtitle class="subtitle">{{post.cratedTime}}</mat-card-subtitle>
         </div>
 
         <div class="right">
-          <button mat-icon-button style="color: white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <button mat-icon-button style="color: white" [matMenuTriggerFor]="menu" aria-label="">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
@@ -16,7 +16,7 @@
               <mat-icon>delete</mat-icon>
               <span>Удалить</span>
             </button>
-            <button style="color: white" mat-menu-item>
+            <button (click)="editPost(post.id)" style="color: white" mat-menu-item>
               <mat-icon>mode_edit</mat-icon>
               <span>Редактировать</span>
             </button>
@@ -28,7 +28,7 @@
 
     <mat-card-content>
       <div class="image-container">
-        <img mat-card-image class="image" src="assets/image/fon1.png" alt="">
+        <img mat-card-image class="image" src="{{apiUrlDatastore}}/content/{{post.previewImageId}}" alt="">
       </div>
     </mat-card-content>
     <mat-card-actions>

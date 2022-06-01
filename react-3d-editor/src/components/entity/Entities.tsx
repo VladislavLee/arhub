@@ -12,6 +12,7 @@ import { EntityTools, EventTools } from '../../tools';
 import { IScene } from '../../tools/InspectorTools';
 import { IEntity, IDetailEntity } from '../../models/entity';
 import { IPrimitive } from '../../models/primitive';
+import { CONTENT, DATASTORE } from '../../ENVIRONMENT';
 
 type ViewTypes = 'card' | 'list';
 
@@ -28,8 +29,8 @@ interface IState {
 }
 
 class Entities extends Component<{}, IState> {
-    dataStoreUrl="https://pretty-turtles-kiss-5-3-247-25.loca.lt/content";
-    contentUrl="https://dry-queens-wash-5-3-247-25.loca.lt";
+    dataStoreUrl= DATASTORE + "/content";
+    contentUrl= CONTENT;
 
 	state: IState = {
 		visible: false,

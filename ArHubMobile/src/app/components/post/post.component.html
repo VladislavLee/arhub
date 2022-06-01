@@ -1,98 +1,38 @@
-<!--<mat-card class="post">-->
-<!--  <mat-card-header class="post-header">-->
-<!--    <img *ngIf="post.author.avatarImageId"  mat-card-avatar class="avatar" src="{{apiUrlDatastore}}/content/{{post.author.avatarImageId}}" alt="">-->
-<!--    <img *ngIf="!post.author.avatarImageId" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?name={{post.author.username}}&background=random" alt="">-->
-
-<!--    <mat-card-title class="title">{{post.title}}</mat-card-title>-->
-<!--    <mat-card-subtitle class="date">{{ post.cratedTime | date }}</mat-card-subtitle>-->
-<!--  </mat-card-header>-->
-<!--  <img class="post-img"-->
-<!--       mat-card-image-->
-<!--       src="{{apiUrlDatastore}}/content/{{post.previewImageId}}"-->
-<!--       alt=""-->
-<!--       (click)="openCamera(post)"-->
-<!--  >-->
-<!--&lt;!&ndash;  <mat-card-content class="post-content">&ndash;&gt;-->
-<!--&lt;!&ndash;    <div class="description">&ndash;&gt;-->
-<!--&lt;!&ndash;      The Shiba Inu.&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;  </mat-card-content>&ndash;&gt;-->
-
-<!--  <mat-divider></mat-divider>-->
-
-<!--  <mat-card-actions class="post-actions">-->
-<!--    <div class="post-actions__left">-->
-<!--      <div  class="button-with-label">-->
-<!--        <button mat-mini-fab class="action">-->
-<!--          <mat-icon class="icon">thumb_up_off_alt</mat-icon>-->
-<!--        </button>-->
-<!--        <label class="label">{{post.likeCount}}</label>-->
-<!--      </div>-->
-<!--      <div class="button-with-label">-->
-<!--        <button (click)="openComments()" mat-mini-fab class="action">-->
-<!--          <mat-icon class="icon">chat_bubble_outline</mat-icon>-->
-<!--        </button>-->
-<!--        <label class="label">{{post.commentCount}}</label>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="post-actions__right">-->
-<!--      <button mat-mini-fab class="action" [matMenuTriggerFor]="menu">-->
-<!--        <mat-icon class="icon">share</mat-icon>-->
-<!--      </button>-->
-<!--      <mat-menu #menu="matMenu">-->
-<!--        <button style="color: white" mat-menu-item>-->
-<!--          <div class="social">-->
-<!--            <img class="icon" src="assets/image/vk.png" alt="">-->
-<!--            <span>ВКонтакте</span>-->
-<!--          </div>-->
-<!--        </button>-->
-<!--        <button style="color: white" mat-menu-item>-->
-<!--          <div class="social" style="background: #f2253c">-->
-<!--            <img class="icon" src="assets/image/instagram.png" alt="">-->
-<!--            <span>Instagram</span>-->
-<!--          </div>-->
-<!--        </button>-->
-<!--      </mat-menu>-->
-<!--    </div>-->
-
-<!--  </mat-card-actions>-->
-<!--</mat-card>-->
-
 <mat-card class="post">
   <mat-card-header class="post-header">
-    <!--    <img *ngIf="post.author.avatarImageId"  mat-card-avatar class="avatar" src="{{apiUrlDatastore}}/content/{{post.author.avatarImageId}}" alt="">-->
-    <img mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?name=John&background=random" alt="">
+    <img *ngIf="post.author.avatarImageId"  mat-card-avatar class="avatar" src="{{apiUrlDatastore}}/content/{{post.author.avatarImageId}}" alt="">
+    <img *ngIf="!post.author.avatarImageId" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?name={{post.author.username}}&background=random" alt="">
 
-    <mat-card-title class="title">Title</mat-card-title>
-    <mat-card-subtitle class="date">20.12.2020</mat-card-subtitle>
+    <mat-card-title class="title">{{post.title}}</mat-card-title>
+    <mat-card-subtitle class="date">{{ post.cratedTime | date }}</mat-card-subtitle>
   </mat-card-header>
   <img class="post-img"
        mat-card-image
-       src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+       src="{{apiUrlDatastore}}/content/{{post.previewImageId}}"
        alt=""
+       (click)="openCamera(post)"
   >
-  <!--  <mat-card-content class="post-content">-->
-  <!--    <div class="description">-->
-  <!--      The Shiba Inu.-->
-  <!--    </div>-->
-  <!--  </mat-card-content>-->
+<!--  <mat-card-content class="post-content">-->
+<!--    <div class="description">-->
+<!--      The Shiba Inu.-->
+<!--    </div>-->
+<!--  </mat-card-content>-->
 
   <mat-divider></mat-divider>
 
   <mat-card-actions class="post-actions">
     <div class="post-actions__left">
-      <div class="button-with-label">
+      <div  class="button-with-label">
         <button mat-mini-fab class="action">
           <mat-icon class="icon">thumb_up_off_alt</mat-icon>
         </button>
-        <label class="label">{{3}}</label>
+        <label class="label">{{post.likeCount}}</label>
       </div>
       <div class="button-with-label">
         <button (click)="openComments()" mat-mini-fab class="action">
           <mat-icon class="icon">chat_bubble_outline</mat-icon>
         </button>
-        <label class="label">{{3}}</label>
+        <label class="label">{{post.commentCount}}</label>
       </div>
     </div>
 
@@ -118,3 +58,72 @@
 
   </mat-card-actions>
 </mat-card>
+
+
+
+
+
+
+
+
+
+
+<!--<mat-card class="post">-->
+<!--  <mat-card-header class="post-header">-->
+<!--    &lt;!&ndash;    <img *ngIf="post.author.avatarImageId"  mat-card-avatar class="avatar" src="{{apiUrlDatastore}}/content/{{post.author.avatarImageId}}" alt="">&ndash;&gt;-->
+<!--    <img mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?name=John&background=random" alt="">-->
+
+<!--    <mat-card-title class="title">Title</mat-card-title>-->
+<!--    <mat-card-subtitle class="date">20.12.2020</mat-card-subtitle>-->
+<!--  </mat-card-header>-->
+<!--  <img class="post-img"-->
+<!--       mat-card-image-->
+<!--       src="https://material.angular.io/assets/img/examples/shiba2.jpg"-->
+<!--       alt=""-->
+<!--  >-->
+<!--  &lt;!&ndash;  <mat-card-content class="post-content">&ndash;&gt;-->
+<!--  &lt;!&ndash;    <div class="description">&ndash;&gt;-->
+<!--  &lt;!&ndash;      The Shiba Inu.&ndash;&gt;-->
+<!--  &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </mat-card-content>&ndash;&gt;-->
+
+<!--  <mat-divider></mat-divider>-->
+
+<!--  <mat-card-actions class="post-actions">-->
+<!--    <div class="post-actions__left">-->
+<!--      <div class="button-with-label">-->
+<!--        <button mat-mini-fab class="action">-->
+<!--          <mat-icon class="icon">thumb_up_off_alt</mat-icon>-->
+<!--        </button>-->
+<!--        <label class="label">{{3}}</label>-->
+<!--      </div>-->
+<!--      <div class="button-with-label">-->
+<!--        <button (click)="openComments()" mat-mini-fab class="action">-->
+<!--          <mat-icon class="icon">chat_bubble_outline</mat-icon>-->
+<!--        </button>-->
+<!--        <label class="label">{{3}}</label>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="post-actions__right">-->
+<!--      <button mat-mini-fab class="action" [matMenuTriggerFor]="menu">-->
+<!--        <mat-icon class="icon">share</mat-icon>-->
+<!--      </button>-->
+<!--      <mat-menu #menu="matMenu">-->
+<!--        <button style="color: white" mat-menu-item>-->
+<!--          <div class="social">-->
+<!--            <img class="icon" src="assets/image/vk.png" alt="">-->
+<!--            <span>ВКонтакте</span>-->
+<!--          </div>-->
+<!--        </button>-->
+<!--        <button style="color: white" mat-menu-item>-->
+<!--          <div class="social" style="background: #f2253c">-->
+<!--            <img class="icon" src="assets/image/instagram.png" alt="">-->
+<!--            <span>Instagram</span>-->
+<!--          </div>-->
+<!--        </button>-->
+<!--      </mat-menu>-->
+<!--    </div>-->
+
+<!--  </mat-card-actions>-->
+<!--</mat-card>-->

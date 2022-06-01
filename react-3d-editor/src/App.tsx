@@ -10,8 +10,8 @@ import Title from 'antd/es/skeleton/Title';
 class App extends Component {
 
     handleClick(e) {
-        const contentUrl="http://localhost:8081";
-        const arHubUrl = "http://localhost:4200/my-post";
+        const contentUrl="https://content-manager-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com";
+        const arHubUrl = "https://ar-hub-mobile-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com";
         const currentPost: any = JSON.parse(window.localStorage.getItem('post'));
         const matrix: any = JSON.parse(window.localStorage.getItem('matrix'));
 

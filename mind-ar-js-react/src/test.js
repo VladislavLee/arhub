@@ -5,7 +5,7 @@ export default () => {
     const sceneRef = useRef(null);
     const {markerImageId, modelId, rotation0, rotation1, rotation2, translation0, translation1, translation2, scale0, scale1, scale2} = useParams()
 
-    const contentUrl = 'https://pretty-turtles-kiss-5-3-247-25.loca.lt/content';
+    const contentUrl = 'https://datastore-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com/content';
 
     useEffect(() => {
         const sceneEl = sceneRef.current;

@@ -28,8 +28,8 @@ interface IState {
 }
 
 class Entities extends Component<{}, IState> {
-    dataStoreUrl="https://pretty-turtles-kiss-5-3-247-25.loca.lt/content";
-    contentUrl="https://dry-queens-wash-5-3-247-25.loca.lt";
+    dataStoreUrl="https://datastore-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com/content";
+    contentUrl="https://content-manager-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com";
 
 	state: IState = {
 		visible: false,

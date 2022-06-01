@@ -1,6 +1,6 @@
-export let API_URL_DATASTORE: 'https://stale-boxes-invent-5-165-196-209.loca.lt';
-export let API_URL_CONTENT_MANAGER: 'http://localhost:8081';
+export let API_URL_DATASTORE: 'https://datastore-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';
+export let API_URL_CONTENT_MANAGER: 'https://content-manager-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';
 // compiler
-export let API_URL_REACT_VIEWER: 'https://c3e8-5-165-196-209.eu.ngrok.io';
+export let API_URL_REACT_VIEWER: 'https://compiler-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';
 // 3d editor
-export let API_URL_MODEL_EDITOR: 'http://localhost:8082';
+export let API_URL_MODEL_EDITOR: 'https://model-editor-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';

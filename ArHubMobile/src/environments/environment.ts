@@ -3,12 +3,6 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  API_URL_DATASTORE: 'https://five-clocks-teach-5-165-196-209.loca.lt',
-  API_URL_CONTENT_MANAGER: 'https://fresh-dragons-tickle-5-165-196-209.loca.lt',
-  // compiler
-  API_URL_REACT_VIEWER: 'https://clean-eagles-juggle-5-165-196-209.loca.lt',
-  // 3d editor
-  API_URL_MODEL_EDITOR: 'https://silent-pants-lead-5-165-196-209.loca.lt',
   production: false
 };
 

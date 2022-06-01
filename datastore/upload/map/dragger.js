@@ -3,7 +3,7 @@ jQuery(function () {
 });
 
 function init () {
-    const url = 'http://localhost:8081/posts';
+    const url = 'https://content-manager-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com/posts';
     const urlParams = new URLSearchParams(window.location.search);
     let id = urlParams.get('id')
 

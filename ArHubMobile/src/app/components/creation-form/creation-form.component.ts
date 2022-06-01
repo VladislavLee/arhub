@@ -8,6 +8,7 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {MapModalComponent} from "../map-modal/map-modal.component";
+import {API_URL_MODEL_EDITOR, API_URL_REACT_VIEWER} from "../../../URL_LIST";
 
 @Component({
   selector: 'app-creation-form',
@@ -20,8 +21,8 @@ export class CreationFormComponent implements OnInit {
 
   loaded = false;
   safeSrc: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject<SafeResourceUrl>('');
-  apiUrlReactViewer = environment.API_URL_REACT_VIEWER;
-  apiUrlModelEditor = environment.API_URL_MODEL_EDITOR;
+  apiUrlReactViewer = API_URL_REACT_VIEWER;
+  apiUrlModelEditor = API_URL_MODEL_EDITOR;
   dialogConfig = new MatDialogConfig();
   modalDialog: MatDialogRef<MapModalComponent, any> | undefined;
   saved = false;

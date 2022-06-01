@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {PostService} from "../../services/post.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {CommentsModalComponent} from "../comments-modal/comments-modal.component";
+import {API_URL_DATASTORE} from "../../../URL_LIST";
 
 @Component({
   selector: 'app-post',
@@ -13,7 +14,7 @@ import {CommentsModalComponent} from "../comments-modal/comments-modal.component
 })
 export class PostComponent implements OnInit {
   @Input() post:PostResponse;
-  readonly apiUrlDatastore =  environment.API_URL_DATASTORE;
+  readonly apiUrlDatastore =  API_URL_DATASTORE;
 
   date = new Date();
 

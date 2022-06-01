@@ -3,6 +3,7 @@ import {BehaviorSubject} from "rxjs";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {PostService} from "../../services/post.service";
 import {environment} from "../../../environments/environment";
+import {API_URL_DATASTORE} from "../../../URL_LIST";
 
 @Component({
   selector: 'app-map-modal',
@@ -12,7 +13,7 @@ import {environment} from "../../../environments/environment";
 export class MapModalComponent implements OnInit {
 
   safeSrc: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject<SafeResourceUrl>('');
-  readonly apiUrlDatastore = environment.API_URL_DATASTORE;
+  readonly apiUrlDatastore = API_URL_DATASTORE;
 
   constructor(private postService: PostService,
               private _sanitizer: DomSanitizer) {

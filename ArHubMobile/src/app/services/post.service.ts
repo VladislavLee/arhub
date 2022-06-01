@@ -3,14 +3,15 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, from, map, Observable, Subject} from "rxjs";
 import {environment} from "../../environments/environment";
 import {PostResponse} from "../interfaces/post-response";
+import {API_URL_CONTENT_MANAGER, API_URL_DATASTORE} from "../../URL_LIST";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  readonly apiUrlDatastore =  environment.API_URL_DATASTORE;
-  readonly apiUrlContentManager = environment.API_URL_CONTENT_MANAGER;
+  readonly apiUrlDatastore =  API_URL_DATASTORE;
+  readonly apiUrlContentManager = API_URL_CONTENT_MANAGER;
   post$ = new BehaviorSubject<any>([]);
   postId$ = new BehaviorSubject<any>([]);
 

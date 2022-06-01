@@ -38,15 +38,16 @@ public class Application {
 
     @EventListener(classes = ContextRefreshedEvent.class)
     public void handleMultipleEvents() {
-
-//        City city = cityRepository.save(City.builder()
-//                .title("Moscow")
-//                .build());
-//        System.out.println(city.getId());
-//        Author author = authorRepository.save(Author.builder()
-//                .city(city)
-//                .username("user1")
-//                .build());
+        if (cityRepository.findAll().size() == 0) {
+            City city = cityRepository.save(City.builder()
+                    .title("Moscow")
+                    .build());
+            System.out.println(city.getId());
+            Author author = authorRepository.save(Author.builder()
+                    .city(city)
+                    .username("user1")
+                    .build());
+        }
     }
 
 }

@@ -4,6 +4,7 @@ import {environment} from "../../../environments/environment";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {PostService} from "../../services/post.service";
 import {BehaviorSubject} from "rxjs";
+import {API_URL_REACT_VIEWER} from "../../../URL_LIST";
 
 @Component({
   selector: 'app-ar-viewer',
@@ -13,7 +14,7 @@ import {BehaviorSubject} from "rxjs";
 export class ArViewerComponent implements OnInit {
   id: string;
   safeSrc: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject<SafeResourceUrl>('');
-  apiUrlReactViewer = environment.API_URL_REACT_VIEWER;
+  apiUrlReactViewer = API_URL_REACT_VIEWER;
 
   constructor(
     private activateRoute: ActivatedRoute,

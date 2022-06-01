@@ -15,7 +15,7 @@ module.exports = merge(baseConfig, {
 	},
 	output: {
 		// entry에 존재하는 app.js, vendor.js로 뽑혀 나온다.
-		path: path.resolve(__dirname, 'docs'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: 'js/[name].[chunkhash:16].js',
 		chunkFilename: 'js/[id].[chunkhash:16].js',
 		publicPath: './',

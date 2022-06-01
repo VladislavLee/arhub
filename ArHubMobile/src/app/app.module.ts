@@ -31,7 +31,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AccountDesktopComponent } from './components/account-desktop/account-desktop.component';
 import { NewsDesktopComponent } from './components/news-desktop/news-desktop.component';
 import { PostArComponent } from './components/post-ar/post-ar.component';
-import { SliderDesktopComponent } from './components/slider-desktop/slider-desktop.component';
 import { PopularPostComponent } from './components/popular-post/popular-post.component';
 import {PostService} from "./services/post.service";
 import {HttpClientModule} from "@angular/common/http";
@@ -75,7 +74,6 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     AccountDesktopComponent,
     NewsDesktopComponent,
     PostArComponent,
-    SliderDesktopComponent,
     PopularPostComponent,
     ArViewerComponent,
     ModelViewerModalComponent,

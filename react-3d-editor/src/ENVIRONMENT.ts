@@ -1,3 +1,3 @@
-export const DATASTORE = 'https://five-clocks-teach-5-165-196-209.loca.lt';
-export const CONTENT = 'https://fresh-dragons-tickle-5-165-196-209.loca.lt';
-export const ARHUB = 'https://fuzzy-beers-serve-5-165-196-209.loca.lt';
+export const DATASTORE = 'https://datastore-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';
+export const CONTENT = 'https://content-manager-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';
+export const ARHUB = 'https://ar-hub-mobile-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';

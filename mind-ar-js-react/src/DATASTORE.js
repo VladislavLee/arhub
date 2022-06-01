@@ -1,1 +1,1 @@
-export const DATASTORE = 'https://five-clocks-teach-5-165-196-209.loca.lt';
+export const DATASTORE = 'https://datastore-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com';

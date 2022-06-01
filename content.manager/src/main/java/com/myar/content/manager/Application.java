@@ -38,7 +38,8 @@ public class Application {
 
     @EventListener(classes = ContextRefreshedEvent.class)
     public void handleMultipleEvents() {
-        if (cityRepository.findAll().size() == 0) {
+        List<City> cities = cityRepository.findAll();
+        if (cities.size() == 0) {
             City city = cityRepository.save(City.builder()
                     .title("Moscow")
                     .build());
@@ -47,6 +48,8 @@ public class Application {
                     .city(city)
                     .username("user1")
                     .build());
+        } else {
+            System.out.println(cities.get(0).getId());
         }
     }
 

@@ -104,6 +104,14 @@ export class PostService {
     return this.httpClient.patch(`${this.apiUrlContentManager}/posts`, request);
   }
 
+  likePost(id: string) {
+    return this.httpClient.post(`${this.apiUrlContentManager}/likes/like/${id}`, '');
+  }
+
+  unLikePost(id: string) {
+    return this.httpClient.post(`${this.apiUrlContentManager}/likes/unlike/${id}`, '');
+  }
+
   mockPopularPost = [
     {
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",

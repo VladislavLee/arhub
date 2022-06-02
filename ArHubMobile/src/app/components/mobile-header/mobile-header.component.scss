@@ -50,3 +50,22 @@
   padding: 0;
 }
 
+
+.example-sidenav {
+  margin-top: 57px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #131419;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}

@@ -23,7 +23,7 @@
   <mat-card-actions class="post-actions">
     <div class="post-actions__left">
       <div  class="button-with-label">
-        <button mat-mini-fab class="action">
+        <button (click)="like(post.id)" mat-mini-fab class="action">
           <mat-icon class="icon">thumb_up_off_alt</mat-icon>
         </button>
         <label class="label">{{post.likeCount}}</label>

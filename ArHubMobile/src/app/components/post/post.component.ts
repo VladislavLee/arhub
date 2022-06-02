@@ -15,7 +15,7 @@ import {API_URL_DATASTORE} from "../../../URL_LIST";
 export class PostComponent implements OnInit {
   @Input() post:PostResponse;
   readonly apiUrlDatastore =  API_URL_DATASTORE;
-
+  liked = true;
   date = new Date();
 
   constructor(private _router: Router, private postService: PostService, private _bottomSheet: MatBottomSheet) { }
@@ -35,4 +35,11 @@ export class PostComponent implements OnInit {
   openComments() {
     this._bottomSheet.open(CommentsModalComponent);
   }
+
+  like(id: string) {
+    this.liked ? this.postService.likePost(id) : this.postService.unLikePost(id);
+    this.liked = !this.liked;
+  }
+
+
 }

@@ -7,12 +7,12 @@
       <label>Лента</label>
     </div>
 
-    <div class="button-with-label">
-      <button mat-mini-fab class="action">
-        <mat-icon class="icon">camera_alt</mat-icon>
-      </button>
-      <label>Камера</label>
-    </div>
+<!--    <div class="button-with-label">-->
+<!--      <button mat-mini-fab class="action">-->
+<!--        <mat-icon class="icon">camera_alt</mat-icon>-->
+<!--      </button>-->
+<!--      <label>Камера</label>-->
+<!--    </div>-->
 
     <div  routerLink="/map" class="button-with-label">
       <button mat-mini-fab class="action">
@@ -21,7 +21,7 @@
       <label>Рядом</label>
     </div>
 
-    <div routerLink="/my-posts" class="button-with-label">
+    <div *ngIf="!isMobile" routerLink="/my-posts" class="button-with-label">
       <button mat-mini-fab class="action">
         <mat-icon class="icon">folder_open</mat-icon>
       </button>

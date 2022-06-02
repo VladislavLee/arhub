@@ -1,8 +1,8 @@
 <header>
   <mat-toolbar class="header">
     <div class="header-left">
-      <div class="button-with-label">
-        <button mat-icon-button class="button">
+      <div routerLink="/" class="button-with-label">
+        <button class="button" mat-icon-button>
           <mat-icon class="icon">flip_camera_ios</mat-icon>
         </button>
         <label class="label">ARHub</label>
@@ -10,14 +10,43 @@
     </div>
 
     <div class="header-right">
-      <img class="icon" mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+      <mat-drawer-container style="background: #1c1c24; " autosize>
 
-      <mat-icon class="label">expand_more</mat-icon>
+        <div style="display: flex; background: #1c1c24; align-items: center; border: none">
+          <img routerLink="/account-mobile" alt="" class="icon" mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+
+          <mat-icon (click)="drawer.toggle()" class="label">expand_more</mat-icon>
+        </div>
+
+      </mat-drawer-container>
 
     </div>
 
   </mat-toolbar>
 </header>
 
+<mat-drawer #drawer (click)="drawer.toggle()" class="example-sidenav" mode="side">
+  <mat-list style="margin-top: 22px" role="list">
+    <mat-list-item role="listitem">
+      <button routerLink="/account-mobile" class="button" mat-stroked-button
+              style="color: white; border: none; padding-left: 2px">
+        <mat-icon style="margin-right: 10px">person</mat-icon>
+        <span>Профиль</span>
+      </button>
+
+
+    </mat-list-item>
+
+    <mat-divider style="border-bottom: 1px solid #2D2D3A"></mat-divider>
+
+    <mat-list-item style="margin-top: 12px" role="listitem">
+      <button class="button" mat-stroked-button
+              style="color: #E24444; border: none; padding-left: 2px">
+        <mat-icon style="margin-right: 10px">logout</mat-icon>
+        <span>Выйти</span>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</mat-drawer>
 
 

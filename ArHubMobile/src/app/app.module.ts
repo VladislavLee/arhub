@@ -56,6 +56,9 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import { AccountMobileComponent } from './components/account-mobile/account-mobile.component';
 import { MapMobileComponent } from './components/map-mobile/map-mobile.component';
 import {DeviceDetectorGuard} from "./guards/device-detector.guard";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { LoginComponent } from './components/login/login.component';
+import {AuntificationGuard} from "./guards/auntification.guard";
 
 @NgModule({
   declarations: [
@@ -89,7 +92,8 @@ import {DeviceDetectorGuard} from "./guards/device-detector.guard";
     CommentsModalComponent,
     MapModalComponent,
     AccountMobileComponent,
-    MapMobileComponent
+    MapMobileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -98,49 +102,63 @@ import {DeviceDetectorGuard} from "./guards/device-detector.guard";
     RouterModule.forRoot([
       {
         path: '',
-        component: NewsComponent
+        component: NewsComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'news',
         component: NewsComponent,
-        // canActivate: [DeviceDetectorGuard]
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'my-post',
-        component: MyPostDesktopComponent
+        component: MyPostDesktopComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'news-desktop',
-        component: NewsDesktopComponent
+        component: NewsDesktopComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'new-post',
-        component: CreatePostComponent
+        component: CreatePostComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'ar-viewer',
-        component: ArViewerComponent
+        component: ArViewerComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'model/:id',
-        component: ModelEditorComponent
+        component: ModelEditorComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'account',
-        component: AccountDesktopComponent
+        component: AccountDesktopComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'account-mobile',
-        component: AccountMobileComponent
+        component: AccountMobileComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'admin/validation',
-        component: ValidationImageComponent
+        component: ValidationImageComponent,
+        canActivate: [AuntificationGuard]
       },
       {
         path: 'new-post/:id',
-        component: CreatePostComponent
+        component: CreatePostComponent,
+        canActivate: [AuntificationGuard]
       },
+      {
+        path: 'login',
+        component: LoginComponent
+      }
     ]),
 
     BrowserAnimationsModule,
@@ -165,6 +183,7 @@ import {DeviceDetectorGuard} from "./guards/device-detector.guard";
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatListModule,
+    MatSidenavModule,
   ],
   entryComponents: [
     ModelViewerModalComponent,

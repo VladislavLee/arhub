@@ -96,8 +96,8 @@ function init () {
                 tileCoordinates = getTileCoordinate(markerGlobalPosition, zoom, 256);
 
             const data = {
-                latitude: geoPosition[0],
-                longitude: geoPosition[1]
+                latitude: `${geoPosition[0]}`,
+                longitude: `${geoPosition[1]}`
             };
             fetch(`${url}/${id}`, {
                 method: 'PATCH',

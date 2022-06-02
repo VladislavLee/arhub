@@ -14,7 +14,7 @@ import com.myar.content.manager.services.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
+import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.util.stream.Collectors;
 
@@ -22,10 +22,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostMapper {
 
-    private final PostService postService;
     private final AuthorService authorService;
     private final LikeService likeService;
-    private final CommentService commentService;
 
     public Post convertCreatePostRequestToPost(CreatePostRequest createPostRequest) {
         return Post.builder()
@@ -44,6 +42,8 @@ public class PostMapper {
     }
 
     public ShortPostResponse convertPostToShortPostResponse(Post post) {
+
+        System.out.println(post.getLatitude());
         return ShortPostResponse.builder()
                 .id(post.getId())
                 .previewImageId(post.getPreviewImageId())
@@ -54,7 +54,9 @@ public class PostMapper {
                         .map(this::authorToShortUser)
                         .collect(Collectors.toList()))
                 .likeCount(likeService.getLikeCountByPost(post))
-                .commentCount(commentService.getLikeCountByPost(post))
+                .commentCount(post.getComments().size())
+                .latitude(post.getLatitude())
+                .longitude(post.getLongitude())
                 .cratedTime(post.getCreated().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                 .build();
     }
@@ -77,7 +79,9 @@ public class PostMapper {
                         .map(this::authorToShortUser)
                         .collect(Collectors.toList()))
                 .likeCount(likeService.getLikeCountByPost(post))
-                .commentCount(commentService.getLikeCountByPost(post))
+                .commentCount(post.getComments().size())
+                .latitude(post.getLatitude())
+                .longitude(post.getLongitude())
                 .build();
     }
 

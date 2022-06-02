@@ -1,5 +1,7 @@
 package com.myar.content.manager.entities.response.post;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.myar.content.manager.entities.response.DecimalSerializer;
 import com.myar.content.manager.entities.response.user.ShortUser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,4 +34,7 @@ public class FullPostResponse {
 
     private long likeCount;
     private long commentCount;
+
+    private String latitude;
+    private String longitude;
 }

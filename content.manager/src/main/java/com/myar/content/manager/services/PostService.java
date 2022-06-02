@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -30,7 +29,7 @@ public class PostService {
     private final LikeRepository likeRepository;
 
     public Post createPost(Post post, UUID cityId) {
-        final Author author = authorRepository.findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
+        final Author author = userContextHolder.getUser();
         final City city = cityRepository.findById(cityId).orElseThrow(EntityNotFoundException::new);
         post.setAuthor(author);
         post.setCity(city);
@@ -66,11 +65,17 @@ public class PostService {
     }
 
     public List<Post> getRecommended(int pageNumber, int count) {
-        final Author author = authorRepository
-                .findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
+        final Author author = userContextHolder.getUser();
 
         return postRepository
                 .findAllByCity(author.getCity(), PageRequest.of(pageNumber, count, Sort.by(Sort.Direction.DESC, "created")));
+    }
+
+    public List<Post> getNearest() {
+        final Author author = userContextHolder.getUser();
+
+        return postRepository
+                .findAllByCity(author.getCity());
     }
 
     public List<Post> getPopular() {
@@ -78,6 +83,12 @@ public class PostService {
                 .stream()
                 .map(PostWithLikeCount::getPost)
                 .collect(Collectors.toList());
+    }
+
+    public List<Post> getMyPostList() {
+        final Author author = userContextHolder.getUser();
+
+        return postRepository.findAllByAuthorOrderByCreatedDesc(author);
     }
 
     public Post getById(UUID postId) {

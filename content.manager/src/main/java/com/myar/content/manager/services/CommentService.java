@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,7 +24,7 @@ public class CommentService {
     private final PostRepository postRepository;
 
     public Comment createComment(UUID postId, String text) {
-        final Author author = authorRepository.findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
+        final Author author = userContextHolder.getUser();
         final Post post = postRepository.findById(postId).orElseThrow(EntityNotFoundException::new);
         return commentRepository.save(Comment.builder()
                 .text(text)
@@ -33,7 +34,7 @@ public class CommentService {
     }
 
     public void deleteComment(UUID commentId) {
-        final Author author = authorRepository.findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
+        final Author author = userContextHolder.getUser();
         commentRepository.findById(commentId).ifPresent((x) -> {
             if (x.getAuthor().getId().equals(author.getId())) {
                 commentRepository.delete(x);
@@ -42,7 +43,7 @@ public class CommentService {
     }
 
     public Comment editComment(UUID commentId, String text) {
-        final Author author = authorRepository.findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
+        final Author author = userContextHolder.getUser();
         return commentRepository.findById(commentId).map((x) -> {
             if (x.getAuthor().getId().equals(author.getId())) {
                 x.setText(text);
@@ -52,7 +53,7 @@ public class CommentService {
         }).orElseThrow(EntityNotFoundException::new);
     }
 
-    public long getLikeCountByPost(Post post) {
-        return commentRepository.countByPost(post);
+    public List<Comment> getCommentsByPost(UUID postId) {
+        return postRepository.findById(postId).orElseThrow(EntityNotFoundException::new).getComments();
     }
 }

@@ -29,11 +29,6 @@ public class PostController {
         return postService.createPost(post, createPostRequest.getCityId()).getId();
     }
 
-    @GetMapping("/{id}")
-    public FullPostResponse getFullPost(@PathVariable("id") UUID postID) {
-        return postMapper.convertPostToFullPostResponse(postService.getById(postID));
-    }
-
     @GetMapping("/recommended")
     public List<ShortPostResponse> getRecommendedPosts(@RequestParam("page") int pageNumber, @RequestParam("count") int count) {
         return postService.getRecommended(pageNumber, count).stream()
@@ -46,6 +41,25 @@ public class PostController {
         return postService.getPopular().stream()
                 .map(postMapper::convertPostToStoriesPostResponse)
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/my")
+    public List<StoriesPostResponse> getMyPosts() {
+        return postService.getPopular().stream()
+                .map(postMapper::convertPostToStoriesPostResponse)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/near")
+    public List<ShortPostResponse> getNearest() {
+        return postService.getNearest().stream()
+                .map(postMapper::convertPostToShortPostResponse)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/{id}")
+    public FullPostResponse getFullPost(@PathVariable("id") UUID postID) {
+        return postMapper.convertPostToFullPostResponse(postService.getById(postID));
     }
 
     @PatchMapping("/{id}")

@@ -31,6 +31,7 @@ public class Comment {
     @CreatedDate
     private LocalDateTime created;
 
+    @Column(length = 99999)
     private String text;
 
     @ManyToOne

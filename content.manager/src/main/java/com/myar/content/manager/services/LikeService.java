@@ -26,7 +26,7 @@ public class LikeService {
         return likeRepository.countByPost(post);
     }
     public void likePost(UUID postId){
-        final Author author = authorRepository.findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
+        final Author author = userContextHolder.getUser();
         likeRepository.save(Like.builder()
                 .author(author)
                 .post(postRepository.findById(postId).orElseThrow(EntityNotFoundException::new))
@@ -34,7 +34,7 @@ public class LikeService {
     }
 
     public void unlikePost(UUID postId){
-        final Author author = authorRepository.findById(userContextHolder.getUserId()).orElseThrow(EntityNotFoundException::new);
+        final Author author = userContextHolder.getUser();
         final Post post = postRepository.findById(postId).orElseThrow(EntityNotFoundException::new);
         likeRepository.findByPostAndAuthor(post, author).ifPresent(likeRepository::delete);
     }

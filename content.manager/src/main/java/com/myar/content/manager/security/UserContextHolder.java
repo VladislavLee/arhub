@@ -1,5 +1,6 @@
 package com.myar.content.manager.security;
 
+import com.myar.content.manager.entities.model.Author;
 import com.myar.content.manager.repositories.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ public class UserContextHolder {
 
     private final AuthorRepository authorRepository;
 
-    public UUID getUserId() {
-        return authorRepository.findAll().iterator().next().getId();
+    public Author getUser() {
+        return authorRepository.findAll().iterator().next();
     }
 }

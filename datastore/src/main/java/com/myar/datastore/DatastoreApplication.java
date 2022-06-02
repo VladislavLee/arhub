@@ -13,10 +13,12 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
 
 @SpringBootApplication
 public class DatastoreApplication {
@@ -31,6 +33,10 @@ public class DatastoreApplication {
 
     @EventListener(classes = ContextRefreshedEvent.class)
     public void copyDirectory() throws IOException {
+        Files.walk(Paths.get(pathToFiles.concat("map")))
+                .sorted(Comparator.reverseOrder())
+                .map(Path::toFile)
+                .forEach(File::delete);
         Files.walk(Paths.get(sourceDirectoryLocation))
                 .forEach(source -> {
                     Path destination = Paths.get(pathToFiles.concat("map"), source.toString()

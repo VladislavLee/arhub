@@ -156,6 +156,11 @@ import {AuntificationGuard} from "./guards/auntification.guard";
         canActivate: [AuntificationGuard]
       },
       {
+        path: 'map',
+        component: MapMobileComponent,
+        canActivate: [AuntificationGuard]
+      },
+      {
         path: 'login',
         component: LoginComponent
       }

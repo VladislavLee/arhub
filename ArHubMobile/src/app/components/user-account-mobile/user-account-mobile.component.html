@@ -1,0 +1,33 @@
+<app-mobile-header></app-mobile-header>
+<div class="wrapper">
+  <div class="container">
+    <app-page-title [fontSize]="20" title="Ник пользователя"></app-page-title>
+    <div class="section">
+      <img class="avatar" mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+      <div class="information">
+        <span class="count">12</span>
+        <span class="label">Публикации</span>
+      </div>
+      <div class="information">
+        <span class="count">12</span>
+        <span class="label">Подписчики</span>
+      </div>
+      <div class="information">
+        <span class="count">12</span>
+        <span class="label">Подписки</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <button mat-stroked-button class="button"><span></span>Подписаться</button>
+    </div>
+
+    <app-page-title [fontSize]="20" [title]="'Публикации'"></app-page-title>
+
+    <app-post
+      *ngFor="let post of posts | async"
+      [post]="post"
+    ></app-post>
+  </div>
+</div>
+<app-mobile-footer style=" margin-top: auto;"></app-mobile-footer>

@@ -1,0 +1,19 @@
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100%;
+  flex: 1 0 auto;
+  padding: 0 20px;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+}
+

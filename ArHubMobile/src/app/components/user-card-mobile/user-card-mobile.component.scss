@@ -1,0 +1,46 @@
+.card {
+  width: 130px;
+  height: 156px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #2f2f32;
+  border-radius: 24px;
+
+
+  .avatar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .image {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+  }
+
+
+  .label {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    color: #FFFFFF;
+  }
+
+  .button {
+    margin-top: 18px;
+    height: 34px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    border-radius: 48px;
+    background-color: #595a5d;
+    color: #FFFFFF;
+    font-size: 15px;
+  }
+
+
+}

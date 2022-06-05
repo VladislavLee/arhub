@@ -1,16 +1,20 @@
 <div class="container">
   <div class="actions">
-    <button mat-icon-button (click)="openModelRedactor()" class="button">
-      <mat-icon style="margin-right: 6px">3d_rotation</mat-icon>Редактор
-    </button>
+    <div class="editor">
+      <button mat-icon-button (click)="openModelRedactor()" class="button" style="margin-right: 6px">
+        <mat-icon>3d_rotation</mat-icon>
+      </button>
+      <span style="color: #4447E2">Редактор</span>
+    </div>
     <button mat-icon-button class="button" (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
   <model-viewer
+    minimumRenderScale="1"
     camera-controls
     [attr.camera-orbit]="camera_orbit"
-    [attr.src]="src"
+    [attr.src]="'https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb'"
     alt="3D model"
     data-js-focus-visible=""
     ar

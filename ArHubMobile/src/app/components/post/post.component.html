@@ -18,7 +18,11 @@
 <!--    </div>-->
 <!--  </mat-card-content>-->
 
-  <mat-divider></mat-divider>
+<!--  <mat-divider></mat-divider>-->
+
+  <mat-card-actions style="margin: 0;  padding: 0">
+    <button mat-stroked-button class="button" (click)="openViewerModal()">Просмотр в 3D</button>
+  </mat-card-actions>
 
   <mat-card-actions class="post-actions">
     <div class="post-actions__left">
@@ -42,10 +46,10 @@
       </button>
       <mat-menu #menu="matMenu">
         <button style="color: white" mat-menu-item>
-          <div class="social">
+          <a [href]="VK_URL" target="_blank" class="social">
             <img class="icon" src="assets/image/vk.png" alt="">
             <span>ВКонтакте</span>
-          </div>
+          </a>
         </button>
         <button style="color: white" mat-menu-item>
           <div class="social" style="background: #f2253c">
@@ -55,8 +59,8 @@
         </button>
       </mat-menu>
     </div>
-
   </mat-card-actions>
+
 </mat-card>
 
 

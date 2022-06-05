@@ -1,0 +1,111 @@
+.wrapper {
+  max-width: 1220px;
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100%;
+  flex: 1 0 auto;
+  padding: 0 20px;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .section {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .avatar {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .information {
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: #FFFFFF;
+
+        .count {
+          height: 16px;
+          font-size: 12px;
+        }
+
+        .label {
+          font-size: 10px;
+        }
+      }
+
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: -webkit-fill-available;
+        color: #FFFFFF;
+        border: 1px solid #2d2d3a;
+        border-radius: 5px;
+      }
+
+      .button:hover {
+        background-color: #4447E2;
+      }
+
+      ::ng-deep .mat-button-wrapper {
+        width: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .icon {
+        color: #FFFFFF;
+      }
+      //.photo {
+      //  max-width: 340px;
+      //  background-color: #1c1c24;
+      //  border-radius: 15px;
+      //
+      //  .image {
+      //    border-radius: 15px;
+      //    width: 300px;
+      //    height: 300px;
+      //    margin-bottom: 20px;
+      //  }
+      //
+    }
+  }
+}
+
+//input:focus {
+//  outline: #4447E2 !important;
+//  border-color: #4447E2;
+//  box-shadow: 0 0 3px #4447E2;
+//}
+//
+//::ng-deep .mat-divider {
+//  border-top-color: #5F5F6E;
+//}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -webkit-fill-available;
+  color: #FFFFFF;
+  border: 1px solid #2d2d3a;
+  border-radius: 5px;
+}

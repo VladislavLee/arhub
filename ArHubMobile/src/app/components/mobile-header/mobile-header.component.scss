@@ -35,6 +35,11 @@
     padding: 10px 0;
 
     .icon {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      object-fit: cover;
       margin-right: 10px;
       cursor: pointer;
     }

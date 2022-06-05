@@ -2,7 +2,7 @@
   <mat-toolbar class="footer">
     <div routerLink="/news" class="button-with-label">
       <button mat-mini-fab class="action">
-        <mat-icon class="icon">collections</mat-icon>
+        <mat-icon class="icon">wallpaper</mat-icon>
       </button>
       <label>Лента</label>
     </div>
@@ -21,11 +21,11 @@
       <label>Рядом</label>
     </div>
 
-    <div *ngIf="!isMobile" routerLink="/my-posts" class="button-with-label">
+    <div routerLink="/my-post-mobile" class="button-with-label">
       <button mat-mini-fab class="action">
         <mat-icon class="icon">folder_open</mat-icon>
       </button>
-      <label>Мои проекты</label>
+      <label>Публикации</label>
     </div>
   </mat-toolbar>
 </footer>

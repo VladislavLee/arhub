@@ -112,6 +112,14 @@ export class PostService {
     return this.httpClient.post(`${this.apiUrlContentManager}/likes/unlike/${id}`, '');
   }
 
+  addComment(comment: string, id: string) {
+    return this.httpClient.post(`${this.apiUrlContentManager}/comment/${id}`, {text: comment});
+  }
+
+  getComments(id: string) {
+    return this.httpClient.get(`${this.apiUrlContentManager}/comment/${id}`)
+  }
+
   mockPopularPost = [
     {
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",

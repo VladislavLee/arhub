@@ -6,6 +6,9 @@ import {PostService} from "../../services/post.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {CommentsModalComponent} from "../comments-modal/comments-modal.component";
 import {API_URL_DATASTORE} from "../../../URL_LIST";
+import {mergeMap} from "rxjs";
+import {ModelViewerModalComponent} from "../model-viewer-modal/model-viewer-modal.component";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-post',
@@ -18,10 +21,18 @@ export class PostComponent implements OnInit {
   liked = true;
   date = new Date();
 
-  constructor(private _router: Router, private postService: PostService, private _bottomSheet: MatBottomSheet) { }
+  VK_URL: string;
+
+  constructor(
+    private _router: Router,
+    private postService: PostService,
+    private _bottomSheet: MatBottomSheet,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.post)
+    console.log(this.post);
+    this.VK_URL = `https://vk.com/share.php?url=https://ar-hub-mobile-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com&title=${this.post.title}&image=${this.apiUrlDatastore}}/content/${this.post.previewImageId}`;
   }
 
   openCamera(post: PostResponse) {
@@ -32,14 +43,23 @@ export class PostComponent implements OnInit {
     })
   }
 
+  openViewerModal() {
+    this.dialog.open(ModelViewerModalComponent, {
+      // width: '250px',
+      data: {src: `${API_URL_DATASTORE}/content/${this.post.modelId}`, id: this.post.id},
+    });
+  }
+
   openComments() {
-    this._bottomSheet.open(CommentsModalComponent);
+    const bottomSheetRef = this._bottomSheet.open(CommentsModalComponent, {
+      data: this.post,
+    });
   }
 
   like(id: string) {
-    this.liked ? this.postService.likePost(id) : this.postService.unLikePost(id);
+    this.liked
+      ? this.postService.likePost(id).subscribe(() => this.post.likeCount++)
+      : this.postService.unLikePost(id).subscribe(() => this.post.likeCount--);
     this.liked = !this.liked;
   }
-
-
 }

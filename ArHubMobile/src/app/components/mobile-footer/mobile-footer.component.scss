@@ -21,6 +21,7 @@
       background-color: #1c1c24;
       color: #5F5F6E;
       box-shadow: none;
+      height: 30px;
     }
 
     label {
@@ -29,4 +30,7 @@
       color: #5F5F6E;
     }
   }
+}
+::ng-deep .mat-mini-fab .mat-button-wrapper {
+  padding: 0 !important;
 }

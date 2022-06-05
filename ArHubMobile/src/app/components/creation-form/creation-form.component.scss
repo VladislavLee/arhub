@@ -64,10 +64,16 @@
   }
 }
 
+.error {
+  display: flex;
+  margin-top: 8px;
+  width: 230px;
+  margin-left: 6px;
+}
+
 .file-downloader {
   display: flex;
   align-items: center;
-
 
   .done {
     margin-left: 10px;
@@ -82,7 +88,7 @@
 }
 
 button[mat-mini-fab] {
-  transform: scale(0.6) !important;
+  transform: scale(0.5) !important;
 }
 
 ::ng-deep .mat-form-field .mat-input-element {

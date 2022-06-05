@@ -1,9 +1,8 @@
 model-viewer {
-  position: relative;
-  float: left;
-  height: 30vw;
   --poster-color: #1c1c24;
   background-color: #1C1C24;
+  width: 300px;
+  height: 450px;
 }
 
 .actions {
@@ -11,17 +10,33 @@ model-viewer {
   display: flex;
   justify-content: space-between;
 
+  .editor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .button {
     color: #4447E2;
   }
 }
 
 .container {
-  background-color: #1C1C24;
+
 }
 
 ::ng-deep .mat-dialog-container {
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   padding: 0;
-  border-radius: 4px;
+  border-radius: 15px;
   background-color: #1C1C24;
+  //margin-top: -50px;
+  //margin-left: -50px;
+  width: fit-content;
+  height: 500px;
 }

@@ -33,7 +33,7 @@ import { NewsDesktopComponent } from './components/news-desktop/news-desktop.com
 import { PostArComponent } from './components/post-ar/post-ar.component';
 import { PopularPostComponent } from './components/popular-post/popular-post.component';
 import {PostService} from "./services/post.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { ArViewerComponent } from './components/ar-viewer/ar-viewer.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
@@ -59,6 +59,12 @@ import {DeviceDetectorGuard} from "./guards/device-detector.guard";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { LoginComponent } from './components/login/login.component';
 import {AuntificationGuard} from "./guards/auntification.guard";
+import { UserAccountMobileComponent } from './components/user-account-mobile/user-account-mobile.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+import { MyPostMobileComponent } from './components/my-post-mobile/my-post-mobile.component';
+import {fwcAPIInterceptor} from "./interceptors/fwc-api-interceptor.interceptor";
+import { UsersMobileComponent } from './components/users-mobile/users-mobile.component';
+import { UserCardMobileComponent } from './components/user-card-mobile/user-card-mobile.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +99,12 @@ import {AuntificationGuard} from "./guards/auntification.guard";
     MapModalComponent,
     AccountMobileComponent,
     MapMobileComponent,
-    LoginComponent
+    LoginComponent,
+    UserAccountMobileComponent,
+    UserAccountComponent,
+    MyPostMobileComponent,
+    UsersMobileComponent,
+    UserCardMobileComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +124,11 @@ import {AuntificationGuard} from "./guards/auntification.guard";
       {
         path: 'my-post',
         component: MyPostDesktopComponent,
+        canActivate: [AuntificationGuard]
+      },
+      {
+        path: 'my-post-mobile',
+        component: MyPostMobileComponent,
         canActivate: [AuntificationGuard]
       },
       {
@@ -153,6 +169,21 @@ import {AuntificationGuard} from "./guards/auntification.guard";
       {
         path: 'new-post/:id',
         component: CreatePostComponent,
+        canActivate: [AuntificationGuard]
+      },
+      {
+        path: 'user-mobile/:id',
+        component: UserAccountMobileComponent,
+        canActivate: [AuntificationGuard]
+      },
+      {
+        path: 'user/:id',
+        component: UserAccountComponent,
+        canActivate: [AuntificationGuard]
+      },
+      {
+        path: 'users-mobile',
+        component: UsersMobileComponent,
         canActivate: [AuntificationGuard]
       },
       {
@@ -198,6 +229,7 @@ import {AuntificationGuard} from "./guards/auntification.guard";
   ],
   providers: [
     PostService,
+    {provide: HTTP_INTERCEPTORS, useClass: fwcAPIInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],

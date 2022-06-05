@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="wrapper">
+  <app-page-title class="title" [fontSize]="22" [title]="'Имя пользователя'"></app-page-title>
+
+
+  <div class="container">
+    <div class="section">
+<!--      <mat-card class="photo">-->
+<!--        <img class="image" src="assets/image/photo.png" alt="">-->
+<!--&lt;!&ndash;        <button mat-stroked-button class="button">Подписаться</button>&ndash;&gt;-->
+<!--      </mat-card>-->
+
+      <img class="image" src="assets/image/photo.png" alt="">
+    </div>
+
+
+    <div class="form-container">
+      <div class="form">
+          <div class="statistic-block">
+            <button style="background: #f1dfff; color: #a86ce4" mat-fab class="statistic-button">
+              <mat-icon>note</mat-icon>
+            </button>
+
+            <div class="statistic-description">
+              <label class="count">{{832}}</label>
+              <label class="description">Публикации</label>
+            </div>
+          </div>
+
+          <div class="statistic-block">
+            <button style="background: #defee5; color: #50d96b" mat-fab class="statistic-button">
+              <mat-icon>group</mat-icon>
+            </button>
+
+            <div class="statistic-description">
+              <label class="count">{{42}}</label>
+              <label class="description">Подписчики</label>
+            </div>
+          </div>
+
+          <div class="statistic-block">
+            <button style="background: #fff6de; color: #ffa10b" mat-fab class="statistic-button">
+              <mat-icon>subscriptions</mat-icon>
+            </button>
+
+            <div class="statistic-description">
+              <label class="count">{{42}}</label>
+              <label class="description">Подписки</label>
+            </div>
+          </div>
+      </div>
+
+      <button mat-stroked-button class="button"><span class="span"></span>Подписаться</button>
+    </div>
+
+  </div>
+  <div class="loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <app-page-title *ngIf="!isLoadingResults" [fontSize]="22" [title]="'Публикации'"></app-page-title>
+
+
+  <div *ngIf="!isLoadingResults" class="post-container">
+    <ng-container *ngFor="let post of postList">
+      <app-my-post class="post"
+                   [post]="post"
+      ></app-my-post>
+    </ng-container>
+  </div>
+
+</div>
+<app-footer style=" margin-top: auto;"></app-footer>

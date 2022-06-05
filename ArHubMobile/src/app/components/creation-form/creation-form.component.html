@@ -23,10 +23,11 @@
             </button>
           </span>
         </div>
+        <mat-error class="error" *ngIf="getPreviewFieldValid()">{{getErrorMessage()}}</mat-error>
       </div>
-      <div class="form-field-with-label" style="width: 310px">
+      <div class="form-field-with-label" style="width: 310px; ">
         <label class="label"></label>
-        <div class="file-downloader" (click)="uploadMarkerFile.click()">
+        <div class="file-downloader" style="height: 46px " (click)="uploadMarkerFile.click()">
           <button mat-stroked-button class="upload-button"><mat-icon class="icon">push_pin</mat-icon>Загрузить маркер</button>
           <input #uploadMarkerFile (change)="uploadMarker($event)" type='file' style="display:none"/>
 
@@ -38,6 +39,7 @@
             </button>
           </span>
         </div>
+        <mat-error class="error" *ngIf="getMarkerFieldValid()">{{getErrorMessage()}}</mat-error>
       </div>
       <div class="form-field-with-label">
         <label class="label"></label>
@@ -48,6 +50,7 @@
           </button>
           <input #uploadModelFile type='file' (change)="uploadModel($event)" style="display:none"/>
 
+
           <span class="done" *ngIf="getModel()">
             <button mat-mini-fab class="complete">
               <mat-icon>done</mat-icon>
@@ -56,13 +59,15 @@
 
 
         </div>
+        <mat-error class="error" *ngIf="getModelFieldValid()">{{getErrorMessage()}}</mat-error>
+        <mat-error class="error" *ngIf="getModelFormatValid()">Файл должен иметь расширение glb</mat-error>
       </div>
 
       <div class="form-field-with-label" >
         <label class="label"></label>
         <div class="file-downloader">
           <button mat-stroked-button
-                  [ngStyle]="{ 'opacity': form.valid ? '1' : '0.3' }"
+                  [ngStyle]="{ 'opacity': form.valid ? '1' : '0.4' }"
                   [disabled]="!form.valid"
                   (click)="openMapModal()"
                   class="upload-button">
@@ -73,7 +78,7 @@
       </div>
     </form>
 
-    <button mat-stroked-button class="button" [disabled]="!form.valid" (click)="onSubmit()">Далее</button>
+    <button style="color: white; opacity: 0.4;" mat-stroked-button class="button" [disabled]="!form.valid" (click)="onSubmit()">Далее</button>
   </div>
 
 

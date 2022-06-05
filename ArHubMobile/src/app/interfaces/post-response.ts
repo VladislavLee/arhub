@@ -16,5 +16,6 @@ export interface PostResponse {
   ],
   cratedTime: number,
   likeCount: number,
-  commentCount: number
+  commentCount: number,
+  modelId?: string,
 }

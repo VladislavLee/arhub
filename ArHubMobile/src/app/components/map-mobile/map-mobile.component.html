@@ -1,6 +1,9 @@
+<app-mobile-header></app-mobile-header>
 <iframe id="frame"
+        allow="geolocation"
         style="display: flex;
     flex-direction: row;
     align-items: stretch;"
         [src]="safeSrc | async">
 </iframe>
+<app-mobile-footer></app-mobile-footer>

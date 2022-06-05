@@ -18,6 +18,7 @@ import {API_URL_DATASTORE, API_URL_MODEL_EDITOR, API_URL_REACT_VIEWER} from "../
 })
 export class CreationFormComponent implements OnInit {
   @Input() post: any;
+  defaultSizeFiles = 100000000;
 
   loaded = false;
   safeSrc: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject<SafeResourceUrl>('');
@@ -28,7 +29,7 @@ export class CreationFormComponent implements OnInit {
   saved = false;
 
   form = new FormGroup({
-    title: new FormControl(null, Validators.required),
+    title: new FormControl(null, [Validators.required]),
     preview: new FormControl(null, Validators.required),
     marker: new FormControl(null, Validators.required),
     markerVanilla: new FormControl(null, Validators.required),
@@ -46,6 +47,22 @@ export class CreationFormComponent implements OnInit {
     scale: [1.005, 1.005, 1.005],
     translation: [0, 0, 0.1],
   };
+
+  getPreviewFieldValid(): boolean {
+    return this.form.get('preview')?.getError('incorrectSize');
+  }
+
+  getMarkerFieldValid(): boolean {
+    return this.form.get('marker')?.getError('incorrectSize');
+  }
+
+  getModelFormatValid(): boolean {
+    return this.form.get('model')?.getError('incorrectFormat');
+  }
+
+  getModelFieldValid(): boolean {
+    return this.form.get('model')?.getError('incorrectSize');
+  }
 
   getPreview(): boolean {
     return !!this.form.get('preview')?.value;
@@ -129,27 +146,33 @@ export class CreationFormComponent implements OnInit {
   }
 
   uploadMarker(event: any) {
-    this.loaded = true;
-    this.form.get('markerVanilla')?.setValue(event.target.files[0])
-    var iframe = document.getElementById('frame');
-    var iWindow = (<HTMLIFrameElement>iframe).contentWindow;
+    if (this.sizeValidation(event.target.files[0], 'marker')) {
+      this.loaded = true;
+      this.form.get('markerVanilla')?.setValue(event.target.files[0])
+      var iframe = document.getElementById('frame');
+      var iWindow = (<HTMLIFrameElement>iframe).contentWindow;
 
-    console.log(event.target.files)
-    iWindow?.postMessage({
-      action: 'save',
-      key: 'keyForData',
-      type: 'message',
-      value: event.target.files,
-    }, '*')
+      console.log(event.target.files)
+      iWindow?.postMessage({
+        action: 'save',
+        key: 'keyForData',
+        type: 'message',
+        value: event.target.files,
+      }, '*')
+    }
   }
 
   uploadPreview(event: any) {
-    console.log(event.target.files[0])
-    this.form.get('preview')?.setValue(event.target.files[0]);
+    if (this.sizeValidation(event.target.files[0], 'preview')) {
+      this.form.get('preview')?.setValue(event.target.files[0]);
+    }
   }
 
   uploadModel(event: any) {
-    this.form.get('model')?.setValue(event.target.files[0]);
+    if(this.sizeValidation(event.target.files[0], 'model') &&
+      this.formatValidation(event.target.files[0], 'model')) {
+      this.form.get('model')?.setValue(event.target.files[0]);
+    }
   }
 
   openMapModal() {
@@ -212,5 +235,39 @@ export class CreationFormComponent implements OnInit {
 
       })
     )
+  }
+
+
+  sizeValidation(file: any, formControlName: string): boolean {
+      if (file.size > this.defaultSizeFiles) {
+        this.form.get(formControlName)?.setErrors({incorrectSize: true})
+        this.form.get(formControlName)?.setValue(null);
+        return false;
+      } else {
+        this.form.get(formControlName)?.setErrors(null);
+        this.form.get(formControlName)?.updateValueAndValidity();
+
+        return true;
+      }
+  }
+
+  formatValidation(file: any, formControlName: string): boolean {
+    const fileType = file.name.split('.').pop();
+
+    if (fileType !== 'glb') {
+      this.form.get(formControlName)?.setErrors({incorrectFormat: true})
+      this.form.get(formControlName)?.setValue(null);
+
+      return false;
+    } else {
+      this.form.get(formControlName)?.setErrors(null);
+      this.form.get(formControlName)?.updateValueAndValidity();
+
+      return true;
+    }
+  }
+
+  getErrorMessage() {
+    return 'Файл не должен превышать размер в 100Мб';
   }
 }

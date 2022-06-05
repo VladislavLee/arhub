@@ -10,6 +10,7 @@
     min-height: 144px;
     max-height: 144px;
     margin-bottom: 24px;
+    object-fit: cover;
   }
 
   &-header {
@@ -121,4 +122,21 @@ mat-divider {
     height: 24px;
     margin-right: 8px;
   }
+}
+
+.button {
+  width: -webkit-fill-available;
+  border: 1.5px solid #4447E2;
+  border-radius: 15px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FFFFFF;
+}
+
+.button:hover {
+  width: -webkit-fill-available;
+  border: 1.5px solid #4447E2;
+  background-color: #4447E2;
 }

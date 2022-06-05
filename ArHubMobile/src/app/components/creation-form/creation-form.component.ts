@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PostService} from "../../services/post.service";
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {environment} from "../../../environments/environment";
 import {BehaviorSubject, combineLatest, mergeMap, tap} from "rxjs";
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";

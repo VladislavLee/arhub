@@ -7,6 +7,7 @@ import { DecimalPipe } from '@angular/common';
 import {ModelViewerModalComponent} from "../../model-viewer-modal/model-viewer-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ImageViewerModalComponent} from "../../image-viewer-modal/image-viewer-modal.component";
+import {PostService} from "../../../services/post.service";
 
 @Component({
   selector: 'app-validation-image',
@@ -21,16 +22,20 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
+  isValid = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog) {
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private dialog: MatDialog,
+    private postService: PostService) {
   }
 
   ngAfterViewInit() {
     this.exampleDatabase = new ExampleHttpDatabase();
-    // If the user changes the sort order, reset back to the first page.
+
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
     merge(this.sort.sortChange, this.paginator.page)
@@ -45,7 +50,6 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
           );
         }),
         map(data => {
-          // Flip flag to show that loading has finished.
           this.isLoadingResults = false;
           this.isRateLimitReached = data === null;
 
@@ -53,10 +57,6 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
             return [];
           }
 
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
-          // this.resultsLength = data.total_count;
           return data.items;
         }),
       )
@@ -76,6 +76,13 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
     this.dialog.open(ImageViewerModalComponent, {
       data: {src: src},
     });
+  }
+
+  validate(id: string) {
+    console.log(id);
+    this.isValid
+      ? this.postService.validatePost(id).subscribe()
+      : this.postService.validatePost(id).subscribe();
   }
 
   ngOnInit() {

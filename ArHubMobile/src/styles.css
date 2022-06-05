@@ -11,6 +11,8 @@ html {
   /*overflow: hidden;*/
   background-color: #131419;
   /*overflow-y: auto;*/
+
+  font-family: 'NetflixSansRegular', serif;
 }
 
 body {
@@ -39,12 +41,12 @@ a {
 /*}*/
 
 @font-face {
-  font-family: "Aleo Regular";
-  src: url("assets/fonts/Aleo/Aleo-Regular.ttf");
+  font-family: "NetflixSansRegular";
+  src: url("assets/fonts/netflix-sans/NetflixSansRegular.ttf");
 }
 
 
-body { margin: 0; font-family: "Aleo Regular", "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "NetflixSansRegular", "Helvetica Neue", sans-serif; }
 ::-webkit-scrollbar {
   width: 0;  /* Remove scrollbar space */
   background: transparent;  /* Optional: just make scrollbar invisible */

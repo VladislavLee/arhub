@@ -3,7 +3,7 @@
     <div class="header-left">
       <div class="button-with-label">
         <button mat-icon-button class="button">
-          <mat-icon class="icon">flip_camera_ios</mat-icon>
+          <mat-icon style="color: #FFFFFF" class="icon">flip_camera_ios</mat-icon>
         </button>
         <label class="label">ARHub</label>
       </div>
@@ -17,13 +17,6 @@
         <label>Лента</label>
       </div>
 
-      <div class="button-with-label">
-        <button mat-mini-fab class="action">
-          <mat-icon class="icon">camera_alt</mat-icon>
-        </button>
-        <label>Камера</label>
-      </div>
-
       <div *ngIf="isMapVisible" routerLink="/map" class="button-with-label">
         <button mat-mini-fab class="action">
           <mat-icon class="icon">pin_drop</mat-icon>
@@ -35,20 +28,27 @@
         <button mat-mini-fab class="action">
           <mat-icon class="icon">folder_open</mat-icon>
         </button>
-        <label>Мои проекты</label>
+        <label>Мои публикации</label>
+      </div>
+
+      <div *ngIf="isAdmin" routerLink="/admin/validation" class="button-with-label">
+        <button mat-mini-fab class="action">
+          <mat-icon class="icon">verified_user</mat-icon>
+        </button>
+        <label>Валидация</label>
       </div>
     </div>
 
     <div class="header-right">
       <div class="add-post" (click)="createPost()">
         <button class="button" mat-icon-button>
-          <mat-icon>add</mat-icon>
+          <mat-icon style="color: #FFFFFF">add</mat-icon>
         </button>
 
         <label class="label">Опубликовать</label>
       </div>
 
-      <img class="icon" mat-card-avatar src="assets/image/Img.png" alt="">
+      <img style="color: #FFFFFF" class="icon" mat-card-avatar src="assets/image/Img.png" alt="">
 <!--      <mat-icon class="label">expand_less</mat-icon>-->
 
       <mat-icon  [matMenuTriggerFor]="menu" class="label">expand_more</mat-icon>

@@ -114,47 +114,47 @@ import { UserCardMobileComponent } from './components/user-card-mobile/user-card
       {
         path: '',
         component: NewsComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'news',
         component: NewsComponent,
-        canActivate: [AuntificationGuard]
-      },
-      {
-        path: 'my-post',
-        component: MyPostDesktopComponent,
-        canActivate: [AuntificationGuard]
-      },
-      {
-        path: 'my-post-mobile',
-        component: MyPostMobileComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'news-desktop',
         component: NewsDesktopComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
+      },
+      {
+        path: 'my-post',
+        component: MyPostDesktopComponent,
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
+      },
+      {
+        path: 'my-post-mobile',
+        component: MyPostMobileComponent,
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'new-post',
         component: CreatePostComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'ar-viewer',
         component: ArViewerComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'model/:id',
         component: ModelEditorComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'account',
         component: AccountDesktopComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'account-mobile',
@@ -164,32 +164,32 @@ import { UserCardMobileComponent } from './components/user-card-mobile/user-card
       {
         path: 'admin/validation',
         component: ValidationImageComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'new-post/:id',
         component: CreatePostComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'user-mobile/:id',
         component: UserAccountMobileComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'user/:id',
         component: UserAccountComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'users-mobile',
         component: UsersMobileComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'map',
         component: MapMobileComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'login',

@@ -117,7 +117,17 @@ export class PostService {
   }
 
   getComments(id: string) {
-    return this.httpClient.get(`${this.apiUrlContentManager}/comment/${id}`)
+    return this.httpClient.get(`${this.apiUrlContentManager}/comment/${id}`);
+  }
+
+  getInProgressPost() {}
+
+  validatePost(id: string) {
+    return this.httpClient.post(`${this.apiUrlContentManager}/validate/${id}`, '');
+  }
+
+  invalidatePost(id: string) {
+    return this.httpClient.post(`${this.apiUrlContentManager}/invalidate/${id}`, '');
   }
 
   mockPopularPost = [

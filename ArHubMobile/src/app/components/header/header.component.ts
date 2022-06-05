@@ -9,6 +9,7 @@ import {DeviceDetectorService} from "ngx-device-detector";
 })
 export class HeaderComponent implements OnInit {
   isMapVisible = false;
+  isAdmin = true;
 
   constructor(private _router: Router, private deviceService: DeviceDetectorService) { }
 

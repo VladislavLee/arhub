@@ -20,9 +20,34 @@ export class DeviceDetectorGuard implements CanActivate {
     switch (currentRoute) {
       case 'news':
         if (!isMobile) {
-          this._router.navigate(['/news-desktop'])
-          break;
+          this._router.navigate(['/news'])
         }
+        break;
+      case 'news-desktop':
+        if (isMobile) {
+          this._router.navigate(['/news']);
+        }
+        break;
+      case 'my-post':
+        if (isMobile) {
+          this._router.navigate(['/my-post-mobile']);
+        }
+        break;
+      case 'my-post-mobile':
+        if (!isMobile) {
+          this._router.navigate(['/my-post']);
+        }
+        break;
+      case 'account':
+        if (!isMobile) {
+          this._router.navigate(['/account-mobile']);
+        }
+        break;
+      case 'account-mobile':
+        if (isMobile) {
+          this._router.navigate(['/account']);
+        }
+        break;
     }
 
     return true;

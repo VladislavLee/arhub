@@ -1,8 +1,6 @@
 package com.myar.content.manager.entities.response.post;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.myar.content.manager.entities.response.DecimalSerializer;
-import com.myar.content.manager.entities.response.user.ShortUser;
+import com.myar.content.manager.entities.response.user.ShortUserResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,8 +27,8 @@ public class FullPostResponse {
     private List<BigDecimal> translation;
     private List<BigDecimal> scale;
 
-    private ShortUser author;
-    private List<ShortUser> lastRated;
+    private ShortUserResponse author;
+    private List<ShortUserResponse> lastRated;
 
     private long likeCount;
     private long commentCount;

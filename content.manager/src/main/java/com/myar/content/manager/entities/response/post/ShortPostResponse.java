@@ -1,18 +1,9 @@
 package com.myar.content.manager.entities.response.post;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.myar.content.manager.entities.response.DecimalSerializer;
-import com.myar.content.manager.entities.response.user.ShortUser;
+import com.myar.content.manager.entities.response.user.ShortUserResponse;
 import lombok.Builder;
 import lombok.Data;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,8 +15,8 @@ public class ShortPostResponse {
     private String previewImageId;
     private String title;
 
-    private ShortUser author;
-    private List<ShortUser> lastRated;
+    private ShortUserResponse author;
+    private List<ShortUserResponse> lastRated;
 
     private Long cratedTime;
     private long likeCount;

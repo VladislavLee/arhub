@@ -8,12 +8,15 @@ import com.myar.content.manager.repositories.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AuthorService {
+public class UserService {
 
     private static final int LAST_RATED_COUNT = 5;
 
@@ -25,5 +28,9 @@ public class AuthorService {
                 .stream()
                 .map(Like::getAuthor)
                 .collect(Collectors.toList());
+    }
+
+    public Author findUserById(UUID userId){
+        return authorRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
     }
 }

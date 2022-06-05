@@ -17,23 +17,13 @@ function init () {
         // Смещение маркера относительно курсора.
         markerOffset,
         markerPosition;
-
-    geolocation.get({
-        provider: 'yandex',
-        mapStateAutoApply: true
-    }).then(function (result) {
-        // Красным цветом пометим положение, вычисленное через ip.
-        result.geoObjects.options.set('preset', 'islands#redCircleIcon');
-        result.geoObjects.get(0).properties.set({
-            balloonContentBody: 'Мое местоположение'
-        });
-        myMap.geoObjects.add(result.geoObjects);
-    });
+    let myLocation = {}
 
     geolocation.get({
         provider: 'browser',
         mapStateAutoApply: true
     }).then(function (result) {
+        myLocation = result.geoObjects.position
         // Синим цветом пометим положение, полученное через браузер.
         // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
         result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
@@ -50,12 +40,38 @@ function init () {
                 console.log(post)
                 console.log(post.latitude, post.longitude)
                 console.log(post, parseFloat(post.latitude), parseFloat(post.longitude))
-                myMap.geoObjects.add(new ymaps.Placemark([parseFloat(post.latitude), parseFloat(post.longitude)], {
+
+                let point = new ymaps.Placemark([parseFloat(post.latitude), parseFloat(post.longitude)], {
                     balloonContent: post.title
                 }, {
                     preset: 'islands#circleIcon',
                     iconColor: '#3caa3c'
-                }))
+                });
+
+                let multiRoute = {}
+                point.events.add(['balloonopen'], function (e) {
+                     multiRoute = new ymaps.multiRouter.MultiRoute({
+                        referencePoints: [
+                            myLocation,
+                            [parseFloat(post.latitude), parseFloat(post.longitude)]
+                        ],
+                        params: {
+                            //Тип маршрутизации - пешеходная маршрутизация.
+                            routingMode: 'pedestrian'
+                        }
+                    }, {
+                        // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+                        boundsAutoApply: true
+                    });
+                    myMap.geoObjects.add(multiRoute);
+                });
+
+                point.events.add(['balloonclose'], function (e) {
+                    myMap.geoObjects.remove(multiRoute)
+                    console.log("event triggered", e)
+                });
+
+                myMap.geoObjects.add(point)
             }
             console.log(data);
         });

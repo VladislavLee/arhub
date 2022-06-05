@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class ShortUser {
+public class ShortUserResponse {
 
     private UUID id;
     private String username;

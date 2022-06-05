@@ -6,15 +6,12 @@ import com.myar.content.manager.entities.request.post.CreatePostRequest;
 import com.myar.content.manager.entities.response.post.FullPostResponse;
 import com.myar.content.manager.entities.response.post.ShortPostResponse;
 import com.myar.content.manager.entities.response.post.StoriesPostResponse;
-import com.myar.content.manager.entities.response.user.ShortUser;
-import com.myar.content.manager.services.CommentService;
+import com.myar.content.manager.entities.response.user.ShortUserResponse;
 import com.myar.content.manager.services.LikeService;
-import com.myar.content.manager.services.PostService;
-import com.myar.content.manager.services.AuthorService;
+import com.myar.content.manager.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.time.ZoneId;
 import java.util.stream.Collectors;
 
@@ -22,7 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PostMapper {
 
-    private final AuthorService authorService;
+    private final UserService userService;
     private final LikeService likeService;
 
     public Post convertCreatePostRequestToPost(CreatePostRequest createPostRequest) {
@@ -49,7 +46,7 @@ public class PostMapper {
                 .previewImageId(post.getPreviewImageId())
                 .title(post.getTitle())
                 .author(authorToShortUser(post.getAuthor()))
-                .lastRated(authorService.getLastRatedUsersByPost(post)
+                .lastRated(userService.getLastRatedUsersByPost(post)
                         .stream()
                         .map(this::authorToShortUser)
                         .collect(Collectors.toList()))
@@ -74,7 +71,7 @@ public class PostMapper {
                 .scale(post.getScale())
                 .translation(post.getTranslation())
                 .author(authorToShortUser(post.getAuthor()))
-                .lastRated(authorService.getLastRatedUsersByPost(post)
+                .lastRated(userService.getLastRatedUsersByPost(post)
                         .stream()
                         .map(this::authorToShortUser)
                         .collect(Collectors.toList()))
@@ -93,8 +90,8 @@ public class PostMapper {
                 .build();
     }
 
-    private ShortUser authorToShortUser(Author author) {
-        return ShortUser.builder()
+    private ShortUserResponse authorToShortUser(Author author) {
+        return ShortUserResponse.builder()
                 .id(author.getId())
                 .username(author.getUsername())
                 .avatarImageId(author.getAvatarImageId())

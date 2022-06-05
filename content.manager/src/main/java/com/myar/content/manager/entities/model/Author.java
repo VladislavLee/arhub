@@ -39,4 +39,9 @@ public class Author {
     private List<Post> posts;
     @OneToMany(mappedBy="author")
     private List<Like> likes;
+
+    @ManyToMany(mappedBy = "subscription")
+    private List<Author> subscribers;
+    @ManyToMany
+    private List<Author> subscription;
 }

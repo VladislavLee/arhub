@@ -14,5 +14,7 @@ import java.util.UUID;
 public class CommentResponse {
 
     private UUID authorAvatarImageId;
+    private String userName;
     private String text;
+    private Long timestamp;
 }

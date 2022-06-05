@@ -5,6 +5,7 @@ import com.myar.content.manager.entities.model.Post;
 import com.myar.content.manager.entities.model.Author;
 import com.myar.content.manager.repositories.LikeRepository;
 import com.myar.content.manager.repositories.AuthorRepository;
+import com.myar.content.manager.security.UserContextHolder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,12 @@ public class UserService {
 
     private final AuthorRepository authorRepository;
     private final LikeRepository likeRepository;
+    private final UserContextHolder userContextHolder;
 
+
+    public Author createAuthor(Author author){
+        return authorRepository.save(author);
+    }
     public List<Author> getLastRatedUsersByPost(Post post) {
         return likeRepository.findLastRated(post, LAST_RATED_COUNT)
                 .stream()
@@ -32,5 +38,28 @@ public class UserService {
 
     public Author findUserById(UUID userId){
         return authorRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
+    }
+
+    public Author findUserByUserName(String username){
+        return authorRepository.findByUsername(username);
+    }
+
+    public void subscribeToUser(UUID userId){
+        Author currentAuthor = userContextHolder.getUser();
+        Author targetAuthor = authorRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
+
+        targetAuthor.getSubscription().add(currentAuthor);
+        authorRepository.save(targetAuthor);
+    }
+
+    public void unSubscribeFromUser(UUID userId){
+        Author currentAuthor = userContextHolder.getUser();
+        Author targetAuthor = authorRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
+
+        List<Author> subscriptions = targetAuthor.getSubscription().stream()
+                .filter(x->x.getId()!=currentAuthor.getId())
+                .collect(Collectors.toList());
+        targetAuthor.setSubscription(subscriptions);
+        authorRepository.save(targetAuthor);
     }
 }

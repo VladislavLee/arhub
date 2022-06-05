@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -39,13 +40,16 @@ public class Post {
     private LocalDateTime created;
 
     private String title;
-    @Lob
+
     @Column
     private String description;
     private String previewImageId;
     private String markerImageId;
     private String markerVanillaMarkerId;
     private String modelId;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.IN_PROGRESS;
+
     @ElementCollection
     private List<BigDecimal> rotation;
     @ElementCollection
@@ -67,5 +71,7 @@ public class Post {
     @OneToMany(mappedBy="post", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
-
+    public enum Status{
+        IN_PROGRESS, VALID, INVALID, BLOCKED
+    }
 }

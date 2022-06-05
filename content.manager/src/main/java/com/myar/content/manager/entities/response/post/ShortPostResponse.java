@@ -1,5 +1,6 @@
 package com.myar.content.manager.entities.response.post;
 
+import com.myar.content.manager.entities.model.Post;
 import com.myar.content.manager.entities.response.user.ShortUserResponse;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class ShortPostResponse {
     private Long cratedTime;
     private long likeCount;
     private long commentCount;
+    private Post.Status status;
 
     private String latitude;
     private String longitude;

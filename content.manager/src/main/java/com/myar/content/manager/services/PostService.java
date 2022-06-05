@@ -28,17 +28,18 @@ public class PostService {
 
     private final LikeRepository likeRepository;
 
-    public Post createPost(Post post, UUID cityId) {
+    public Post createPost(Post post) {
         final Author author = userContextHolder.getUser();
-        final City city = cityRepository.findById(cityId).orElseThrow(EntityNotFoundException::new);
+        final City city = author.getCity();
         post.setAuthor(author);
         post.setCity(city);
+        post.setStatus(Post.Status.IN_PROGRESS);
         //
         Post savedPost = postRepository.save(post);
-        likeRepository.save(Like.builder()
-                .author(author)
-                .post(post)
-                .build());
+//        likeRepository.save(Like.builder()
+//                .author(author)
+//                .post(post)
+//                .build());
         //
 
         return savedPost;
@@ -56,6 +57,7 @@ public class PostService {
         Optional.ofNullable(post.getTranslation()).ifPresent(originalPost::setTranslation);
         Optional.ofNullable(post.getLatitude()).ifPresent(originalPost::setLatitude);
         Optional.ofNullable(post.getLongitude()).ifPresent(originalPost::setLongitude);
+        Optional.ofNullable(post.getStatus()).ifPresent(originalPost::setStatus);
 
         return postRepository.save(originalPost);
     }
@@ -68,21 +70,35 @@ public class PostService {
         final Author author = userContextHolder.getUser();
 
         return postRepository
-                .findAllByCity(author.getCity(), PageRequest.of(pageNumber, count, Sort.by(Sort.Direction.DESC, "created")));
+                .findAllByCityAndStatus(author.getCity(), Post.Status.VALID, PageRequest.of(pageNumber, count, Sort.by(Sort.Direction.DESC, "created")));
     }
 
     public List<Post> getNearest() {
         final Author author = userContextHolder.getUser();
 
         return postRepository
-                .findAllByCity(author.getCity());
+                .findAllByCityAndStatus(author.getCity(), Post.Status.VALID);
     }
 
     public List<Post> getPopular() {
-        return postRepository.findAllPostsWithLikesCountOrderByCountDesc(PageRequest.of(0, 5))
+        List<Post> list = postRepository.findAllPostsWithLikesCountOrderByCountDesc(PageRequest.of(0, 5))
                 .stream()
                 .map(PostWithLikeCount::getPost)
                 .collect(Collectors.toList());
+        if(list.isEmpty()){
+            return getRecommended(0, 5);
+        } else {
+            return list;
+        }
+    }
+
+    public List<Post> getMyPosts() {
+        final Author author = userContextHolder.getUser();
+        return postRepository.findAllByAuthorOrderByStatus(author);
+    }
+
+    public List<Post> getPostsByStatus(Post.Status status) {
+        return postRepository.findAllByStatus(status);
     }
 
     public List<Post> getMyPostList() {

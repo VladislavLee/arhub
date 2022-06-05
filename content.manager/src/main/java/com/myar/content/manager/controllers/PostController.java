@@ -26,7 +26,7 @@ public class PostController {
     @PostMapping
     public UUID createPost(@RequestBody CreatePostRequest createPostRequest) {
         final Post post = postMapper.convertCreatePostRequestToPost(createPostRequest);
-        return postService.createPost(post, createPostRequest.getCityId()).getId();
+        return postService.createPost(post).getId();
     }
 
     @GetMapping("/recommended")
@@ -45,8 +45,15 @@ public class PostController {
 
     @GetMapping("/my")
     public List<StoriesPostResponse> getMyPosts() {
-        return postService.getPopular().stream()
+        return postService.getMyPosts().stream()
                 .map(postMapper::convertPostToStoriesPostResponse)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/status/{status}")
+    public List<ShortPostResponse> getAllPostsWithStatus(@RequestParam("status") Post.Status status) {
+        return postService.getPostsByStatus(status).stream()
+                .map(postMapper::convertPostToShortPostResponse)
                 .collect(Collectors.toList());
     }
 

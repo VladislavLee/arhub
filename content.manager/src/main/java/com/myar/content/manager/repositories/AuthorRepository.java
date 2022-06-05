@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface AuthorRepository extends CrudRepository<Author, UUID> {
+
+    Author findByUsername(String username);
 }

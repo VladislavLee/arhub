@@ -35,6 +35,7 @@ public class PostMapper {
                 .scale(createPostRequest.getScale())
                 .latitude(createPostRequest.getLatitude())
                 .longitude(createPostRequest.getLongitude())
+                .status(createPostRequest.getStatus())
                 .build();
     }
 
@@ -55,6 +56,7 @@ public class PostMapper {
                 .latitude(post.getLatitude())
                 .longitude(post.getLongitude())
                 .cratedTime(post.getCreated().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                .status(post.getStatus())
                 .build();
     }
 

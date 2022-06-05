@@ -1,5 +1,6 @@
 package com.myar.content.manager.entities.response.post;
 
+import com.myar.content.manager.entities.model.Post;
 import com.myar.content.manager.entities.response.user.ShortUserResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

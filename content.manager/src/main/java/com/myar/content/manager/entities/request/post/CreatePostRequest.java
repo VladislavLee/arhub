@@ -1,5 +1,6 @@
 package com.myar.content.manager.entities.request.post;
 
+import com.myar.content.manager.entities.model.Post;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ public class CreatePostRequest {
     private UUID cityId;
     private String latitude;
     private String longitude;
+    private Post.Status status;
     private List<BigDecimal> rotation;
     private List<BigDecimal> translation;
     private List<BigDecimal> scale;

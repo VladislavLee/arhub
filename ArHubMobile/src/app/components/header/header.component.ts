@@ -9,7 +9,7 @@ import {DeviceDetectorService} from "ngx-device-detector";
 })
 export class HeaderComponent implements OnInit {
   isMapVisible = false;
-  isAdmin = true;
+  isAdmin = window.localStorage.getItem('login') === 'admin';
 
   constructor(private _router: Router, private deviceService: DeviceDetectorService) { }
 
@@ -19,5 +19,11 @@ export class HeaderComponent implements OnInit {
 
   createPost() {
     this._router.navigate([`/new-post`]);
+  }
+
+  logout(){
+    window.localStorage.removeItem('login')
+    this._router.navigate(['/login'])
+    console.log("logout")
   }
 }

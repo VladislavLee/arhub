@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private userService: UserService
   ) {
     // redirect to home if already logged in
     // if (false) {
@@ -42,8 +44,20 @@ export class LoginComponent implements OnInit {
     window.localStorage.setItem('login', 'login')
     // stop here if form is invalid
 
-    this.router.navigate(['/news'])
+    //
     this.loading = true;
+    const username = this.loginForm.get("username")?.value;
+
+    this.userService.getUserIdByUsername(username).subscribe(value => {
+      if(value === null){
+        console.log("not login")
+      } else {
+        console.log(value)
+        window.localStorage.setItem('login', username)
+        this.router.navigate(['/news'])
+      }
+    })
+
     // this.authenticationService.login(
     //   this.f.username.value,
     //   this.f.password.value).subscribe(() =>

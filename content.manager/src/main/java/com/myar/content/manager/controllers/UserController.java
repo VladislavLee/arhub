@@ -1,6 +1,7 @@
 package com.myar.content.manager.controllers;
 
 import com.myar.content.manager.entities.mapper.UserMapper;
+import com.myar.content.manager.entities.model.Author;
 import com.myar.content.manager.entities.request.user.CreateUserRequest;
 import com.myar.content.manager.entities.response.user.UserResponse;
 import com.myar.content.manager.services.UserService;
@@ -36,7 +37,12 @@ public class UserController {
 
     @GetMapping("/{username}/id")
     public UUID getUserIdBtUsername(@PathVariable("username") String username) {
-        return userService.findUserByUserName(username).getId();
+        Author author = userService.findUserByUserName(username);
+        if(author != null){
+            return author.getId();
+        } else {
+            return null;
+        }
     }
 
     @PostMapping("/subscribe/{id}")

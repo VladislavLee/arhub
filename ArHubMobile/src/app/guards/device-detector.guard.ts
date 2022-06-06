@@ -17,10 +17,15 @@ export class DeviceDetectorGuard implements CanActivate {
     const isMobile = this.deviceService.isMobile();
     const currentRoute = route.routeConfig?.path;
 
+    if (window.localStorage.getItem('login') === 'admin') {
+      console.log("navigate to admin")
+      this._router.navigate(['/admin/validation'])
+    }
+
     switch (currentRoute) {
       case 'news':
         if (!isMobile) {
-          this._router.navigate(['/news'])
+          this._router.navigate(['/news-desktop'])
         }
         break;
       case 'news-desktop':
@@ -39,12 +44,13 @@ export class DeviceDetectorGuard implements CanActivate {
         }
         break;
       case 'account':
-        if (!isMobile) {
+        if (isMobile) {
           this._router.navigate(['/account-mobile']);
         }
         break;
       case 'account-mobile':
-        if (isMobile) {
+        console.log("aca", isMobile)
+        if (!isMobile) {
           this._router.navigate(['/account']);
         }
         break;

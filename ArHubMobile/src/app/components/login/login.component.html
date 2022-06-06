@@ -23,7 +23,7 @@
 
   <div class="container" style="margin-top: 200px">
     <div class="section">
-      <form class="form">
+      <form class="form" [formGroup]="loginForm">
         <div style="
         color: #FFFFFF;
         width: 330px;
@@ -38,11 +38,11 @@
         </div>
         <div class="form-field-with-label">
           <label class="label-field">Логин</label>
-          <input class="input-field" placeholder="Введите логин" type="text">
+          <input class="input-field" formControlName="username" placeholder="Введите логин" type="text">
         </div>
         <div class="form-field-with-label">
           <label class="label-field">Пароль</label>
-          <input class="input-field" placeholder="Введите пароль" type="password">
+          <input class="input-field" formControlName="password" placeholder="Введите пароль" type="password">
         </div>
 
         <button (click)="onSubmit()" style="margin-top: 20px; width: 330px;" mat-stroked-button class="button">Войти</button>

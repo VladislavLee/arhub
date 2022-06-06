@@ -8,11 +8,7 @@
   <app-page-title class="title" [title]="'Истории'"></app-page-title>
 
   <div class="container-post">
-    <app-post-ar class="post"></app-post-ar>
-    <app-post-ar class="post"></app-post-ar>
-    <app-post-ar class="post"></app-post-ar>
-    <app-post-ar class="post"></app-post-ar>
-    <app-post-ar class="post"></app-post-ar>
+    <app-post-ar *ngFor="let post of posts | async" [post]="post" class="post"></app-post-ar>
   </div>
 </div>
 

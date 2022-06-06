@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {DeviceDetectorService} from "ngx-device-detector";
 
 @Injectable({
@@ -19,9 +19,11 @@ export class AuntificationGuard implements CanActivate {
     console.log(isLogin)
 
     if (!isLogin) {
+      console.log('qwe')
       this._router.navigate(['/login'])
+      return false;
+    } else {
+      return true;
     }
-
-    return true;
   }
 }

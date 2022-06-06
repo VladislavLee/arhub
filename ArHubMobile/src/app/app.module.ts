@@ -65,6 +65,7 @@ import { MyPostMobileComponent } from './components/my-post-mobile/my-post-mobil
 import {fwcAPIInterceptor} from "./interceptors/fwc-api-interceptor.interceptor";
 import { UsersMobileComponent } from './components/users-mobile/users-mobile.component';
 import { UserCardMobileComponent } from './components/user-card-mobile/user-card-mobile.component';
+import {AdminGuard} from "./guards/admin.guard";
 
 @NgModule({
   declarations: [
@@ -159,12 +160,12 @@ import { UserCardMobileComponent } from './components/user-card-mobile/user-card
       {
         path: 'account-mobile',
         component: AccountMobileComponent,
-        canActivate: [AuntificationGuard]
+        canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
         path: 'admin/validation',
         component: ValidationImageComponent,
-        canActivate: [AuntificationGuard, DeviceDetectorGuard]
+        canActivate: [AuntificationGuard, AdminGuard]
       },
       {
         path: 'new-post/:id',

@@ -3,10 +3,11 @@
   <div class="container">
     <app-page-title [fontSize]="18" [title]="'Мои публикации'"></app-page-title>
 
-    <app-post
-      *ngFor="let post of posts | async"
-      [post]="post"
-    ></app-post>
+    <ng-container *ngFor="let post of posts">
+      <app-my-post class="post"
+                   [post]="post"
+      ></app-my-post>
+    </ng-container>
   </div>
 </div>
 <app-mobile-footer style=" margin-top: auto;"></app-mobile-footer>

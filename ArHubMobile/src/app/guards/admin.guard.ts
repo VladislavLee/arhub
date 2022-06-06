@@ -14,6 +14,7 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+    console.log('admin guard')
     if(window.localStorage.getItem('login') === 'admin'){
       console.log("is admin")
       return true;

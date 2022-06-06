@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -66,6 +66,10 @@ import {fwcAPIInterceptor} from "./interceptors/fwc-api-interceptor.interceptor"
 import { UsersMobileComponent } from './components/users-mobile/users-mobile.component';
 import { UserCardMobileComponent } from './components/user-card-mobile/user-card-mobile.component';
 import {AdminGuard} from "./guards/admin.guard";
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
@@ -231,6 +235,7 @@ import {AdminGuard} from "./guards/admin.guard";
   providers: [
     PostService,
     {provide: HTTP_INTERCEPTORS, useClass: fwcAPIInterceptor, multi: true},
+    { provide: LOCALE_ID, useValue: 'ru' }
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA],

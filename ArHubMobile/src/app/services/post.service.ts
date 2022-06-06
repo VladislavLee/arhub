@@ -92,7 +92,7 @@ export class PostService {
 
   //TODO change api url
   getMyPost(): Observable<any> {
-    return of(this.mockMyPost);
+    return this.httpClient.get(`${this.apiUrlContentManager}/posts/my`);
   }
 
   getPopularPost(): Observable<any> {
@@ -119,8 +119,6 @@ export class PostService {
   getComments(id: string) {
     return this.httpClient.get(`${this.apiUrlContentManager}/comment/${id}`);
   }
-
-  getInProgressPost() {}
 
   validatePost(id: string) {
     return this.httpClient.post(`${this.apiUrlContentManager}/validate/${id}`, '');

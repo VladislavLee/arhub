@@ -19,7 +19,7 @@ export class AuntificationGuard implements CanActivate {
     console.log(isLogin)
 
     if (!isLogin) {
-      console.log('qwe')
+      console.log('login guard')
       this._router.navigate(['/login'])
       return false;
     } else {

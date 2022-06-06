@@ -86,6 +86,10 @@ export class CreationFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form.valueChanges.subscribe(value => {
+      console.log(this.form.valid)
+    })
+
     if (this.post) {
       combineLatest(
         // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'preview'),

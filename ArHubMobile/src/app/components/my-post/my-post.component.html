@@ -1,22 +1,27 @@
 <mat-card class="post">
   <div class="wrapper">
-    <mat-card-header >
+
+    <mat-card-header>
       <div class="header">
         <div class="left">
           <mat-card-title class="title">{{post.title}}</mat-card-title>
-          <mat-card-subtitle class="subtitle">{{post.cratedTime}}</mat-card-subtitle>
+          <mat-card-subtitle class="subtitle">{{post.cratedTime | date: 'hh:mm'}}</mat-card-subtitle>
         </div>
 
         <div class="right">
-          <button mat-icon-button style="color: white" [matMenuTriggerFor]="menu" aria-label="">
-            <mat-icon>more_vert</mat-icon>
-          </button>
+          <div style="display: flex; align-items: center;">
+            <span *ngIf="post.status === 'IN_PROGRESS'" class="moderation"><mat-icon style="color: #ffa10b">sync_problem</mat-icon> <label style="margin-top: 2px; margin-left: 4px">Модерация</label></span>
+            <span *ngIf="post.status === 'BLOCKED'" class="moderation" style="color: #e24444"><mat-icon style="color: #e24444">lock</mat-icon> <label style="margin-top: 2px; margin-left: 4px">Заблокирован</label></span>
+            <button mat-icon-button style="color: white" [matMenuTriggerFor]="menu" aria-label="">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
           <mat-menu #menu="matMenu">
             <button style="color: white" mat-menu-item>
               <mat-icon>delete</mat-icon>
               <span>Удалить</span>
             </button>
-            <button (click)="editPost(post.id)" style="color: white" mat-menu-item>
+            <button *ngIf="!isMobile" (click)="editPost(post.id)" style="color: white" mat-menu-item>
               <mat-icon>mode_edit</mat-icon>
               <span>Редактировать</span>
             </button>
@@ -32,7 +37,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-stroked-button class="button" (click)="openViewerModal()">3D/AR</button>
+      <button mat-stroked-button class="button" (click)="openViewerModal()">Просмотр в 3D</button>
     </mat-card-actions>
   </div>
 </mat-card>

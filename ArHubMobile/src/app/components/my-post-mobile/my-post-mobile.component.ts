@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {PostService} from "../../services/post.service";
+import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
   selector: 'app-my-post-mobile',
@@ -8,7 +9,7 @@ import {PostService} from "../../services/post.service";
   styleUrls: ['./my-post-mobile.component.scss']
 })
 export class MyPostMobileComponent implements OnInit {
-  posts: BehaviorSubject<any> = new BehaviorSubject([]);
+  posts: any;
   sum = 10;
   pageNumber = 0;
   throttle = 0;
@@ -16,19 +17,18 @@ export class MyPostMobileComponent implements OnInit {
   scrollUpDistance = 2;
   direction = "";
   modalOpen = false;
+  isMobile: boolean;
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private deviceService: DeviceDetectorService) {
   }
 
   ngOnInit(): void {
     this.appendItems();
+    this.isMobile = this.deviceService.isMobile();
   }
 
   appendItems() {
-    this.postService.getRecommendedPosts(5, this.pageNumber).subscribe(value => {
-      this.posts.next(this.posts.getValue().concat(value))
-      this.pageNumber++;
-    });
+    this.postService.getMyPost().subscribe(value => this.posts = value);
   }
 
   onScrollDown() {

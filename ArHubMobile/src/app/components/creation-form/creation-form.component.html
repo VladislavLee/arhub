@@ -50,14 +50,11 @@
           </button>
           <input #uploadModelFile type='file' (change)="uploadModel($event)" style="display:none"/>
 
-
           <span class="done" *ngIf="getModel()">
             <button mat-mini-fab class="complete">
               <mat-icon>done</mat-icon>
             </button>
           </span>
-
-
         </div>
         <mat-error class="error" *ngIf="getModelFieldValid()">{{getErrorMessage()}}</mat-error>
         <mat-error class="error" *ngIf="getModelFormatValid()">Файл должен иметь расширение glb</mat-error>
@@ -78,7 +75,7 @@
       </div>
     </form>
 
-    <button style="color: white; opacity: 0.4;" mat-stroked-button class="button" [disabled]="!form.valid" (click)="onSubmit()">Далее</button>
+    <button style="color: white;" [ngStyle]="{ 'opacity': form.valid ? '1' : '0.4' }" mat-stroked-button class="button" [disabled]="!form.valid" (click)="onSubmit()">Далее</button>
   </div>
 
 

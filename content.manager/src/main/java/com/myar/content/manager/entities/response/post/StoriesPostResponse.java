@@ -17,4 +17,5 @@ public class StoriesPostResponse {
     private String modelId;
     private Post.Status status;
     private String title;
+    private long createdTime;
 }

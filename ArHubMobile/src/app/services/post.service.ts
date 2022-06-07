@@ -122,11 +122,17 @@ export class PostService {
   }
 
   validatePost(id: string) {
-    return this.httpClient.post(`${this.apiUrlContentManager}/validate/${id}`, '');
+    const body = {
+      status: "VALID"
+    }
+    return this.httpClient.patch(`${this.apiUrlContentManager}/posts/${id}`, body);
   }
 
-  invalidatePost(id: string) {
-    return this.httpClient.post(`${this.apiUrlContentManager}/invalidate/${id}`, '');
+  blockPost(id: string) {
+    const body = {
+      status: "BLOCKED"
+    }
+    return this.httpClient.patch(`${this.apiUrlContentManager}/posts/${id}`, body);
   }
 
   mockPopularPost = [

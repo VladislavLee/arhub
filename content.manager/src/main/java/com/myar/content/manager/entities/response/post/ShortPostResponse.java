@@ -19,13 +19,13 @@ public class ShortPostResponse {
     private String modelId;
     private String title;
 
+    private Post.Status status;
     private ShortUserResponse author;
     private List<ShortUserResponse> lastRated;
 
-    private Long cratedTime;
+    private long createdTime;
     private long likeCount;
     private long commentCount;
-    private Post.Status status;
 
     private String latitude;
     private String longitude;

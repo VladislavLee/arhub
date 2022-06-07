@@ -56,7 +56,7 @@ public class PostMapper {
                 .commentCount(post.getComments().size())
                 .latitude(post.getLatitude())
                 .longitude(post.getLongitude())
-                .cratedTime(post.getCreated().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
+                .createdTime(post.getCreated().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                 .status(post.getStatus())
                 .build();
     }
@@ -82,6 +82,7 @@ public class PostMapper {
                 .commentCount(post.getComments().size())
                 .latitude(post.getLatitude())
                 .longitude(post.getLongitude())
+                .createdTime(post.getCreated().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                 .build();
     }
 
@@ -93,6 +94,7 @@ public class PostMapper {
                 .markerVanillaMarkerId(post.getMarkerVanillaMarkerId())
                 .modelId(post.getModelId())
                 .title(post.getTitle())
+                .createdTime(post.getCreated().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
                 .build();
     }
 

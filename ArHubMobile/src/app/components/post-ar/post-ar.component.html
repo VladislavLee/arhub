@@ -7,8 +7,8 @@
     </mat-card-content>
     <mat-card-actions class="description">
       <div class="text">
-        <p class="title">title</p>
-        <p class="subtitle">date</p>
+        <p class="title">{{post.title}}</p>
+        <p class="subtitle">{{post.createdTime | date}}</p>
       </div>
 
       <div class="actions">
@@ -16,13 +16,13 @@
             <button mat-mini-fab class="action">
               <mat-icon class="icon">thumb_up_off_alt</mat-icon>
             </button>
-            <label class="label">{{0}}</label>
+            <label class="label">{{post.likeCount}}</label>
           </div>
           <div (click)="openComments()" class="button-with-label">
             <button mat-mini-fab class="action">
               <mat-icon class="icon">chat_bubble_outline</mat-icon>
             </button>
-            <label class="label">{{7}}</label>
+            <label class="label">{{post.commentCount}}</label>
           </div>
         <button mat-mini-fab class="action" [matMenuTriggerFor]="menu">
           <mat-icon class="icon">share</mat-icon>

@@ -18,4 +18,5 @@ export interface PostResponse {
   likeCount: number,
   commentCount: number,
   modelId?: string,
+  createdTime: any,
 }

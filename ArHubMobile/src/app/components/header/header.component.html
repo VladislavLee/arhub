@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="header-middle">
+    <div *ngIf="!isAdmin" class="header-middle">
       <div routerLink="/news" class="button-with-label">
         <button mat-mini-fab class="action">
           <mat-icon class="icon">collections</mat-icon>
@@ -17,14 +17,14 @@
         <label>Лента</label>
       </div>
 
-      <div *ngIf="isMapVisible" routerLink="/map" class="button-with-label">
+      <div *ngIf="isMapVisible && !isAdmin" routerLink="/map" class="button-with-label">
         <button mat-mini-fab class="action">
           <mat-icon class="icon">pin_drop</mat-icon>
         </button>
         <label>Рядом</label>
       </div>
 
-      <div routerLink="/my-post" class="button-with-label">
+      <div *ngIf="!isAdmin" routerLink="/my-post" class="button-with-label">
         <button mat-mini-fab class="action">
           <mat-icon class="icon">folder_open</mat-icon>
         </button>
@@ -55,7 +55,7 @@
 
       <mat-menu style="background: #1c1c24" #menu="matMenu">
         <mat-list role="list">
-          <mat-list-item role="listitem">
+          <mat-list-item *ngIf="!isAdmin" role="listitem">
             <button routerLink="/account-mobile" class="button" mat-stroked-button
                     style="color: white; border: none; padding-left: 2px">
               <mat-icon style="margin-right: 10px">person</mat-icon>

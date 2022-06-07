@@ -15,6 +15,7 @@ public class CommentResponse {
 
     private UUID authorAvatarImageId;
     private String userName;
+    private UUID userId;
     private String text;
     private Long timestamp;
 }

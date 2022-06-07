@@ -40,6 +40,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    if(this.loginForm.get("username")?.value != this.loginForm.get("password")?.value){
+      return;
+    }
 
     window.localStorage.setItem('login', 'login')
     // stop here if form is invalid

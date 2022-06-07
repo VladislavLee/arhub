@@ -10,9 +10,10 @@
 
 
   <div *ngIf="!isLoadingResults" class="post-container">
-    <ng-container *ngFor="let post of postList">
+    <ng-container *ngFor="let post of postList | async">
       <app-my-post class="post"
                    [post]="post"
+                   [deleteCallback]="refresh"
       ></app-my-post>
     </ng-container>
   </div>

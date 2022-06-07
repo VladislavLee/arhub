@@ -5,6 +5,7 @@ import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
 import {API_URL_DATASTORE} from "../../../URL_LIST";
 import {DeviceDetectorService} from "ngx-device-detector";
+import {PostService} from "../../services/post.service";
 
 @Component({
   selector: 'app-my-post',
@@ -13,10 +14,14 @@ import {DeviceDetectorService} from "ngx-device-detector";
 })
 export class MyPostComponent implements OnInit {
   @Input() post: any;
+  @Input() deleteCallback: any;
   apiUrlDatastore = API_URL_DATASTORE;
   isMobile: boolean;
 
-  constructor(private dialog: MatDialog, private _router: Router, private deviceService: DeviceDetectorService ) { }
+  constructor(private dialog: MatDialog,
+              private _router: Router,
+              private deviceService: DeviceDetectorService,
+              private postService: PostService) { }
 
   ngOnInit(): void {
     console.log(this.post)
@@ -32,5 +37,11 @@ export class MyPostComponent implements OnInit {
 
   editPost(id: string) {
     this._router.navigate([`/new-post/${id}`]);
+  }
+
+  delete(){
+    this.postService.deletePost(this.post.id).subscribe(value => {
+      this.deleteCallback()
+    })
   }
 }

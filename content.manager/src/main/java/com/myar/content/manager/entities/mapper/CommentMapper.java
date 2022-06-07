@@ -14,6 +14,7 @@ public class CommentMapper {
                 .authorAvatarImageId(comment.getAuthor().getAvatarImageId())
                 .userName(comment.getAuthor().getUsername())
                 .text(comment.getText())
+                .userId(comment.getAuthor().getId())
                 .timestamp(comment.getCreated().toEpochSecond(ZoneOffset.UTC))
                 .build();
     }

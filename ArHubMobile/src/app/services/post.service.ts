@@ -135,6 +135,10 @@ export class PostService {
     return this.httpClient.patch(`${this.apiUrlContentManager}/posts/${id}`, body);
   }
 
+  deletePost(id: string){
+    return this.httpClient.delete(`${this.apiUrlContentManager}/posts/${id}`);
+  }
+
   mockPopularPost = [
     {
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",

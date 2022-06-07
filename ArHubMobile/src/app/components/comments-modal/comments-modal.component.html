@@ -3,7 +3,7 @@
     <div class="comment">
       <div class="section" style="margin-right: 12px">
         <img *ngIf="comment.authorAvatarImageId" (click)="openProfileUser()" class="avatar" mat-card-avatar src="{{apiUrlDatastore}}/content/{{comment.authorAvatarImageId}}" alt="">
-        <img *ngIf="!comment.authorAvatarImageId" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?color=FFFFFF&background=random&name=John">
+        <img *ngIf="!comment.authorAvatarImageId" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?color=FFFFFF&background=random&name={{comment.userName}}">
       </div>
       <div class="section">
         <div class="top">
@@ -12,9 +12,7 @@
         </div>
 
         <div class="comment-description">
-<!--          {{comment.text}}-->
-          ddsfds dsf dsf dsf dsfsd fsdfdsf
-          dsfds fdsf sd fsdf dsf
+          {{comment.text}}
         </div>
       </div>
     </div>
@@ -24,7 +22,8 @@
 
   <form class="comment" [formGroup]="form"  style="display: flex; align-items: center">
     <div class="section" style="margin-right: 12px">
-      <img (click)="openMyProfile()" class="icon" mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+<!--      <img (click)="openMyProfile()" class="icon" mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">-->
+      <img mat-card-avatar (click)="openMyProfile()" class="icon" src="https://ui-avatars.com/api/?color=FFFFFF&background=random&name={{myName}}">
     </div>
     <div class="section">
       <div class="form-field-with-label" style="padding: 10px 10px">

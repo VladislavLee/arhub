@@ -87,17 +87,18 @@ export class PostService {
 
   getFullPost(id: string) {
     return this.httpClient.get(`${this.apiUrlContentManager}/posts/${id}`);
-    // return of(this.mockFullPost)
   }
 
-  //TODO change api url
   getMyPost(): Observable<any> {
     return this.httpClient.get(`${this.apiUrlContentManager}/posts/my`);
   }
 
+  getPostsByStatus(status: string): Observable<any> {
+    return this.httpClient.get(`${this.apiUrlContentManager}/posts/status/${status}`);
+  }
+
   getPopularPost(): Observable<any> {
     return this.httpClient.get(`${this.apiUrlContentManager}/posts/popular`);
-    // return of(this.mockPopularPost)
   }
 
   updatePost(request: any) {

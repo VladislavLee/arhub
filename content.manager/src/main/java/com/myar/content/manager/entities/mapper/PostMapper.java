@@ -40,11 +40,12 @@ public class PostMapper {
     }
 
     public ShortPostResponse convertPostToShortPostResponse(Post post) {
-
-        System.out.println(post.getLatitude());
         return ShortPostResponse.builder()
                 .id(post.getId())
                 .previewImageId(post.getPreviewImageId())
+                .markerImageId(post.getMarkerImageId())
+                .markerVanillaMarkerId(post.getMarkerVanillaMarkerId())
+                .modelId(post.getModelId())
                 .title(post.getTitle())
                 .author(authorToShortUser(post.getAuthor()))
                 .lastRated(userService.getLastRatedUsersByPost(post)
@@ -88,6 +89,9 @@ public class PostMapper {
         return StoriesPostResponse.builder()
                 .id(post.getId())
                 .previewImageId(post.getPreviewImageId())
+                .markerImageId(post.getMarkerImageId())
+                .markerVanillaMarkerId(post.getMarkerVanillaMarkerId())
+                .modelId(post.getModelId())
                 .title(post.getTitle())
                 .build();
     }

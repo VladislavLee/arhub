@@ -14,6 +14,9 @@ public class ShortPostResponse {
 
     private UUID id;
     private String previewImageId;
+    private String markerImageId;
+    private String markerVanillaMarkerId;
+    private String modelId;
     private String title;
 
     private ShortUserResponse author;

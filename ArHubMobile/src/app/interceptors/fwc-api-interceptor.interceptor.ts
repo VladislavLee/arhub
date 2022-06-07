@@ -13,7 +13,7 @@ export class fwcAPIInterceptor implements HttpInterceptor {
 
     const authReq = req.clone({
       headers: new HttpHeaders({
-        UserId: '111'
+        UserId: window.localStorage.getItem('login')!!
       })
     });
 

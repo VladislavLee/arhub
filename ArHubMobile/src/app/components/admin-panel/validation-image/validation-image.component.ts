@@ -2,8 +2,6 @@ import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@a
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {map, merge, Observable, of, startWith, switchMap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import { DecimalPipe } from '@angular/common';
 import {ModelViewerModalComponent} from "../../model-viewer-modal/model-viewer-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ImageViewerModalComponent} from "../../image-viewer-modal/image-viewer-modal.component";
@@ -16,7 +14,6 @@ import {PostService} from "../../../services/post.service";
 })
 export class ValidationImageComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['created', 'title', 'image', 'model', 'valid', 'inValid'];
-  exampleDatabase: ExampleHttpDatabase | null;
   data: any[] = [];
   // decimalPipe = new DecimalPipe(navigator.language);
   resultsLength = 0;
@@ -34,7 +31,6 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.exampleDatabase = new ExampleHttpDatabase();
 
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
@@ -43,13 +39,9 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active,
-            this.sort.direction,
-            this.paginator.pageIndex,
-          );
+          return this.getRepoIssues();
         }),
-        map(data => {
+        map((data: any) => {
           this.isLoadingResults = false;
           this.isRateLimitReached = data === null;
 
@@ -60,7 +52,7 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
           return data.items;
         }),
       )
-      .subscribe(data => {
+      .subscribe((data: any) => {
         (this.data = data)
         this.changeDetector.detectChanges();
       });
@@ -93,23 +85,9 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
       return `${start} - ${end} из ${length}`;
     };
   }
-}
 
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleHttpDatabase {
-  getRepoIssues(sort: string, order: any, page: number): Observable<any> {
-    const href = 'https://api.github.com/search/issues';
-    const requestUrl = `${href}?q=repo:angular/components&sort=${sort}&order=${order}&page=${
-      page + 1
-    }`;
-
-    const data = {
-      total_count: 24874,
-      items: ITEMS
-    }
-
-    return of(data);
-    // return this._httpClient.get<any>(requestUrl);
+  getRepoIssues(): Observable<any> {
+    return this.postService.getPostsByStatus("IN_PROGRESS");
   }
 }
 

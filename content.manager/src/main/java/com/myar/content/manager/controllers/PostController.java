@@ -44,14 +44,14 @@ public class PostController {
     }
 
     @GetMapping("/my")
-    public List<StoriesPostResponse> getMyPosts() {
+    public List<ShortPostResponse> getMyPosts() {
         return postService.getMyPosts().stream()
-                .map(postMapper::convertPostToStoriesPostResponse)
+                .map(postMapper::convertPostToShortPostResponse)
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/status/{status}")
-    public List<ShortPostResponse> getAllPostsWithStatus(@RequestParam("status") Post.Status status) {
+    public List<ShortPostResponse> getAllPostsWithStatus(@PathVariable("status") Post.Status status) {
         return postService.getPostsByStatus(status).stream()
                 .map(postMapper::convertPostToShortPostResponse)
                 .collect(Collectors.toList());

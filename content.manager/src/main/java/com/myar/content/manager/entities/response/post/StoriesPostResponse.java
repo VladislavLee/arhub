@@ -1,5 +1,6 @@
 package com.myar.content.manager.entities.response.post;
 
+import com.myar.content.manager.entities.model.Post;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,5 +12,9 @@ public class StoriesPostResponse {
 
     private UUID id;
     private String previewImageId;
+    private String markerImageId;
+    private String markerVanillaMarkerId;
+    private String modelId;
+    private Post.Status status;
     private String title;
 }

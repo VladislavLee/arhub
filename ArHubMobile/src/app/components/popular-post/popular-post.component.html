@@ -1,10 +1,10 @@
 <mat-card class="card">
   <mat-card-title-group class="group">
     <div class="text-block">
-      <mat-card-title>Dribbble Russia VK Community officially launched!</mat-card-title>
-      <mat-card-subtitle class="subtitle">20.12.2022</mat-card-subtitle>
+      <mat-card-title>{{post.title}}</mat-card-title>
+      <mat-card-subtitle class="subtitle">{{ post.createdTime | date: 'dd.MM.YYYY/hh:mm' }}</mat-card-subtitle>
     </div>
 
-    <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+    <img mat-card-lg-image src="{{apiUrlDatastore}}/content/{{post.previewImageId}}" >
   </mat-card-title-group>
 </mat-card>

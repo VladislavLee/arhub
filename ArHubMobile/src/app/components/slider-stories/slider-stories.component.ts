@@ -12,39 +12,6 @@ export class SliderStoriesComponent implements OnInit {
   popularPostList2: any;
   popularPostList3: any;
 
-  mockPostMiniList = [
-    {
-      src: '../../../assets/image/pic-2.png',
-      title: 'Волшебный замок',
-      date: '01.04.2022'
-    },
-    {
-      src: '../../../assets/image/2.jpeg',
-      title: 'Водопад',
-      date: '06.04.2022'
-    },
-    {
-      src: '../../../assets/image/3.jpeg',
-      title: 'Цветы',
-      date: '21.04.2022'
-    },
-    {
-      src: '../../../assets/image/images.jpeg',
-      title: 'Новый год',
-      date: '12.04.2022'
-    },
-    {
-      src: '../../../assets/image/3.jpeg',
-      title: 'Цветы',
-      date: '21.04.2022'
-    },
-    {
-      src: '../../../assets/image/images.jpeg',
-      title: 'Новый год',
-      date: '12.04.2022'
-    }
-  ]
-
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {

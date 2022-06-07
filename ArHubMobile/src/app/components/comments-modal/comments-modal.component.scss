@@ -21,6 +21,7 @@
       }
 
       .top {
+        width: -webkit-fill-available;
         display: flex;
         justify-content: space-between;
 
@@ -41,7 +42,7 @@
       .comment-description {
         word-break: break-all;
         line-height: 18px;
-        margin-top: 20px;
+        margin-top: 12px;
       }
 
       .form-field-with-label {

@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 })
 export class CommentsModalComponent implements OnInit {
   comments: any;
+  myName: any;
   apiUrlDatastore = API_URL_DATASTORE;
 
   form = new FormGroup({
@@ -30,10 +31,12 @@ export class CommentsModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.myName = window.localStorage.getItem('login');
     this.getComments();
   }
 
   getComments() {
+    console.log(this.data)
     this.postService.getComments(this.data.id).subscribe((value) => {
       console.log(value)
       this.comments = value;
@@ -48,6 +51,8 @@ export class CommentsModalComponent implements OnInit {
   openProfileUser() {
 
   }
+
+
 
   openMyProfile() {
     this._bottomSheetRef.dismiss();

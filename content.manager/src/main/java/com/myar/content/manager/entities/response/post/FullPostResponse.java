@@ -33,6 +33,7 @@ public class FullPostResponse {
 
     private long likeCount;
     private long commentCount;
+    private long createdTime;
 
     private String latitude;
     private String longitude;

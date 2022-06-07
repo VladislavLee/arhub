@@ -16,7 +16,7 @@ import {API_URL_DATASTORE} from "../../../../URL_LIST";
 export class ValidationImageComponent implements OnInit, AfterViewInit {
 
   readonly apiUrlDatastore =  API_URL_DATASTORE;
-  displayedColumns: string[] = ['createdTime', 'title', 'markerVanillaMarkerId', 'modelId', 'valid', 'inValid'];
+  displayedColumns: string[] = ['createdTime', 'title', 'markerVanillaMarkerId', 'preview', 'modelId', 'valid', 'inValid'];
   data: any[] = [];
   // decimalPipe = new DecimalPipe(navigator.language);
   resultsLength = 0;
@@ -69,15 +69,28 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
   openViewerImageModal(src?: any) {
     console.log(src)
     this.dialog.open(ImageViewerModalComponent, {
-      data: {src: `${this.apiUrlDatastore}/content/${src.markerVanillaMarkerId}`},
+      data: {src: `${this.apiUrlDatastore}/content/${src}`},
     });
   }
 
   validate(id: string) {
     console.log(id);
-    this.isValid
-      ? this.postService.validatePost(id).subscribe()
-      : this.postService.validatePost(id).subscribe();
+    this.postService.validatePost(id).subscribe(data => {
+      this.getRepoIssues().subscribe(value => {
+        this.data = value;
+        this.changeDetector.detectChanges();
+      })
+    })
+  }
+
+  block(id: string) {
+    console.log(id);
+    this.postService.blockPost(id).subscribe(data => {
+      this.getRepoIssues().subscribe(value => {
+        this.data = value;
+        this.changeDetector.detectChanges();
+      })
+    })
   }
 
   ngOnInit() {

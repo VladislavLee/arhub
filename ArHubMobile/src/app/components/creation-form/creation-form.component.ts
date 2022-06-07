@@ -75,6 +75,13 @@ export class CreationFormComponent implements OnInit {
     return !!this.form.get('model')?.value;
   }
 
+  alarm(){
+    this.postService.downloadImage(`${API_URL_DATASTORE}/content/75c6e`, 'marker').subscribe(value => {
+      this.form.get('marker')?.setValue(new Blob([value.file]))
+      this.loaded = false;
+    })
+  }
+
   constructor(
     private postService: PostService,
     private http: HttpClient,

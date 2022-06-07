@@ -42,7 +42,7 @@ class App extends Component {
             })
             .then(response => {
                 console.log(response);
-                window.parent.location = arHubUrl + '/news';
+                window.parent.location = arHubUrl + '/my-post';
             });
     }
 

@@ -136,3 +136,11 @@
     margin-right: 8px;
   }
 }
+
+::ng-deep .mat-menu-panel {
+  background-color: #1C1C24;
+}
+
+.mat-list-base {
+  padding-top: 0;
+}

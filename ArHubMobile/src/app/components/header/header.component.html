@@ -53,8 +53,8 @@
 
       <mat-icon  [matMenuTriggerFor]="menu" class="label">expand_more</mat-icon>
 
-      <mat-menu #menu="matMenu">
-        <mat-list style="margin-top: 22px" role="list">
+      <mat-menu style="background: #1c1c24" #menu="matMenu">
+        <mat-list role="list">
           <mat-list-item role="listitem">
             <button routerLink="/account-mobile" class="button" mat-stroked-button
                     style="color: white; border: none; padding-left: 2px">
@@ -67,7 +67,7 @@
 
           <mat-divider style="border-bottom: 1px solid #2D2D3A"></mat-divider>
 
-          <mat-list-item style="margin-top: 12px" role="listitem">
+          <mat-list-item role="listitem">
             <button (click)="logout()" class="button" mat-stroked-button
                     style="color: #E24444; border: none; padding-left: 2px">
               <mat-icon style="margin-right: 10px" >logout</mat-icon>

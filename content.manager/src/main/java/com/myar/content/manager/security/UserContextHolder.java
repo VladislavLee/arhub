@@ -11,7 +11,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserContextHolder {
     private final AuthorRepository authorRepository;
-    private final ThreadLocal<String> threadLocalValue = new ThreadLocal<>();
+    private static final ThreadLocal<String> threadLocalValue = new ThreadLocal<>();
 
     public Author getUser() {
         String username = threadLocalValue.get();
@@ -21,7 +21,7 @@ public class UserContextHolder {
         return authorRepository.findByUsername(username);
     }
 
-    public void setUser(String userName){
+    public static void setUser(String userName){
         threadLocalValue.set(userName);
     }
 }

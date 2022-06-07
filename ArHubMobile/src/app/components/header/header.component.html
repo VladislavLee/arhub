@@ -40,7 +40,7 @@
     </div>
 
     <div class="header-right">
-      <div class="add-post" (click)="createPost()">
+      <div *ngIf="!isAdmin" class="add-post" (click)="createPost()">
         <button class="button" mat-icon-button>
           <mat-icon style="color: #FFFFFF">add</mat-icon>
         </button>

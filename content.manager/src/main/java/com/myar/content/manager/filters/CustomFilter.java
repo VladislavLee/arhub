@@ -23,8 +23,6 @@ import java.util.Enumeration;
 @RequiredArgsConstructor
 public class CustomFilter implements Filter {
 
-    private UserContextHolder userContextHolder;
-
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
@@ -36,10 +34,11 @@ public class CustomFilter implements Filter {
         if (headerNames != null) {
             while (headerNames.hasMoreElements()) {
                 String name = headerNames.nextElement();
-                if(name.equals("UserId")){
-                    userContextHolder.setUser(httpRequest.getHeader(name));
+                if(name.equalsIgnoreCase("UserId")){
+                    UserContextHolder.setUser(httpRequest.getHeader(name));
                     System.out.println("Header: " + name + " value:" + httpRequest.getHeader(name));
                 }
+
             }
         }
 

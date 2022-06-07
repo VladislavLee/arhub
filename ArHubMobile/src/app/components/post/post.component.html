@@ -4,7 +4,7 @@
     <img *ngIf="!post.author.avatarImageId" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?name={{post.author.username}}&background=random" alt="">
 
     <mat-card-title class="title">{{post.title}}</mat-card-title>
-    <mat-card-subtitle class="date">{{ post.cratedTime | date }}</mat-card-subtitle>
+    <mat-card-subtitle class="date">{{ post.createdTime | date }}</mat-card-subtitle>
   </mat-card-header>
   <img class="post-img"
        mat-card-image

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-user-card-mobile',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-card-mobile.component.scss']
 })
 export class UserCardMobileComponent implements OnInit {
+  @Input() user: any
+
+  isSubscribe = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  subscribe() {
+    this.isSubscribe = !this.isSubscribe;
+  }
 }

@@ -2,15 +2,14 @@
 
 <!--    <img  mat-card-avatar class="avatar" src="{{apiUrlDatastore}}/content/{{post.author.avatarImageId}}" alt="">-->
   <div class="avatar">
-    <img class="image" mat-card-avatar src="https://ui-avatars.com/api/?name={{'Lisa'}}&background=random" alt="">
+    <img class="image" mat-card-avatar src="https://ui-avatars.com/api/?name={{user.username}}&background=random" alt="">
   </div>
 
 
 
-    <span class="label">Lisa</span>
+    <span class="label">{{user.username}}</span>
 
-    <button mat-stroked-button class="button">Подписаться</button>
-
-
+    <button *ngIf="!isSubscribe" (click)="subscribe()" mat-stroked-button class="button">Подписаться</button>
+    <button *ngIf="isSubscribe" (click)="subscribe()" mat-stroked-button class="button">Вы подписаны</button>
 
 </mat-card>

@@ -14,7 +14,6 @@ export interface PostResponse {
       avatarImageId: string,
     }
   ],
-  createdTime: number,
   likeCount: number,
   commentCount: number,
   modelId?: string,

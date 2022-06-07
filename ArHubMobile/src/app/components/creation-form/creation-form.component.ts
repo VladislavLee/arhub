@@ -86,45 +86,50 @@ export class CreationFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe(value => {
-      console.log(this.form.valid)
-    })
+    this.route.paramMap.subscribe((params: any) => {
+      if (params.params.id) {
+        this.postService.getFullPost(params.params.id).subscribe(post => {
+          this.post = post;
 
-    if (this.post) {
-      combineLatest(
-        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'preview'),
-        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'marker'),
-        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'markerVanilla'),
-        // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'model'),
-        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview'),
-        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker'),
-        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla'),
-        this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.modelId}`, 'model'),
-      ).pipe(
-        tap(value => console.log(value))
-      ).subscribe(value => {
-        let arr = value.reduce((map: any, obj: any) => {
-          map[obj.name] = obj.file;
-          return map;
-        }, {});
+          if (this.post) {
+            console.log(this.post)
+            combineLatest(
+              // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'preview'),
+              // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'marker'),
+              // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'markerVanilla'),
+              // this.postService.downloadImage('https://material.angular.io/assets/img/examples/shiba2.jpg', 'model'),
+              this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview'),
+              this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker'),
+              this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla'),
+              this.postService.downloadImage(`${API_URL_DATASTORE}/content/${this.post.modelId}`, 'model'),
+            ).pipe(
+              tap(value => console.log(value))
+            ).subscribe(value => {
+              let arr = value.reduce((map: any, obj: any) => {
+                map[obj.name] = obj.file;
+                return map;
+              }, {});
 
-        const {preview, marker, markerVanilla, model} = arr;
+              const {preview, marker, markerVanilla, model} = arr;
 
-        const formValue = {
-          title: this.post.title,
-          preview: new File([preview], 'file'),
-          marker: new File([marker], 'file'),
-          markerVanilla: new File([markerVanilla], 'file'),
-          model: new File([model], 'file'),
-        }
-
-        this.form.patchValue(formValue);
-      })
-      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview');
-      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker');
-      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla');
-      // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.modelId}`, 'model');
-    }
+              const formValue = {
+                title: this.post.title,
+                preview: new File([preview], 'file'),
+                marker: new File([marker], 'file'),
+                markerVanilla: new File([markerVanilla], 'file'),
+                model: new File([model], 'file'),
+              }
+              console.log(formValue)
+              this.form.patchValue(formValue);
+            })
+            // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.previewImageId}`, 'preview');
+            // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerImageId}`, 'marker');
+            // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.markerVanillaMarkerId}`, 'markerVanilla');
+            // this.downloadImage(`${API_URL_DATASTORE}/content/${this.post.modelId}`, 'model');
+          }
+        })
+      }
+    });
 
 
     this.route.paramMap.subscribe((params: any) => {

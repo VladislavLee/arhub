@@ -11,16 +11,19 @@ import {API_URL_DATASTORE} from "../../../URL_LIST";
   styleUrls: ['./post-ar.component.scss']
 })
 export class PostArComponent implements OnInit {
-
+  VK_URL: string;
   readonly apiUrlDatastore =  API_URL_DATASTORE;
 
   @Input() post:PostResponse;
   constructor(private postService: PostService, private _bottomSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
+    this.VK_URL = `https://vk.com/share.php?url=https://ar-hub-mobile-route-nikitadyadechkin-1-dev.apps.sandbox.x8i5.p1.openshiftapps.com&title=${this.post.title}&image=${this.apiUrlDatastore}}/content/${this.post.previewImageId}`;
   }
 
-  openComments() {
-    this._bottomSheet.open(CommentsModalComponent);
+  openComments(id: string) {
+    const bottomSheetRef = this._bottomSheet.open(CommentsModalComponent, {
+      data: this.post,
+    });
   }
 }

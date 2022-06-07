@@ -187,7 +187,7 @@ registerLocaleData(localeRu, 'ru');
         canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },
       {
-        path: 'users-mobile',
+        path: 'users-mobile/:id',
         component: UsersMobileComponent,
         canActivate: [AuntificationGuard, DeviceDetectorGuard]
       },

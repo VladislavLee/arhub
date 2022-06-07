@@ -1,14 +1,19 @@
 <mat-nav-list class="container">
   <ng-container *ngFor="let comment of comments">
     <div class="comment">
-      <div class="section" style="margin-right: 12px">
-        <img *ngIf="comment.authorAvatarImageId" (click)="openProfileUser()" class="avatar" mat-card-avatar src="{{apiUrlDatastore}}/content/{{comment.authorAvatarImageId}}" alt="">
-        <img *ngIf="!comment.authorAvatarImageId" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?color=FFFFFF&background=random&name={{comment.userName}}">
+      <div class="section" *ngIf="isMobile" style="margin-right: 12px">
+        <img *ngIf="comment.authorAvatarImageId" (click)="openProfileUser(comment.userId)" class="avatar" mat-card-avatar src="{{apiUrlDatastore}}/content/{{comment.authorAvatarImageId}}" alt="">
+        <img *ngIf="!comment.authorAvatarImageId" (click)="openProfileUser(comment.userId)" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?color=FFFFFF&background=random&name={{comment.userName}}">
       </div>
-      <div class="section">
+
+      <div class="section" *ngIf="!isMobile" style="margin-right: 12px">
+        <img *ngIf="comment.authorAvatarImageId" (click)="openProfileUser(comment.userId)" class="avatar" mat-card-avatar src="{{apiUrlDatastore}}/content/{{comment.authorAvatarImageId}}" alt="">
+        <img *ngIf="!comment.authorAvatarImageId" (click)="openProfileUser(comment.userId)" mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?color=FFFFFF&background=random&name={{comment.userName}}">
+      </div>
+      <div class="section" style="width: 100%">
         <div class="top">
-          <label class="title">Edward Clark</label>
-          <span class="date">20/02/2022</span>
+          <label class="title">{{comment.userName}}</label>
+          <span class="date">{{comment.timestamp | date: 'hh:mm'}}</span>
         </div>
 
         <div class="comment-description">
@@ -16,6 +21,7 @@
         </div>
       </div>
     </div>
+
   </ng-container>
 
   <mat-divider ></mat-divider>

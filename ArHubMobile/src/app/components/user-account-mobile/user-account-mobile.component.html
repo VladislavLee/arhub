@@ -1,31 +1,33 @@
 <app-mobile-header></app-mobile-header>
 <div class="wrapper">
   <div class="container">
-    <app-page-title [fontSize]="20" title="Ник пользователя"></app-page-title>
+    <app-page-title [fontSize]="20" title="{{user.username}}"></app-page-title>
     <div class="section">
-      <img class="avatar" mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+      <img *ngIf="user.avatarImageId"  class="avatar" mat-card-avatar src="{{apiUrlDatastore}}/content/{{user.avatarImageId}}" alt="">
+      <img *ngIf="!user.authorAvatarImageId"  mat-card-avatar class="avatar" src="https://ui-avatars.com/api/?color=FFFFFF&background=random&name={{user.username}}">
       <div class="information">
-        <span class="count">12</span>
+        <span class="count">{{user.publications.length}}</span>
         <span class="label">Публикации</span>
       </div>
-      <div class="information">
-        <span class="count">12</span>
+      <div (click)="navigateToSubscribes()" class="information">
+        <span class="count">{{user.subscribers.length}}</span>
         <span class="label">Подписчики</span>
       </div>
       <div class="information">
-        <span class="count">12</span>
+        <span class="count">{{user.subscriptions.length}}</span>
         <span class="label">Подписки</span>
       </div>
     </div>
 
     <div class="section">
-      <button mat-stroked-button class="button"><span></span>Подписаться</button>
+      <button  *ngIf="!isSubscribe" (click)="subscribe()" mat-stroked-button class="button"><span></span>Подписаться</button>
+      <button  *ngIf="isSubscribe" (click)="subscribe()" mat-stroked-button class="button"><span></span>Вы подписаны</button>
     </div>
 
     <app-page-title [fontSize]="20" [title]="'Публикации'"></app-page-title>
 
     <app-post
-      *ngFor="let post of posts | async"
+      *ngFor="let post of publications"
       [post]="post"
     ></app-post>
   </div>

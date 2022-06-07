@@ -4,11 +4,9 @@
   <app-page-title class="title" [fontSize]="20" [title]="'Подписчики'"></app-page-title>
 
   <div class="container">
-    <app-user-card-mobile class="user"></app-user-card-mobile>
-    <app-user-card-mobile class="user"></app-user-card-mobile>
-    <app-user-card-mobile class="user"></app-user-card-mobile>
-    <app-user-card-mobile class="user"></app-user-card-mobile>
-
+    <ng-container *ngFor="let item of subscribers">
+      <app-user-card-mobile [user]="item" class="user"></app-user-card-mobile>
+    </ng-container>
   </div>
 </div>
 

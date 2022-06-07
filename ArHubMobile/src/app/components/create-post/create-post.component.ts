@@ -16,6 +16,7 @@ export class CreatePostComponent implements OnInit {
     this.route.paramMap.subscribe((params: any) => {
       if (params.params.id) {
         this.postService.getFullPost(params.params.id).subscribe(post => {
+          console.log(post)
           this.post = post;
         })
       }

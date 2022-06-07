@@ -6,6 +6,7 @@ import {ModelViewerModalComponent} from "../../model-viewer-modal/model-viewer-m
 import {MatDialog} from "@angular/material/dialog";
 import {ImageViewerModalComponent} from "../../image-viewer-modal/image-viewer-modal.component";
 import {PostService} from "../../../services/post.service";
+import {API_URL_DATASTORE} from "../../../../URL_LIST";
 
 @Component({
   selector: 'app-validation-image',
@@ -13,7 +14,9 @@ import {PostService} from "../../../services/post.service";
   styleUrls: ['./validation-image.component.scss']
 })
 export class ValidationImageComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['created', 'title', 'image', 'model', 'valid', 'inValid'];
+
+  readonly apiUrlDatastore =  API_URL_DATASTORE;
+  displayedColumns: string[] = ['createdTime', 'title', 'markerVanillaMarkerId', 'modelId', 'valid', 'inValid'];
   data: any[] = [];
   // decimalPipe = new DecimalPipe(navigator.language);
   resultsLength = 0;
@@ -44,12 +47,11 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
         map((data: any) => {
           this.isLoadingResults = false;
           this.isRateLimitReached = data === null;
-
           if (data === null) {
             return [];
           }
 
-          return data.items;
+          return data;
         }),
       )
       .subscribe((data: any) => {
@@ -60,13 +62,14 @@ export class ValidationImageComponent implements OnInit, AfterViewInit {
 
   openViewerModal(src?: any) {
     this.dialog.open(ModelViewerModalComponent, {
-      data: {src: src},
+      data: {src: `${this.apiUrlDatastore}/content/${src.modelId}`},
     });
   }
 
   openViewerImageModal(src?: any) {
+    console.log(src)
     this.dialog.open(ImageViewerModalComponent, {
-      data: {src: src},
+      data: {src: `${this.apiUrlDatastore}/content/${src.markerVanillaMarkerId}`},
     });
   }
 

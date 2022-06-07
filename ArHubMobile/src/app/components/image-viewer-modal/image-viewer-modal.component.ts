@@ -15,6 +15,7 @@ export class ImageViewerModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.src = this.data.src
   }
 
   close() {

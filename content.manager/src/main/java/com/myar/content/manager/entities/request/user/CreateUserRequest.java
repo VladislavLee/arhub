@@ -9,4 +9,7 @@ public class CreateUserRequest {
 
     private UUID cityId;
     private String username;
+    private String name;
+    private String middleName;
+    private String surName;
 }

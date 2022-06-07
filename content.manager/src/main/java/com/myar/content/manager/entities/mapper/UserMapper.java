@@ -21,6 +21,9 @@ public class UserMapper {
         return Author.builder()
                 .city(cityRepository.findById(createUserRequest.getCityId()).orElse(cityRepository.findAll().get(0)))
                 .username(createUserRequest.getUsername())
+                .name(createUserRequest.getName())
+                .middleName(createUserRequest.getMiddleName())
+                .surName(createUserRequest.getSurName())
                 .build();
     }
 

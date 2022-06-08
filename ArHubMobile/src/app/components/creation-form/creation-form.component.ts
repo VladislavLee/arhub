@@ -243,7 +243,7 @@ export class CreationFormComponent implements OnInit {
         console.log(request);
 
         if (this.post) {
-          return this.postService.updatePost(request)
+          return this.postService.updatePost(request, this.post.id)
         } else {
           return this.postService.createPost(request);
         }

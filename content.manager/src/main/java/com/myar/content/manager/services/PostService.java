@@ -81,12 +81,12 @@ public class PostService {
     }
 
     public List<Post> getPopular() {
-        List<Post> list = postRepository.findAllPostsWithLikesCountOrderByCountDesc(PageRequest.of(0, 5))
+        List<Post> list = postRepository.findAllPostsWithLikesCountOrderByCountDesc(PageRequest.of(0, 6))
                 .stream()
                 .map(PostWithLikeCount::getPost)
                 .collect(Collectors.toList());
         if(list.isEmpty()){
-            return getRecommended(0, 5);
+            return getRecommended(0, 6);
         } else {
             return list;
         }

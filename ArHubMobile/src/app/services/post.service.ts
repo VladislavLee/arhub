@@ -101,8 +101,8 @@ export class PostService {
     return this.httpClient.get(`${this.apiUrlContentManager}/posts/popular`);
   }
 
-  updatePost(request: any) {
-    return this.httpClient.patch(`${this.apiUrlContentManager}/posts`, request);
+  updatePost(request: any, id: any) {
+    return this.httpClient.patch(`${this.apiUrlContentManager}/posts/${id}`, request);
   }
 
   likePost(id: string) {

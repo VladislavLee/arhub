@@ -70,9 +70,9 @@ public class PostController {
     }
 
     @PatchMapping("/{id}")
-    public void updatePost(@RequestBody CreatePostRequest createPostRequest, @PathVariable("id") UUID postID) {
+    public UUID updatePost(@RequestBody CreatePostRequest createPostRequest, @PathVariable("id") UUID postID) {
         final Post post = postMapper.convertCreatePostRequestToPost(createPostRequest);
-        postService.updatePost(post, postID);
+        return postService.updatePost(post, postID).getId();
     }
 
 

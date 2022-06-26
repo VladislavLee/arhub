@@ -28,11 +28,11 @@ export class CreationFormComponent implements OnInit {
   saved = false;
 
   form = new FormGroup({
-    title: new FormControl(null, [Validators.required]),
+    title: new FormControl(null),
     preview: new FormControl(null, Validators.required),
     marker: new FormControl(null, Validators.required),
     markerVanilla: new FormControl(null, Validators.required),
-    model: new FormControl(null, Validators.required),
+    model: new FormControl(null),
   })
 
   requestForm = {
@@ -56,6 +56,7 @@ export class CreationFormComponent implements OnInit {
   }
 
   getModelFormatValid(): boolean {
+    console.log(this.form.get('model'));
     return this.form.get('model')?.getError('incorrectFormat');
   }
 
@@ -270,8 +271,8 @@ export class CreationFormComponent implements OnInit {
     const fileType = file.name.split('.').pop();
 
     if (fileType !== 'glb') {
-      this.form.get(formControlName)?.setErrors({incorrectFormat: true})
       this.form.get(formControlName)?.setValue(null);
+      this.form.get(formControlName)?.setErrors({'incorrectFormat': true})
 
       return false;
     } else {

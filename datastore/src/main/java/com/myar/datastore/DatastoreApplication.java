@@ -22,31 +22,8 @@ import java.util.Comparator;
 
 @SpringBootApplication
 public class DatastoreApplication {
-
-    @Value("${file.save.path}")
-    private String pathToFiles;
-
-    public static String sourceDirectoryLocation = "/map";
     public static void main(String[] args) {
         SpringApplication.run(DatastoreApplication.class, args);
-    }
-
-    @EventListener(classes = ContextRefreshedEvent.class)
-    public void copyDirectory() throws IOException {
-        Files.walk(Paths.get(pathToFiles.concat("map")))
-                .sorted(Comparator.reverseOrder())
-                .map(Path::toFile)
-                .forEach(File::delete);
-        Files.walk(Paths.get(sourceDirectoryLocation))
-                .forEach(source -> {
-                    Path destination = Paths.get(pathToFiles.concat("map"), source.toString()
-                            .substring(sourceDirectoryLocation.length()));
-                    try {
-                        Files.copy(source, destination);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
     }
 
     @Bean
